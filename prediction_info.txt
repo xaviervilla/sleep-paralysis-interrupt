@@ -1,0 +1,9 @@
+Favorite	preset		prediction speed	accuracy	Notes
+==============================================================================================================
+		fine tree	89,000			92.6%
+		course tree	300,000			82.9%		Only got walking/climbing stairs wrong
+*		custom		300,000			93.8%		(coursetree)+(twoingrulecriterion)+(100maxsplits)
+
+Accelerometer recording app:
+Sensor Record for Android (csv format)
+
