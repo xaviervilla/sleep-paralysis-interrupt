@@ -2,27 +2,25 @@
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
- * File: CODEGEN_standalonePredictor.c
  *
- * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 25-Nov-2019 01:41:57
+ * CODEGEN_standalonePredictor.c
+ *
+ * Code generation for function 'CODEGEN_standalonePredictor'
+ *
  */
 
-/* Include Files */
+/* Include files */
 #include "CODEGEN_standalonePredictor.h"
 #include "CODEGEN_standalonePredictor_data.h"
 #include "CODEGEN_standalonePredictor_initialize.h"
 #include "CompactClassificationTree.h"
+#include "Wmean.h"
+#include "Wpca1.h"
+#include "Wstd.h"
 #include "rt_nonfinite.h"
 
 /* Function Definitions */
-
-/*
- * Load the classifier from file
- * Arguments    : const double X[18]
- * Return Type  : double
- */
-double CODEGEN_standalonePredictor(const double X[18])
+void CODEGEN_standalonePredictor(const double X[288], double label[16])
 {
   int k;
   double SVM_ClassNames[5];
@@ -83,10 +81,10 @@ double CODEGEN_standalonePredictor(const double X[18])
   static const double SVM_CutPoint[177] = { 0.10902012795745872,
     0.38674240585937508, 0.26954830323525081, 0.0, -0.066491563359375,
     0.97422894257812487, 0.3333981844842121, 0.0052289654448280272,
-    1.0032276589843749, 0.7350930579838324, 0.11071343181640624,
+    1.0032276589843749, 0.73509305798382818, 0.11071343181640624,
     -0.26910159413281248, 0.3995970110748186, -0.15258506992187498,
-    -1.1930912622138179, 0.0, 0.008564348230014, -1.0178153834133419,
-    3.5926854399735317, -1.036263242491378, 0.18212741000634675,
+    -1.1930912622138163, 0.0, 0.008564348230014, -1.0178153834133399,
+    3.5926854399735353, -1.0362632424913756, 0.18212741000634675,
     0.14792745514117009, 0.39768290165791165, 0.34189577555830425,
     0.38515411239141917, 0.0043480532470010751, 0.0043261798897940469, 0.0,
     -0.048818045375, 0.0019224967147855627, 0.015583290573657396,
@@ -98,7 +96,7 @@ double CODEGEN_standalonePredictor(const double X[18])
     1.0087016996093749, 0.0716476320962769, 1.0217922421874999, 1.00694654453125,
     0.0032089089935937497, -0.15842286234374997, 0.0, 0.0, 0.7197534034375,
     0.14682461533428823, 0.0, 0.0, 0.13811974587717996, 0.0, 0.24078313659515332,
-    -0.32123358715625011, 2.1218660789587305, 0.17528142816620862,
+    -0.32123358715625011, 2.1218660789587296, 0.17528142816620862,
     0.34938964848991383, 1.0055961796875001, 0.0, 0.26729296445130263,
     0.95135702890624985, 0.0, 0.20470025840208791, 0.168892641114177,
     -0.15615262991015622, 0.49259042506036121, 0.0, 0.0, 0.082254961763671863,
@@ -116,23 +114,22 @@ double CODEGEN_standalonePredictor(const double X[18])
     -0.1076150473828125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
 
-  static const boolean_T SVM_NanCutPoints[177] = { false, false, false, true,
+  static const bool SVM_NanCutPoints[177] = { false, false, false, true, false,
+    false, false, false, false, false, false, false, false, false, false, true,
     false, false, false, false, false, false, false, false, false, false, false,
     true, false, false, false, false, false, false, false, false, false, false,
-    false, true, false, false, false, false, false, false, false, false, false,
-    false, false, true, false, false, false, false, true, false, true, true,
-    true, true, false, false, false, false, false, false, false, true, true,
-    false, false, true, true, false, true, false, false, false, false, false,
-    false, true, false, false, true, false, false, false, false, true, true,
-    false, false, true, true, false, false, true, true, false, false, true, true,
-    false, false, true, false, true, true, false, false, true, true, false,
-    false, true, false, false, true, true, true, true, true, true, false, true,
-    true, true, false, true, false, false, true, true, true, false, true, false,
-    true, true, true, true, false, true, true, true, true, true, true, true,
-    true, true, true, true, false, true, true, false, true, true, true, true,
-    true, true, true, true, false, true, true, true, true, true, true, true,
-    true, true, true, true, true, true, true, true, true, true, true, true, true
-  };
+    false, true, false, false, false, false, true, false, true, true, true, true,
+    false, false, false, false, false, false, false, true, true, false, false,
+    true, true, false, true, false, false, false, false, false, false, true,
+    false, false, true, false, false, false, false, true, true, false, false,
+    true, true, false, false, true, true, false, false, true, true, false, false,
+    true, false, true, true, false, false, true, true, false, false, true, false,
+    false, true, true, true, true, true, true, false, true, true, true, false,
+    true, false, false, true, true, true, false, true, false, true, true, true,
+    true, false, true, true, true, true, true, true, true, true, true, true,
+    true, false, true, true, false, true, true, true, true, true, true, true,
+    true, false, true, true, true, true, true, true, true, true, true, true,
+    true, true, true, true, true, true, true, true, true, true };
 
   double SVM_Cost[25];
   static const double SVM_ClassProbability[885] = { 0.19137649619151256,
@@ -263,6 +260,7 @@ double CODEGEN_standalonePredictor(const double X[18])
     CODEGEN_standalonePredictor_initialize();
   }
 
+  /*  Load the classifier from file */
   for (k = 0; k < 5; k++) {
     SVM_ClassNames[k] = (double)k + 1.0;
   }
@@ -283,13 +281,9 @@ double CODEGEN_standalonePredictor(const double X[18])
     SVM_Cost[k] = 1.0 - (double)b_I[k];
   }
 
-  return c_CompactClassificationTree_pre(SVM_CutPredictorIndex, SVM_Children,
+  c_CompactClassificationTree_pre(SVM_CutPredictorIndex, SVM_Children,
     SVM_CutPoint, SVM_PruneList_data, SVM_NanCutPoints, SVM_ClassNames, SVM_Cost,
-    SVM_ClassProbability, X);
+    SVM_ClassProbability, X, label);
 }
 
-/*
- * File trailer for CODEGEN_standalonePredictor.c
- *
- * [EOF]
- */
+/* End of code generation (CODEGEN_standalonePredictor.c) */

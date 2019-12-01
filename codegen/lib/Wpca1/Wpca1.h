@@ -13,13 +13,13 @@
 #define WPCA1_H
 
 /* Include files */
-#include <stddef.h>
-#include <stdlib.h>
+#include <cstddef>
+#include <cstdlib>
 #include "rtwtypes.h"
 #include "Wpca1_types.h"
 
 /* Function Declarations */
-extern void Wpca1(const double X[8192], double Y_data[], int Y_size[2]);
+extern void Wpca1(const double X[2048], double Y_data[], int Y_size[2]);
 
 #endif
 

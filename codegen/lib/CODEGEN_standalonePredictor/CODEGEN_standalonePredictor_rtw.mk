@@ -2,12 +2,12 @@
 ## Makefile generated for MATLAB file/project 'CODEGEN_standalonePredictor'. 
 ## 
 ## Makefile     : CODEGEN_standalonePredictor_rtw.mk
-## Generated on : Mon Nov 25 01:42:04 2019
+## Generated on : Sat Nov 30 15:57:40 2019
 ## MATLAB Coder version: 4.3 (R2019b)
 ## 
 ## Build Info:
 ## 
-## Final product: ./CODEGEN_standalonePredictor.lib
+## Final product: ./CODEGEN_standalonePredictor.a
 ## Product type : static-library
 ## 
 ###########################################################################
@@ -19,47 +19,48 @@
 # Macro Descriptions:
 # PRODUCT_NAME            Name of the system to build
 # MAKEFILE                Name of this makefile
-# CMD_FILE                Command file
 # MODELLIB                Static library target
 
 PRODUCT_NAME              = CODEGEN_standalonePredictor
 MAKEFILE                  = CODEGEN_standalonePredictor_rtw.mk
-MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2019b
-MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2019b/bin
-MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
+MATLAB_ROOT               = /usr/local/MATLAB/R2019b
+MATLAB_BIN                = /usr/local/MATLAB/R2019b/bin
+MATLAB_ARCH_BIN           = $(MATLAB_BIN)/glnxa64
 MASTER_ANCHOR_DIR         = 
-START_DIR                 = C:/Users/XAVIER~1/Desktop/195/195/MYCLAS~1/codegen/lib/CODEGE~1
-TGT_FCN_LIB               = None
+START_DIR                 = /home/xvilla/Documents/2019fall/195/my\ classifier/codegen/lib/CODEGEN_standalonePredictor
+TGT_FCN_LIB               = ISO_C
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0
 MODEL_HAS_DYNAMICALLY_LOADED_SFCNS = 
 RELATIVE_PATH_TO_ANCHOR   = .
-CMD_FILE                  = CODEGEN_standalonePredictor_rtw.rsp
-C_STANDARD_OPTS           = 
-CPP_STANDARD_OPTS         = 
-MODELLIB                  = CODEGEN_standalonePredictor.lib
+C_STANDARD_OPTS           = -fwrapv -std=c99 -pedantic
+CPP_STANDARD_OPTS         = -fwrapv -std=c++98 -pedantic -Wno-long-long
+MODELLIB                  = CODEGEN_standalonePredictor.a
 
 ###########################################################################
 ## TOOLCHAIN SPECIFICATIONS
 ###########################################################################
 
-# Toolchain Name:          LCC-win64 v2.4.1 | gmake (64-bit Windows)
-# Supported Version(s):    2.4.1
+# Toolchain Name:          GNU gcc/g++ | gmake (64-bit Linux)
+# Supported Version(s):    
 # ToolchainInfo Version:   2019b
 # Specification Revision:  1.0
 # 
+#-------------------------------------------
+# Macros assumed to be defined elsewhere
+#-------------------------------------------
+
+# C_STANDARD_OPTS
+# CPP_STANDARD_OPTS
 
 #-----------
 # MACROS
 #-----------
 
-SHELL              = cmd
-LCC_ROOT           = $(MATLAB_ROOT)/sys/lcc64/lcc64
-LCC_BUILDLIB       = $(LCC_ROOT)/bin/buildlib
-LCC_LIB            = $(LCC_ROOT)/lib64
-MW_EXTERNLIB_DIR   = $(MATLAB_ROOT)/extern/lib/win64/microsoft
-MW_LIB_DIR         = $(MATLAB_ROOT)/lib/win64
-TOOLCHAIN_INCLUDES = -I$(LCC_ROOT)/include64
+WARN_FLAGS         = -Wall -W -Wwrite-strings -Winline -Wstrict-prototypes -Wnested-externs -Wpointer-arith -Wcast-align
+WARN_FLAGS_MAX     = $(WARN_FLAGS) -Wcast-qual -Wshadow
+CPP_WARN_FLAGS     = -Wall -W -Wwrite-strings -Winline -Wpointer-arith -Wcast-align
+CPP_WARN_FLAGS_MAX = $(CPP_WARN_FLAGS) -Wcast-qual -Wshadow
 
 TOOLCHAIN_SRCS = 
 TOOLCHAIN_INCS = 
@@ -69,17 +70,20 @@ TOOLCHAIN_LIBS =
 # BUILD TOOL COMMANDS
 #------------------------
 
-# C Compiler: Lcc-win64 C Compiler
-CC_PATH = $(LCC_ROOT)/bin
-CC = "$(CC_PATH)/lcc64"
+# C Compiler: GNU C Compiler
+CC = gcc
 
-# Linker: Lcc-win64 Linker
-LD_PATH = $(LCC_ROOT)/bin
-LD = "$(LD_PATH)/lcclnk64"
+# Linker: GNU Linker
+LD = g++
 
-# Archiver: Lcc-win64 Archiver
-AR_PATH = $(LCC_ROOT)/bin
-AR = "$(AR_PATH)/lcclib64"
+# C++ Compiler: GNU C++ Compiler
+CPP = g++
+
+# C++ Linker: GNU C++ Linker
+CPP_LD = g++
+
+# Archiver: GNU Archiver
+AR = ar
 
 # MEX Tool: MEX Tool
 MEX_PATH = $(MATLAB_ARCH_BIN)
@@ -92,7 +96,7 @@ DOWNLOAD =
 EXECUTE = $(PRODUCT)
 
 # Builder: GMAKE Utility
-MAKE_PATH = %MATLAB%\bin\win64
+MAKE_PATH = %MATLAB%/bin/glnxa64
 MAKE = "$(MAKE_PATH)/gmake"
 
 
@@ -101,32 +105,41 @@ MAKE = "$(MAKE_PATH)/gmake"
 #-------------------------
 
 CDEBUG              = -g
-C_OUTPUT_FLAG       = -Fo
-LDDEBUG             =
+C_OUTPUT_FLAG       = -o
+LDDEBUG             = -g
+OUTPUT_FLAG         = -o
+CPPDEBUG            = -g
+CPP_OUTPUT_FLAG     = -o
+CPPLDDEBUG          = -g
 OUTPUT_FLAG         = -o
 ARDEBUG             =
-STATICLIB_OUTPUT_FLAG = /out:
+STATICLIB_OUTPUT_FLAG =
 MEX_DEBUG           = -g
-RM                  = @del /F
+RM                  = @rm -f
 ECHO                = @echo
-MV                  = @move
+MV                  = @mv
 RUN                 =
 
 #----------------------------------------
 # "Faster Builds" Build Configuration
 #----------------------------------------
 
-ARFLAGS              =
-CFLAGS               = -c -w -noregistrylookup -nodeclspec -I$(LCC_ROOT)/include64
+ARFLAGS              = ruvs
+CFLAGS               = -c $(C_STANDARD_OPTS) -fPIC \
+                       -O0
+CPPFLAGS             = -c $(CPP_STANDARD_OPTS) -fPIC \
+                       -O0
+CPP_LDFLAGS          = -Wl,-rpath,"$(MATLAB_ARCH_BIN)",-L"$(MATLAB_ARCH_BIN)"
+CPP_SHAREDLIB_LDFLAGS  = -shared -Wl,-rpath,"$(MATLAB_ARCH_BIN)",-L"$(MATLAB_ARCH_BIN)" -Wl,--no-undefined
 DOWNLOAD_FLAGS       =
 EXECUTE_FLAGS        =
-LDFLAGS              = -s -L$(LCC_LIB) $(LDFLAGS_ADDITIONAL)
+LDFLAGS              = -Wl,-rpath,"$(MATLAB_ARCH_BIN)",-L"$(MATLAB_ARCH_BIN)"
 MEX_CPPFLAGS         =
 MEX_CPPLDFLAGS       =
 MEX_CFLAGS           =
 MEX_LDFLAGS          =
 MAKE_FLAGS           = -f $(MAKEFILE)
-SHAREDLIB_LDFLAGS    = -dll -entry LibMain -s -L$(LCC_LIB) $(LDFLAGS_ADDITIONAL) $(DEF_FILE)
+SHAREDLIB_LDFLAGS    = -shared -Wl,-rpath,"$(MATLAB_ARCH_BIN)",-L"$(MATLAB_ARCH_BIN)" -Wl,--no-undefined
 
 
 
@@ -134,7 +147,7 @@ SHAREDLIB_LDFLAGS    = -dll -entry LibMain -s -L$(LCC_LIB) $(LDFLAGS_ADDITIONAL)
 ## OUTPUT INFO
 ###########################################################################
 
-PRODUCT = ./CODEGEN_standalonePredictor.lib
+PRODUCT = ./CODEGEN_standalonePredictor.a
 PRODUCT_TYPE = "static-library"
 BUILD_TYPE = "Static Library"
 
@@ -142,7 +155,7 @@ BUILD_TYPE = "Static Library"
 ## INCLUDE PATHS
 ###########################################################################
 
-INCLUDES_BUILDINFO = -I$(START_DIR) -IC:/Users/XAVIER~1/Desktop/195/195/MYCLAS~1 -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert
+INCLUDES_BUILDINFO = -I$(START_DIR) -I/home/xvilla/Documents/2019fall/195/my\ classifier -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert
 
 INCLUDES = $(INCLUDES_BUILDINFO)
 
@@ -151,7 +164,7 @@ INCLUDES = $(INCLUDES_BUILDINFO)
 ###########################################################################
 
 DEFINES_CUSTOM = 
-DEFINES_STANDARD = -DMODEL=CODEGEN_standalonePredictor -DHAVESTDIO -DUSE_RTMODEL
+DEFINES_STANDARD = -DMODEL=CODEGEN_standalonePredictor -DHAVESTDIO -DUSE_RTMODEL -DUNIX
 
 DEFINES = $(DEFINES_CUSTOM) $(DEFINES_STANDARD)
 
@@ -159,7 +172,7 @@ DEFINES = $(DEFINES_CUSTOM) $(DEFINES_STANDARD)
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = $(START_DIR)/rt_nonfinite.c $(START_DIR)/rtGetNaN.c $(START_DIR)/rtGetInf.c $(START_DIR)/CODEGEN_standalonePredictor_data.c $(START_DIR)/CODEGEN_standalonePredictor_initialize.c $(START_DIR)/CODEGEN_standalonePredictor_terminate.c $(START_DIR)/CODEGEN_standalonePredictor.c $(START_DIR)/CompactClassificationTree.c
+SRCS = $(START_DIR)/rt_nonfinite.c $(START_DIR)/rtGetNaN.c $(START_DIR)/rtGetInf.c $(START_DIR)/CODEGEN_standalonePredictor_data.c $(START_DIR)/CODEGEN_standalonePredictor_initialize.c $(START_DIR)/CODEGEN_standalonePredictor_terminate.c $(START_DIR)/CODEGEN_standalonePredictor.c $(START_DIR)/Wmean.c $(START_DIR)/Wpca1.c $(START_DIR)/Wstd.c $(START_DIR)/CompactClassificationTree.c $(START_DIR)/pca.c $(START_DIR)/xzsvdc.c $(START_DIR)/xnrm2.c $(START_DIR)/xdotc.c $(START_DIR)/xaxpy.c $(START_DIR)/xrotg.c $(START_DIR)/xrot.c $(START_DIR)/xswap.c
 
 ALL_SRCS = $(SRCS)
 
@@ -167,7 +180,7 @@ ALL_SRCS = $(SRCS)
 ## OBJECTS
 ###########################################################################
 
-OBJS = rt_nonfinite.obj rtGetNaN.obj rtGetInf.obj CODEGEN_standalonePredictor_data.obj CODEGEN_standalonePredictor_initialize.obj CODEGEN_standalonePredictor_terminate.obj CODEGEN_standalonePredictor.obj CompactClassificationTree.obj
+OBJS = rt_nonfinite.o rtGetNaN.o rtGetInf.o CODEGEN_standalonePredictor_data.o CODEGEN_standalonePredictor_initialize.o CODEGEN_standalonePredictor_terminate.o CODEGEN_standalonePredictor.o Wmean.o Wpca1.o Wstd.o CompactClassificationTree.o pca.o xzsvdc.o xnrm2.o xdotc.o xaxpy.o xrotg.o xrot.o xswap.o
 
 ALL_OBJS = $(OBJS)
 
@@ -187,7 +200,7 @@ LIBS =
 ## SYSTEM LIBRARIES
 ###########################################################################
 
-SYSTEM_LIBS = 
+SYSTEM_LIBS =  -lm
 
 ###########################################################################
 ## ADDITIONAL TOOLCHAIN FLAGS
@@ -200,6 +213,14 @@ SYSTEM_LIBS =
 CFLAGS_BASIC = $(DEFINES) $(INCLUDES)
 
 CFLAGS += $(CFLAGS_BASIC)
+
+#-----------------
+# C++ Compiler
+#-----------------
+
+CPPFLAGS_BASIC = $(DEFINES) $(INCLUDES)
+
+CPPFLAGS += $(CPPFLAGS_BASIC)
 
 ###########################################################################
 ## INLINED COMMANDS
@@ -238,7 +259,7 @@ execute : download
 
 $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS)
 	@echo "### Creating static library "$(PRODUCT)" ..."
-	$(AR) $(ARFLAGS) /out:$(PRODUCT) @$(CMD_FILE)
+	$(AR) $(ARFLAGS)  $(PRODUCT) $(OBJS)
 	@echo "### Created: $(PRODUCT)"
 
 
@@ -250,56 +271,120 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS)
 # SOURCE-TO-OBJECT
 #---------------------
 
-%.obj : %.c
-	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
+%.o : %.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : $(RELATIVE_PATH_TO_ANCHOR)/%.c
-	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
+%.o : %.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : $(START_DIR)/%.c
-	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
+%.o : $(RELATIVE_PATH_TO_ANCHOR)/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/XAVIER~1/Desktop/195/195/MYCLAS~1/%.c
-	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
+%.o : $(RELATIVE_PATH_TO_ANCHOR)/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : $(MATLAB_ROOT)/rtw/c/src/%.c
-	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
+%.o : $(START_DIR)/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-rt_nonfinite.obj : $(START_DIR)/rt_nonfinite.c
-	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
+%.o : $(START_DIR)/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-rtGetNaN.obj : $(START_DIR)/rtGetNaN.c
-	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
+%.o : /home/xvilla/Documents/2019fall/195/my\ classifier/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-rtGetInf.obj : $(START_DIR)/rtGetInf.c
-	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
+%.o : /home/xvilla/Documents/2019fall/195/my\ classifier/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-CODEGEN_standalonePredictor_data.obj : $(START_DIR)/CODEGEN_standalonePredictor_data.c
-	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
+%.o : $(MATLAB_ROOT)/rtw/c/src/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-CODEGEN_standalonePredictor_initialize.obj : $(START_DIR)/CODEGEN_standalonePredictor_initialize.c
-	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
+%.o : $(MATLAB_ROOT)/rtw/c/src/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-CODEGEN_standalonePredictor_terminate.obj : $(START_DIR)/CODEGEN_standalonePredictor_terminate.c
-	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
+rt_nonfinite.o : $(START_DIR)/rt_nonfinite.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-CODEGEN_standalonePredictor.obj : $(START_DIR)/CODEGEN_standalonePredictor.c
-	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
+rtGetNaN.o : $(START_DIR)/rtGetNaN.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-CompactClassificationTree.obj : $(START_DIR)/CompactClassificationTree.c
-	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
+rtGetInf.o : $(START_DIR)/rtGetInf.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+CODEGEN_standalonePredictor_data.o : $(START_DIR)/CODEGEN_standalonePredictor_data.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+CODEGEN_standalonePredictor_initialize.o : $(START_DIR)/CODEGEN_standalonePredictor_initialize.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+CODEGEN_standalonePredictor_terminate.o : $(START_DIR)/CODEGEN_standalonePredictor_terminate.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+CODEGEN_standalonePredictor.o : $(START_DIR)/CODEGEN_standalonePredictor.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+Wmean.o : $(START_DIR)/Wmean.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+Wpca1.o : $(START_DIR)/Wpca1.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+Wstd.o : $(START_DIR)/Wstd.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+CompactClassificationTree.o : $(START_DIR)/CompactClassificationTree.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+pca.o : $(START_DIR)/pca.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xzsvdc.o : $(START_DIR)/xzsvdc.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xnrm2.o : $(START_DIR)/xnrm2.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xdotc.o : $(START_DIR)/xdotc.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xaxpy.o : $(START_DIR)/xaxpy.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xrotg.o : $(START_DIR)/xrotg.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xrot.o : $(START_DIR)/xrot.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xswap.o : $(START_DIR)/xswap.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
 ###########################################################################
@@ -328,6 +413,9 @@ info :
 	@echo "### CFLAGS = $(CFLAGS)"
 	@echo "### LDFLAGS = $(LDFLAGS)"
 	@echo "### SHAREDLIB_LDFLAGS = $(SHAREDLIB_LDFLAGS)"
+	@echo "### CPPFLAGS = $(CPPFLAGS)"
+	@echo "### CPP_LDFLAGS = $(CPP_LDFLAGS)"
+	@echo "### CPP_SHAREDLIB_LDFLAGS = $(CPP_SHAREDLIB_LDFLAGS)"
 	@echo "### ARFLAGS = $(ARFLAGS)"
 	@echo "### MEX_CFLAGS = $(MEX_CFLAGS)"
 	@echo "### MEX_CPPFLAGS = $(MEX_CPPFLAGS)"
@@ -340,8 +428,8 @@ info :
 
 clean : 
 	$(ECHO) "### Deleting all derived files..."
-	$(RM) $(subst /,\,$(PRODUCT))
-	$(RM) $(subst /,\,$(ALL_OBJS))
+	$(RM) $(PRODUCT)
+	$(RM) $(ALL_OBJS)
 	$(ECHO) "### Deleted all derived files."
 
 

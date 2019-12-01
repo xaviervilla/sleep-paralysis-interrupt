@@ -13,21 +13,19 @@
 #define XDOTC_H
 
 /* Include files */
-#include <stddef.h>
-#include <stdlib.h>
+#include <cstddef>
+#include <cstdlib>
 #include "rtwtypes.h"
 #include "Wpca1_types.h"
 
 /* Function Declarations */
-extern double b_xdotc(int n, const double x[4096], int ix0, const double y[4096],
+extern double b_xdotc(int n, const double x[256], int ix0, const double y[256],
                       int iy0);
 extern double c_xdotc(int n, const double x[16384], int ix0, const double y
                       [16384], int iy0);
-extern double d_xdotc(int n, const emxArray_real_T *x, int ix0, const
-                      emxArray_real_T *y, int iy0);
-extern double e_xdotc(int n, const double x_data[], int ix0, const double
+extern double d_xdotc(int n, const double x_data[], int ix0, const double
                       y_data[], int iy0);
-extern double xdotc(int n, const double x[8192], int ix0, const double y[8192],
+extern double xdotc(int n, const double x[2048], int ix0, const double y[2048],
                     int iy0);
 
 #endif

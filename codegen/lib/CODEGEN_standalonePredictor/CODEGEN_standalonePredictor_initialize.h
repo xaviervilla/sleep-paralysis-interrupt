@@ -2,16 +2,17 @@
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
- * File: CODEGEN_standalonePredictor_initialize.h
  *
- * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 25-Nov-2019 01:41:57
+ * CODEGEN_standalonePredictor_initialize.h
+ *
+ * Code generation for function 'CODEGEN_standalonePredictor_initialize'
+ *
  */
 
 #ifndef CODEGEN_STANDALONEPREDICTOR_INITIALIZE_H
 #define CODEGEN_STANDALONEPREDICTOR_INITIALIZE_H
 
-/* Include Files */
+/* Include files */
 #include <stddef.h>
 #include <stdlib.h>
 #include "rtwtypes.h"
@@ -22,8 +23,4 @@ extern void CODEGEN_standalonePredictor_initialize(void);
 
 #endif
 
-/*
- * File trailer for CODEGEN_standalonePredictor_initialize.h
- *
- * [EOF]
- */
+/* End of code generation (CODEGEN_standalonePredictor_initialize.h) */

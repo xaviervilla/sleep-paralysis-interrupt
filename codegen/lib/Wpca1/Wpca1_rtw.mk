@@ -2,7 +2,7 @@
 ## Makefile generated for MATLAB file/project 'Wpca1'. 
 ## 
 ## Makefile     : Wpca1_rtw.mk
-## Generated on : Mon Nov 25 21:24:55 2019
+## Generated on : Sat Nov 30 15:13:12 2019
 ## MATLAB Coder version: 4.3 (R2019b)
 ## 
 ## Build Info:
@@ -28,13 +28,13 @@ MATLAB_BIN                = /usr/local/MATLAB/R2019b/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/glnxa64
 MASTER_ANCHOR_DIR         = 
 START_DIR                 = /home/xvilla/Documents/2019fall/195/my\ classifier/codegen/lib/Wpca1
-TGT_FCN_LIB               = ISO_C
+TGT_FCN_LIB               = ISO_C++
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0
 MODEL_HAS_DYNAMICALLY_LOADED_SFCNS = 
 RELATIVE_PATH_TO_ANCHOR   = .
-C_STANDARD_OPTS           = -fwrapv -std=c99 -pedantic
-CPP_STANDARD_OPTS         = -fwrapv -std=c++98 -pedantic -Wno-long-long
+C_STANDARD_OPTS           = -fwrapv -ansi -pedantic -Wno-long-long
+CPP_STANDARD_OPTS         = -fwrapv -std=c++03 -pedantic -Wno-long-long
 MODELLIB                  = Wpca1.a
 
 ###########################################################################
@@ -172,7 +172,7 @@ DEFINES = $(DEFINES_CUSTOM) $(DEFINES_STANDARD)
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = $(START_DIR)/rt_nonfinite.c $(START_DIR)/rtGetNaN.c $(START_DIR)/rtGetInf.c $(START_DIR)/Wpca1_data.c $(START_DIR)/Wpca1_initialize.c $(START_DIR)/Wpca1_terminate.c $(START_DIR)/Wpca1.c $(START_DIR)/pca.c $(START_DIR)/xzsvdc.c $(START_DIR)/xnrm2.c $(START_DIR)/xdotc.c $(START_DIR)/xaxpy.c $(START_DIR)/xrotg.c $(START_DIR)/xrot.c $(START_DIR)/xswap.c $(START_DIR)/Wpca1_emxutil.c
+SRCS = $(START_DIR)/rt_nonfinite.cpp $(START_DIR)/rtGetNaN.cpp $(START_DIR)/rtGetInf.cpp $(START_DIR)/Wpca1_data.cpp $(START_DIR)/Wpca1_initialize.cpp $(START_DIR)/Wpca1_terminate.cpp $(START_DIR)/Wpca1.cpp $(START_DIR)/pca.cpp $(START_DIR)/xzsvdc.cpp $(START_DIR)/xnrm2.cpp $(START_DIR)/xdotc.cpp $(START_DIR)/xaxpy.cpp $(START_DIR)/xrotg.cpp $(START_DIR)/xrot.cpp $(START_DIR)/xswap.cpp
 
 ALL_SRCS = $(SRCS)
 
@@ -180,7 +180,7 @@ ALL_SRCS = $(SRCS)
 ## OBJECTS
 ###########################################################################
 
-OBJS = rt_nonfinite.o rtGetNaN.o rtGetInf.o Wpca1_data.o Wpca1_initialize.o Wpca1_terminate.o Wpca1.o pca.o xzsvdc.o xnrm2.o xdotc.o xaxpy.o xrotg.o xrot.o xswap.o Wpca1_emxutil.o
+OBJS = rt_nonfinite.o rtGetNaN.o rtGetInf.o Wpca1_data.o Wpca1_initialize.o Wpca1_terminate.o Wpca1.o pca.o xzsvdc.o xnrm2.o xdotc.o xaxpy.o xrotg.o xrot.o xswap.o
 
 ALL_OBJS = $(OBJS)
 
@@ -200,7 +200,7 @@ LIBS =
 ## SYSTEM LIBRARIES
 ###########################################################################
 
-SYSTEM_LIBS =  -lm
+SYSTEM_LIBS =  -lm -lstdc++
 
 ###########################################################################
 ## ADDITIONAL TOOLCHAIN FLAGS
@@ -311,68 +311,64 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS)
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-rt_nonfinite.o : $(START_DIR)/rt_nonfinite.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
+rt_nonfinite.o : $(START_DIR)/rt_nonfinite.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-rtGetNaN.o : $(START_DIR)/rtGetNaN.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
+rtGetNaN.o : $(START_DIR)/rtGetNaN.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-rtGetInf.o : $(START_DIR)/rtGetInf.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
+rtGetInf.o : $(START_DIR)/rtGetInf.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-Wpca1_data.o : $(START_DIR)/Wpca1_data.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
+Wpca1_data.o : $(START_DIR)/Wpca1_data.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-Wpca1_initialize.o : $(START_DIR)/Wpca1_initialize.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
+Wpca1_initialize.o : $(START_DIR)/Wpca1_initialize.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-Wpca1_terminate.o : $(START_DIR)/Wpca1_terminate.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
+Wpca1_terminate.o : $(START_DIR)/Wpca1_terminate.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-Wpca1.o : $(START_DIR)/Wpca1.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
+Wpca1.o : $(START_DIR)/Wpca1.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-pca.o : $(START_DIR)/pca.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
+pca.o : $(START_DIR)/pca.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-xzsvdc.o : $(START_DIR)/xzsvdc.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
+xzsvdc.o : $(START_DIR)/xzsvdc.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-xnrm2.o : $(START_DIR)/xnrm2.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
+xnrm2.o : $(START_DIR)/xnrm2.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-xdotc.o : $(START_DIR)/xdotc.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
+xdotc.o : $(START_DIR)/xdotc.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-xaxpy.o : $(START_DIR)/xaxpy.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
+xaxpy.o : $(START_DIR)/xaxpy.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-xrotg.o : $(START_DIR)/xrotg.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
+xrotg.o : $(START_DIR)/xrotg.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-xrot.o : $(START_DIR)/xrot.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
+xrot.o : $(START_DIR)/xrot.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-xswap.o : $(START_DIR)/xswap.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-Wpca1_emxutil.o : $(START_DIR)/Wpca1_emxutil.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
+xswap.o : $(START_DIR)/xswap.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
 ###########################################################################

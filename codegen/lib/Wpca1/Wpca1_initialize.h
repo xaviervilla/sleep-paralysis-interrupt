@@ -13,13 +13,13 @@
 #define WPCA1_INITIALIZE_H
 
 /* Include files */
-#include <stddef.h>
-#include <stdlib.h>
+#include <cstddef>
+#include <cstdlib>
 #include "rtwtypes.h"
 #include "Wpca1_types.h"
 
 /* Function Declarations */
-extern void Wpca1_initialize(void);
+extern void Wpca1_initialize();
 
 #endif
 

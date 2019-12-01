@@ -13,13 +13,13 @@
 #define WMEAN_H
 
 /* Include files */
-#include <stddef.h>
-#include <stdlib.h>
+#include <cstddef>
+#include <cstdlib>
 #include "rtwtypes.h"
 #include "Wmean_types.h"
 
 /* Function Declarations */
-extern void Wmean(const double X[8192], double Y[64]);
+extern void Wmean(const double X[2048], double Y[16]);
 
 #endif
 

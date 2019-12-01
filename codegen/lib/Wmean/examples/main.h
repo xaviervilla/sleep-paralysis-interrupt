@@ -10,7 +10,7 @@
  */
 
 /*************************************************************************/
-/* This automatically generated example C main file shows how to call    */
+/* This automatically generated example C++ main file shows how to call  */
 /* entry-point functions that MATLAB Coder generated. You must customize */
 /* this file for your application. Do not modify this file directly.     */
 /* Instead, make a copy of this file, modify it, and integrate it into   */
@@ -37,8 +37,8 @@
 #define MAIN_H
 
 /* Include files */
-#include <stddef.h>
-#include <stdlib.h>
+#include <cstddef>
+#include <cstdlib>
 #include "rtwtypes.h"
 #include "Wmean_types.h"
 

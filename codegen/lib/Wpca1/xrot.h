@@ -13,13 +13,13 @@
 #define XROT_H
 
 /* Include files */
-#include <stddef.h>
-#include <stdlib.h>
+#include <cstddef>
+#include <cstdlib>
 #include "rtwtypes.h"
 #include "Wpca1_types.h"
 
 /* Function Declarations */
-extern void b_xrot(double x[4096], int ix0, int iy0, double c, double s);
+extern void b_xrot(double x[256], int ix0, int iy0, double c, double s);
 extern void c_xrot(int n, double x_data[], int ix0, int iy0, double c, double s);
 extern void xrot(double x[16384], int ix0, int iy0, double c, double s);
 

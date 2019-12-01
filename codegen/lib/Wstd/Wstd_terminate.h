@@ -13,13 +13,13 @@
 #define WSTD_TERMINATE_H
 
 /* Include files */
-#include <stddef.h>
-#include <stdlib.h>
+#include <cstddef>
+#include <cstdlib>
 #include "rtwtypes.h"
 #include "Wstd_types.h"
 
 /* Function Declarations */
-extern void Wstd_terminate(void);
+extern void Wstd_terminate();
 
 #endif
 

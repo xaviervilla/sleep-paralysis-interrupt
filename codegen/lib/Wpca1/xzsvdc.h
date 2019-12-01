@@ -13,15 +13,16 @@
 #define XZSVDC_H
 
 /* Include files */
-#include <stddef.h>
-#include <stdlib.h>
+#include <cstddef>
+#include <cstdlib>
 #include "rtwtypes.h"
 #include "Wpca1_types.h"
 
 /* Function Declarations */
-extern void b_xzsvdc(emxArray_real_T *A, double U_data[], int U_size[2], double
-                     S_data[], int S_size[1], emxArray_real_T *V);
-extern void xzsvdc(double A[8192], double U[4096], double S[64], double V[8192]);
+extern void b_xzsvdc(double A_data[], const int A_size[2], double U_data[], int
+                     U_size[2], double S_data[], int S_size[1], double V_data[],
+                     int V_size[2]);
+extern void xzsvdc(double A[2048], double U[256], double S[16], double V[2048]);
 
 #endif
 

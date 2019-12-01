@@ -13,13 +13,13 @@
 #define WSTD_INITIALIZE_H
 
 /* Include files */
-#include <stddef.h>
-#include <stdlib.h>
+#include <cstddef>
+#include <cstdlib>
 #include "rtwtypes.h"
 #include "Wstd_types.h"
 
 /* Function Declarations */
-extern void Wstd_initialize(void);
+extern void Wstd_initialize();
 
 #endif
 

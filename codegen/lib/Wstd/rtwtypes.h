@@ -57,8 +57,6 @@ typedef char_T byte_T;
 /*===========================================================================*
  * Complex number type definitions                                           *
  *===========================================================================*/
-#define CREAL_T
-
 typedef struct {
   real32_T re;
   real32_T im;
@@ -109,18 +107,18 @@ typedef struct {
  *   int8_T, int16_T, int32_T     - signed 8, 16, or 32 bit integers     *
  *   uint8_T, uint16_T, uint32_T  - unsigned 8, 16, or 32 bit integers   *
  *=======================================================================*/
-#define MAX_int8_T                     ((int8_T)(127))
-#define MIN_int8_T                     ((int8_T)(-128))
-#define MAX_uint8_T                    ((uint8_T)(255))
-#define MIN_uint8_T                    ((uint8_T)(0))
-#define MAX_int16_T                    ((int16_T)(32767))
-#define MIN_int16_T                    ((int16_T)(-32768))
-#define MAX_uint16_T                   ((uint16_T)(65535))
-#define MIN_uint16_T                   ((uint16_T)(0))
-#define MAX_int32_T                    ((int32_T)(2147483647))
-#define MIN_int32_T                    ((int32_T)(-2147483647-1))
-#define MAX_uint32_T                   ((uint32_T)(0xFFFFFFFFU))
-#define MIN_uint32_T                   ((uint32_T)(0))
+static const int8_T MAX_int8_T = 127;
+static const int8_T MIN_int8_T = -128;
+static const uint8_T MAX_uint8_T = 255;
+static const uint8_T MIN_uint8_T = 0;
+static const int16_T MAX_int16_T = 32767;
+static const int16_T MIN_int16_T = -32768;
+static const uint16_T MAX_uint16_T = 65535;
+static const uint16_T MIN_uint16_T = 0;
+static const int32_T MAX_int32_T = 2147483647;
+static const int32_T MIN_int32_T = -2147483647-1;
+static const uint32_T MAX_uint32_T = 0xFFFFFFFFU;
+static const uint32_T MIN_uint32_T = 0;
 
 /* Logical type definitions */
 #if !defined(__cplusplus) && !defined(__true_false_are_keywords) && !defined(__bool_true_false_are_defined)

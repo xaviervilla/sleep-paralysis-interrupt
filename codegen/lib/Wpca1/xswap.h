@@ -13,13 +13,13 @@
 #define XSWAP_H
 
 /* Include files */
-#include <stddef.h>
-#include <stdlib.h>
+#include <cstddef>
+#include <cstdlib>
 #include "rtwtypes.h"
 #include "Wpca1_types.h"
 
 /* Function Declarations */
-extern void b_xswap(double x[4096], int ix0, int iy0);
+extern void b_xswap(double x[256], int ix0, int iy0);
 extern void c_xswap(int n, double x_data[], int ix0, int iy0);
 extern void xswap(double x[16384], int ix0, int iy0);
 

@@ -24,7 +24,7 @@ extern emlrtCTX emlrtRootTLSGlobal;
 extern emlrtContext emlrtContextGlobal;
 
 /* Function Declarations */
-extern void Wpca1(real_T X[8192], real_T Y_data[], int32_T Y_size[2]);
+extern void Wpca1(real_T X[2048], real_T Y_data[], int32_T Y_size[2]);
 extern void Wpca1_api(const mxArray * const prhs[1], int32_T nlhs, const mxArray
                       *plhs[1]);
 extern void Wpca1_atexit(void);

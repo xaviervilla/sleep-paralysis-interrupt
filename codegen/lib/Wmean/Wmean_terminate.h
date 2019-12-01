@@ -13,13 +13,13 @@
 #define WMEAN_TERMINATE_H
 
 /* Include files */
-#include <stddef.h>
-#include <stdlib.h>
+#include <cstddef>
+#include <cstdlib>
 #include "rtwtypes.h"
 #include "Wmean_types.h"
 
 /* Function Declarations */
-extern void Wmean_terminate(void);
+extern void Wmean_terminate();
 
 #endif
 

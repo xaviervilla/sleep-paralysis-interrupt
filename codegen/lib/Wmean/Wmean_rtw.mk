@@ -2,7 +2,7 @@
 ## Makefile generated for MATLAB file/project 'Wmean'. 
 ## 
 ## Makefile     : Wmean_rtw.mk
-## Generated on : Mon Nov 25 21:20:19 2019
+## Generated on : Sat Nov 30 15:06:37 2019
 ## MATLAB Coder version: 4.3 (R2019b)
 ## 
 ## Build Info:
@@ -28,13 +28,13 @@ MATLAB_BIN                = /usr/local/MATLAB/R2019b/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/glnxa64
 MASTER_ANCHOR_DIR         = 
 START_DIR                 = /home/xvilla/Documents/2019fall/195/my\ classifier/codegen/lib/Wmean
-TGT_FCN_LIB               = ISO_C
+TGT_FCN_LIB               = ISO_C++
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0
 MODEL_HAS_DYNAMICALLY_LOADED_SFCNS = 
 RELATIVE_PATH_TO_ANCHOR   = .
-C_STANDARD_OPTS           = -fwrapv -std=c99 -pedantic
-CPP_STANDARD_OPTS         = -fwrapv -std=c++98 -pedantic -Wno-long-long
+C_STANDARD_OPTS           = -fwrapv -ansi -pedantic -Wno-long-long
+CPP_STANDARD_OPTS         = -fwrapv -std=c++03 -pedantic -Wno-long-long
 MODELLIB                  = Wmean.a
 
 ###########################################################################
@@ -172,7 +172,7 @@ DEFINES = $(DEFINES_CUSTOM) $(DEFINES_STANDARD)
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = $(START_DIR)/Wmean_initialize.c $(START_DIR)/Wmean_terminate.c $(START_DIR)/Wmean.c
+SRCS = $(START_DIR)/Wmean_initialize.cpp $(START_DIR)/Wmean_terminate.cpp $(START_DIR)/Wmean.cpp
 
 ALL_SRCS = $(SRCS)
 
@@ -200,7 +200,7 @@ LIBS =
 ## SYSTEM LIBRARIES
 ###########################################################################
 
-SYSTEM_LIBS =  -lm
+SYSTEM_LIBS =  -lm -lstdc++
 
 ###########################################################################
 ## ADDITIONAL TOOLCHAIN FLAGS
@@ -311,16 +311,16 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS)
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-Wmean_initialize.o : $(START_DIR)/Wmean_initialize.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
+Wmean_initialize.o : $(START_DIR)/Wmean_initialize.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-Wmean_terminate.o : $(START_DIR)/Wmean_terminate.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
+Wmean_terminate.o : $(START_DIR)/Wmean_terminate.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-Wmean.o : $(START_DIR)/Wmean.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
+Wmean.o : $(START_DIR)/Wmean.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
 ###########################################################################

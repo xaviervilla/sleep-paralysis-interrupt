@@ -13,13 +13,13 @@
 #define WSTD_H
 
 /* Include files */
-#include <stddef.h>
-#include <stdlib.h>
+#include <cstddef>
+#include <cstdlib>
 #include "rtwtypes.h"
 #include "Wstd_types.h"
 
 /* Function Declarations */
-extern void Wstd(const double X[8192], double Y[64]);
+extern void Wstd(const double X[2048], double Y[16]);
 
 #endif
 

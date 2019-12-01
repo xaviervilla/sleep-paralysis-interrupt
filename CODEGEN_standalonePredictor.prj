@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.coder" plugin-version="R2018b">
-  <configuration build-checksum="4064711220" file="C:\Users\Xavier &amp; Jess\Desktop\195\195\my classifier\CODEGEN_standalonePredictor.prj" location="C:\Users\Xavier &amp; Jess\Desktop\195\195\my classifier" name="CODEGEN_standalonePredictor" target="target.unifiedcoder" target-name="MATLAB Coder">
+  <configuration build-checksum="3211928754" file="/home/xvilla/Documents/2019fall/195/my classifier/CODEGEN_standalonePredictor.prj" location="/home/xvilla/Documents/2019fall/195/my classifier" name="CODEGEN_standalonePredictor" target="target.unifiedcoder" target-name="MATLAB Coder">
     <profile key="profile.mex">
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
       <param.RanInstrumentedMex>false</param.RanInstrumentedMex>
@@ -212,7 +212,7 @@
       <param.CustomSource />
       <param.CustomLibrary />
       <param.PostCodeGenCommand />
-      <param.TargetLangStandard>C99 (ISO)</param.TargetLangStandard>
+      <param.TargetLangStandard>C++03 (ISO)</param.TargetLangStandard>
       <param.CodeReplacementLibrary>None</param.CodeReplacementLibrary>
       <param.DeprecatedCRLFlag>false</param.DeprecatedCRLFlag>
       <param.SameHardware>true</param.SameHardware>
@@ -223,9 +223,9 @@
       <param.target.Data>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;ctdata&gt;&lt;configuredHardware/&gt;&lt;/ctdata&gt;</param.target.Data>
       <param.target.ActiveType>option.target.TargetType.Custom</param.target.ActiveType>
       <param.target.ActiveTarget />
-      <param.HardwareVendor.Production>Generic</param.HardwareVendor.Production>
-      <param.HardwareType.Production>8-bit Embedded Processor</param.HardwareType.Production>
-      <param.HWDeviceType.Production>Generic-&gt;8-bit Embedded Processor</param.HWDeviceType.Production>
+      <param.HardwareVendor.Production>Atmel</param.HardwareVendor.Production>
+      <param.HardwareType.Production>AVR (8-bit)</param.HardwareType.Production>
+      <param.HWDeviceType.Production>Atmel-&gt;AVR (8-bit)</param.HWDeviceType.Production>
       <var.instance.enabled.Production>true</var.instance.enabled.Production>
       <param.HardwareSizeChar.Production>8</param.HardwareSizeChar.Production>
       <param.HardwareSizeShort.Production>16</param.HardwareSizeShort.Production>
@@ -234,19 +234,19 @@
       <param.HardwareSizeLongLong.Production>64</param.HardwareSizeLongLong.Production>
       <param.HardwareSizeFloat.Production>32</param.HardwareSizeFloat.Production>
       <param.HardwareSizeDouble.Production>64</param.HardwareSizeDouble.Production>
-      <param.HardwareSizeWord.Production>8</param.HardwareSizeWord.Production>
-      <param.HardwareSizePointer.Production>8</param.HardwareSizePointer.Production>
+      <param.HardwareSizeWord.Production>16</param.HardwareSizeWord.Production>
+      <param.HardwareSizePointer.Production>16</param.HardwareSizePointer.Production>
       <param.HardwareSizeSizeT.Production>16</param.HardwareSizeSizeT.Production>
       <param.HardwareSizePtrDiffT.Production>16</param.HardwareSizePtrDiffT.Production>
-      <param.HardwareEndianness.Production>option.HardwareEndianness.Unspecified</param.HardwareEndianness.Production>
+      <param.HardwareEndianness.Production>option.HardwareEndianness.Little</param.HardwareEndianness.Production>
       <param.HardwareArithmeticRightShift.Production>true</param.HardwareArithmeticRightShift.Production>
       <param.HardwareLongLongMode.Production>false</param.HardwareLongLongMode.Production>
       <param.HardwareAtomicIntegerSize.Production>option.HardwareAtomicIntegerSize.Char</param.HardwareAtomicIntegerSize.Production>
       <param.HardwareAtomicFloatSize.Production>option.HardwareAtomicFloatSize.None</param.HardwareAtomicFloatSize.Production>
       <param.HardwareDivisionRounding.Production>option.HardwareDivisionRounding.Zero</param.HardwareDivisionRounding.Production>
-      <param.HardwareVendor.Target>Generic</param.HardwareVendor.Target>
-      <param.HardwareType.Target>8-bit Embedded Processor</param.HardwareType.Target>
-      <param.HWDeviceType.Target>Generic-&gt;8-bit Embedded Processor</param.HWDeviceType.Target>
+      <param.HardwareVendor.Target>Atmel</param.HardwareVendor.Target>
+      <param.HardwareType.Target>AVR (8-bit)</param.HardwareType.Target>
+      <param.HWDeviceType.Target>Atmel-&gt;AVR (8-bit)</param.HWDeviceType.Target>
       <var.instance.enabled.Target>false</var.instance.enabled.Target>
       <param.HardwareSizeChar.Target>8</param.HardwareSizeChar.Target>
       <param.HardwareSizeShort.Target>16</param.HardwareSizeShort.Target>
@@ -255,11 +255,11 @@
       <param.HardwareSizeLongLong.Target>64</param.HardwareSizeLongLong.Target>
       <param.HardwareSizeFloat.Target>32</param.HardwareSizeFloat.Target>
       <param.HardwareSizeDouble.Target>64</param.HardwareSizeDouble.Target>
-      <param.HardwareSizeWord.Target>8</param.HardwareSizeWord.Target>
-      <param.HardwareSizePointer.Target>8</param.HardwareSizePointer.Target>
+      <param.HardwareSizeWord.Target>16</param.HardwareSizeWord.Target>
+      <param.HardwareSizePointer.Target>16</param.HardwareSizePointer.Target>
       <param.HardwareSizeSizeT.Target>16</param.HardwareSizeSizeT.Target>
       <param.HardwareSizePtrDiffT.Target>16</param.HardwareSizePtrDiffT.Target>
-      <param.HardwareEndianness.Target>option.HardwareEndianness.Unspecified</param.HardwareEndianness.Target>
+      <param.HardwareEndianness.Target>option.HardwareEndianness.Little</param.HardwareEndianness.Target>
       <param.HardwareArithmeticRightShift.Target>true</param.HardwareArithmeticRightShift.Target>
       <param.HardwareLongLongMode.Target>false</param.HardwareLongLongMode.Target>
       <param.HardwareAtomicIntegerSize.Target>option.HardwareAtomicIntegerSize.Char</param.HardwareAtomicIntegerSize.Target>
@@ -300,7 +300,7 @@
       <param.CustomBLASCallback />
       <param.GenerateDefaultInSwitch>false</param.GenerateDefaultInSwitch>
       <param.EnableTraceability>true</param.EnableTraceability>
-      <param.UseECoderFeatures>true</param.UseECoderFeatures>
+      <param.UseECoderFeatures>false</param.UseECoderFeatures>
       <param.psCustomPrjState>false</param.psCustomPrjState>
       <param.psCustomProjectFile />
       <param.psCheckConfValue>option.psCheckConfValue.onWarnCheckConfDlg</param.psCheckConfValue>
@@ -404,7 +404,6 @@
         <param.CustomToolchainOptions />
         <var.ToolchainSettingsVisible />
         <param.target.ActiveTarget />
-        <param.HardwareVendor.Production />
         <param.HWDeviceType.Production />
         <var.instance.enabled.Production />
         <param.HardwareSizeChar.Production />
@@ -413,10 +412,10 @@
         <param.HardwareSizeLongLong.Production />
         <param.HardwareSizeFloat.Production />
         <param.HardwareSizeDouble.Production />
+        <param.HardwareEndianness.Production />
         <param.HardwareLongLongMode.Production />
         <param.HardwareAtomicIntegerSize.Production />
         <param.HardwareAtomicFloatSize.Production />
-        <param.HardwareVendor.Target />
         <param.HWDeviceType.Target />
         <var.instance.enabled.Target />
         <param.HardwareSizeChar.Target />
@@ -425,6 +424,7 @@
         <param.HardwareSizeLongLong.Target />
         <param.HardwareSizeFloat.Target />
         <param.HardwareSizeDouble.Target />
+        <param.HardwareEndianness.Target />
         <param.HardwareLongLongMode.Target />
         <param.HardwareAtomicIntegerSize.Target />
         <param.HardwareAtomicFloatSize.Target />
@@ -823,13 +823,13 @@
     <param.objective>option.objective.c</param.objective>
     <param.WorkflowStep>workflowSummary</param.WorkflowStep>
     <param.TestSnippets>
-      <item>CODEGEN_loadAndTestModel</item>
+      <item>CODEGEN_REALTIME_loadAndTestModel</item>
     </param.TestSnippets>
     <param.ExternalFcnMajority>column</param.ExternalFcnMajority>
     <param.UseGlobals>option.UseGlobals.No</param.UseGlobals>
-    <param.outputfile>${PROJECT_ROOT}\codegen\lib\CODEGEN_standalonePredictor\CODEGEN_standalonePredictor.lib</param.outputfile>
+    <param.outputfile>${PROJECT_ROOT}/codegen/lib/CODEGEN_standalonePredictor/CODEGEN_standalonePredictor.a</param.outputfile>
     <param.version>R2012a</param.version>
-    <param.HasECoderFeatures>true</param.HasECoderFeatures>
+    <param.HasECoderFeatures>false</param.HasECoderFeatures>
     <param.HasGpuCoder>false</param.HasGpuCoder>
     <var.HasNeuralNetworkToolbox>true</var.HasNeuralNetworkToolbox>
     <param.mex.mainhtml />
@@ -842,22 +842,22 @@
     <param.AutoInferUnboundedSizeThreshold>2048</param.AutoInferUnboundedSizeThreshold>
     <param.EnableFixedPointStep>false</param.EnableFixedPointStep>
     <param.EnableScreener>true</param.EnableScreener>
-    <param.AnnotationChecksum>3956055918</param.AnnotationChecksum>
+    <param.AnnotationChecksum>3784810758</param.AnnotationChecksum>
     <var.LegacyTarget />
     <var.MirrorOnOpen>false</var.MirrorOnOpen>
     <param.FixedPointEnabled>false</param.FixedPointEnabled>
     <var.redirectedInputTypeData />
     <var.DismissScreener>false</var.DismissScreener>
     <param.unifiedParamStorage />
-    <var.gc.lastOutputRoot>codegen\lib\CODEGEN_standalonePredictor</var.gc.lastOutputRoot>
+    <var.gc.lastOutputRoot>codegen/lib/CODEGEN_standalonePredictor</var.gc.lastOutputRoot>
     <var.gc.lastOutputType>C_CODE</var.gc.lastOutputType>
-    <var.gc.preBuildChecksum>472378133</var.gc.preBuildChecksum>
-    <var.cfi.lastOutputRoot>codegen\mex\CODEGEN_standalonePredictor</var.cfi.lastOutputRoot>
-    <var.cfi.preBuildChecksum>1101350050</var.cfi.preBuildChecksum>
-    <var.lastCfiTestSnippet>CODEGEN_loadAndTestModel</var.lastCfiTestSnippet>
+    <var.gc.preBuildChecksum>342324750</var.gc.preBuildChecksum>
+    <var.cfi.lastOutputRoot>codegen/mex/CODEGEN_standalonePredictor</var.cfi.lastOutputRoot>
+    <var.cfi.preBuildChecksum>179381211</var.cfi.preBuildChecksum>
+    <var.lastCfiTestSnippet>CODEGEN_REALTIME_loadAndTestModel</var.lastCfiTestSnippet>
     <var.outdatedOnRestore>false</var.outdatedOnRestore>
-    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;C:\Users\Xavier &amp;amp; Jess\Desktop\195\195\my classifier\CODEGEN_standalonePredictor.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;388547366&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
-    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;C:\Users\Xavier &amp;amp; Jess\Desktop\195\195\my classifier\CODEGEN_standalonePredictor.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
+    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/CODEGEN_standalonePredictor.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;1128654740&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
+    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/CODEGEN_standalonePredictor.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
     <param.forceMexBuild>false</param.forceMexBuild>
     <param.NoDefaultJIT>false</param.NoDefaultJIT>
     <param.configImportActive>false</param.configImportActive>
@@ -865,11 +865,11 @@
     <var.notGpuCoder>true</var.notGpuCoder>
     <var.boundToGui>true</var.boundToGui>
     <var.isConfigDialog>false</var.isConfigDialog>
-    <var.ecoderEnabled>true</var.ecoderEnabled>
+    <var.ecoderEnabled>false</var.ecoderEnabled>
     <param.mex.outputfile>CODEGEN_standalonePredictor_mex</param.mex.outputfile>
     <param.grt.outputfile>CODEGEN_standalonePredictor</param.grt.outputfile>
     <param.artifact>option.target.artifact.lib</param.artifact>
-    <param.outputfile>${PROJECT_ROOT}\codegen\lib\CODEGEN_standalonePredictor\CODEGEN_standalonePredictor.lib</param.outputfile>
+    <param.outputfile>${PROJECT_ROOT}/codegen/lib/CODEGEN_standalonePredictor/CODEGEN_standalonePredictor.a</param.outputfile>
     <param.CppNamespace />
     <param.gpu.Enabled>false</param.gpu.Enabled>
     <param.gpu.KernelNamePrefix />
@@ -900,7 +900,7 @@
     <param.cudnn.DataType>option.cudnn.datatype.fp32</param.cudnn.DataType>
     <param.arm-compute.ArmComputeVersion>option.arm-compute.version.19_02</param.arm-compute.ArmComputeVersion>
     <param.arm-compute.ArmArchitecture>option.arm-compute.architecture.unspecified</param.arm-compute.ArmArchitecture>
-    <param.TargetLang>option.TargetLang.C</param.TargetLang>
+    <param.TargetLang>option.TargetLang.CPP</param.TargetLang>
     <param.EnableAutoExtrinsicCalls>true</param.EnableAutoExtrinsicCalls>
     <param.UsePreconditions>false</param.UsePreconditions>
     <param.FeatureFlags />
@@ -1012,7 +1012,6 @@
       <param.cudnn.DataType />
       <param.arm-compute.ArmComputeVersion />
       <param.arm-compute.ArmArchitecture />
-      <param.TargetLang />
       <param.EnableAutoExtrinsicCalls />
       <param.UsePreconditions />
       <param.FeatureFlags />
@@ -1060,21 +1059,21 @@
       <param.FixedPointUseDesignRanges />
     </unset>
     <fileset.entrypoints>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\CODEGEN_standalonePredictor.m">
-        <Marker>1574674756785</Marker>
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/CODEGEN_standalonePredictor.m">
+        <Marker>1575155788616</Marker>
       </file>
     </fileset.entrypoints>
     <fileset.testbench>
-      <file>${PROJECT_ROOT}\CODEGEN_loadAndTestModel.m</file>
+      <file>${PROJECT_ROOT}/CODEGEN_REALTIME_loadAndTestModel.m</file>
     </fileset.testbench>
     <fileset.inputtypes>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\CODEGEN_standalonePredictor.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/CODEGEN_standalonePredictor.m">
         <Inputs fileName="CODEGEN_standalonePredictor.m" functionName="CODEGEN_standalonePredictor">
           <Input Name="X" typeId="0" />
           <idpTable>
             <type typeId="0">
               <Class>double</Class>
-              <Size>1 x 18</Size>
+              <Size>16 x 18</Size>
               <Value />
               <InitialValue />
               <UserDefined>false</UserDefined>
@@ -1086,14 +1085,13 @@
       </file>
     </fileset.inputtypes>
     <build-deliverables>
-      <file location="${PROJECT_ROOT}\codegen\lib\CODEGEN_standalonePredictor" name="CODEGEN_standalonePredictor.lib" optional="false">C:\Users\Xavier &amp; Jess\Desktop\195\195\my classifier\codegen\lib\CODEGEN_standalonePredictor\CODEGEN_standalonePredictor.lib</file>
+      <file location="${PROJECT_ROOT}/codegen/lib/CODEGEN_standalonePredictor" name="CODEGEN_standalonePredictor.a" optional="false">/home/xvilla/Documents/2019fall/195/my classifier/codegen/lib/CODEGEN_standalonePredictor/CODEGEN_standalonePredictor.a</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>C:\Program Files\MATLAB\R2019b</root>
+      <root>/usr/local/MATLAB/R2019b</root>
       <toolboxes>
         <toolbox name="matlabcoder" />
-        <toolbox name="embeddedcoder" />
         <toolbox name="neuralnetwork" />
       </toolboxes>
       <toolbox>
@@ -1102,29 +1100,24 @@
         </matlabcoder>
       </toolbox>
       <toolbox>
-        <embeddedcoder>
-          <enabled>true</enabled>
-        </embeddedcoder>
-      </toolbox>
-      <toolbox>
         <neuralnetwork>
           <enabled>true</enabled>
         </neuralnetwork>
       </toolbox>
     </matlab>
     <platform>
-      <unix>false</unix>
+      <unix>true</unix>
       <mac>false</mac>
-      <windows>true</windows>
+      <windows>false</windows>
       <win2k>false</win2k>
       <winxp>false</winxp>
       <vista>false</vista>
-      <linux>false</linux>
+      <linux>true</linux>
       <solaris>false</solaris>
-      <osver>10.0</osver>
+      <osver>5.1.9-surface-linux-surface</osver>
       <os32>false</os32>
       <os64>true</os64>
-      <arch>win64</arch>
+      <arch>glnxa64</arch>
       <matlab>true</matlab>
     </platform>
   </configuration>

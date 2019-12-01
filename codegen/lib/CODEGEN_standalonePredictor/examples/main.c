@@ -2,10 +2,11 @@
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
- * File: main.c
  *
- * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 25-Nov-2019 01:41:57
+ * main.c
+ *
+ * Code generation for function 'main'
+ *
  */
 
 /*************************************************************************/
@@ -33,65 +34,109 @@
 /*                                                                       */
 /*************************************************************************/
 
-/* Include Files */
+/* Include files */
 #include "main.h"
 #include "CODEGEN_standalonePredictor.h"
 #include "CODEGEN_standalonePredictor_terminate.h"
+#include "Wmean.h"
+#include "Wpca1.h"
+#include "Wstd.h"
 #include "rt_nonfinite.h"
 
 /* Function Declarations */
-static void argInit_1x18_real_T(double result[18]);
+static void argInit_16x128_real_T(double result[2048]);
+static void argInit_16x18_real_T(double result[288]);
 static double argInit_real_T(void);
 static void main_CODEGEN_standalonePredictor(void);
+static void main_Wmean(void);
+static void main_Wpca1(void);
+static void main_Wstd(void);
 
 /* Function Definitions */
-
-/*
- * Arguments    : double result[18]
- * Return Type  : void
- */
-static void argInit_1x18_real_T(double result[18])
+static void argInit_16x128_real_T(double result[2048])
 {
+  int idx0;
   int idx1;
 
   /* Loop over the array to initialize each element. */
-  for (idx1 = 0; idx1 < 18; idx1++) {
-    /* Set the value of the array element.
-       Change this value to the value that the application requires. */
-    result[idx1] = argInit_real_T();
+  for (idx0 = 0; idx0 < 16; idx0++) {
+    for (idx1 = 0; idx1 < 128; idx1++) {
+      /* Set the value of the array element.
+         Change this value to the value that the application requires. */
+      result[idx0 + (idx1 << 4)] = argInit_real_T();
+    }
   }
 }
 
-/*
- * Arguments    : void
- * Return Type  : double
- */
+static void argInit_16x18_real_T(double result[288])
+{
+  int idx0;
+  int idx1;
+
+  /* Loop over the array to initialize each element. */
+  for (idx0 = 0; idx0 < 16; idx0++) {
+    for (idx1 = 0; idx1 < 18; idx1++) {
+      /* Set the value of the array element.
+         Change this value to the value that the application requires. */
+      result[idx0 + (idx1 << 4)] = argInit_real_T();
+    }
+  }
+}
+
 static double argInit_real_T(void)
 {
   return 0.0;
 }
 
-/*
- * Arguments    : void
- * Return Type  : void
- */
 static void main_CODEGEN_standalonePredictor(void)
 {
-  double dv[18];
-  double label;
+  double dv[288];
+  double label[16];
 
   /* Initialize function 'CODEGEN_standalonePredictor' input arguments. */
   /* Initialize function input argument 'X'. */
   /* Call the entry-point 'CODEGEN_standalonePredictor'. */
-  argInit_1x18_real_T(dv);
-  label = CODEGEN_standalonePredictor(dv);
+  argInit_16x18_real_T(dv);
+  CODEGEN_standalonePredictor(dv, label);
 }
 
-/*
- * Arguments    : int argc
- *                const char * const argv[]
- * Return Type  : int
- */
+static void main_Wmean(void)
+{
+  double dv[2048];
+  double Y[16];
+
+  /* Initialize function 'Wmean' input arguments. */
+  /* Initialize function input argument 'X'. */
+  /* Call the entry-point 'Wmean'. */
+  argInit_16x128_real_T(dv);
+  Wmean(dv, Y);
+}
+
+static void main_Wpca1(void)
+{
+  double dv[2048];
+  double Y_data[240];
+  int Y_size[2];
+
+  /* Initialize function 'Wpca1' input arguments. */
+  /* Initialize function input argument 'X'. */
+  /* Call the entry-point 'Wpca1'. */
+  argInit_16x128_real_T(dv);
+  Wpca1(dv, Y_data, Y_size);
+}
+
+static void main_Wstd(void)
+{
+  double dv[2048];
+  double Y[16];
+
+  /* Initialize function 'Wstd' input arguments. */
+  /* Initialize function input argument 'X'. */
+  /* Call the entry-point 'Wstd'. */
+  argInit_16x128_real_T(dv);
+  Wstd(dv, Y);
+}
+
 int main(int argc, const char * const argv[])
 {
   (void)argc;
@@ -101,6 +146,9 @@ int main(int argc, const char * const argv[])
   /* Invoke the entry-point functions.
      You can call entry-point functions multiple times. */
   main_CODEGEN_standalonePredictor();
+  main_Wmean();
+  main_Wpca1();
+  main_Wstd();
 
   /* Terminate the application.
      You do not need to do this more than one time. */
@@ -108,8 +156,4 @@ int main(int argc, const char * const argv[])
   return 0;
 }
 
-/*
- * File trailer for main.c
- *
- * [EOF]
- */
+/* End of code generation (main.c) */

@@ -2,45 +2,21 @@
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
- * File: rt_nonfinite.h
  *
- * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 25-Nov-2019 01:41:57
+ * rt_nonfinite.h
+ *
+ * Code generation for function 'CODEGEN_standalonePredictor'
+ *
  */
 
 #ifndef RT_NONFINITE_H
 #define RT_NONFINITE_H
-#if defined(_MSC_VER) && (_MSC_VER <= 1200)
-#include <float.h>
-#endif
-
 #include "rtwtypes.h"
 #ifdef __cplusplus
 
 extern "C" {
 
 #endif
-
-  typedef struct {
-    struct {
-      uint32_T wordH;
-      uint32_T wordL;
-    } words;
-  } BigEndianIEEEDouble;
-
-  typedef struct {
-    struct {
-      uint32_T wordL;
-      uint32_T wordH;
-    } words;
-  } LittleEndianIEEEDouble;
-
-  typedef struct {
-    union {
-      real32_T wordLreal;
-      uint32_T wordLuint;
-    } wordL;
-  } IEEESingle;
 
   extern real_T rtInf;
   extern real_T rtMinusInf;
@@ -60,8 +36,4 @@ extern "C" {
 #endif
 #endif
 
-/*
- * File trailer for rt_nonfinite.h
- *
- * [EOF]
- */
+/* End of code generation (rt_nonfinite.h) */

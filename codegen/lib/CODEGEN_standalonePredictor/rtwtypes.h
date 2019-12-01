@@ -2,22 +2,26 @@
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
- * File: rtwtypes.h
  *
- * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 25-Nov-2019 01:41:57
+ * rtwtypes.h
+ *
+ * Code generation for function 'CODEGEN_standalonePredictor'
+ *
  */
 
 #ifndef RTWTYPES_H
 #define RTWTYPES_H
+#ifndef __cplusplus
+#include <stdbool.h>
+#endif
 
 /*=======================================================================*
  * Target hardware information
- *   Device type: Generic->8-bit Embedded Processor
+ *   Device type: Atmel->AVR (8-bit)
  *   Number of bits:     char:   8    short:   16    int:  16
  *                       long:  32
- *                       native word size:   8
- *   Byte ordering: Unspecified
+ *                       native word size:  16
+ *   Byte ordering: LittleEndian
  *   Signed integer division rounds to: Zero
  *   Shift right on a signed integer as arithmetic shift: on
  *=======================================================================*/
@@ -43,7 +47,7 @@ typedef double real64_T;
  *===========================================================================*/
 typedef double real_T;
 typedef double time_T;
-typedef unsigned char boolean_T;
+typedef bool boolean_T;
 typedef int int_T;
 typedef unsigned int uint_T;
 typedef unsigned long ulong_T;
@@ -130,8 +134,4 @@ typedef struct {
 #endif
 #endif
 
-/*
- * File trailer for rtwtypes.h
- *
- * [EOF]
- */
+/* End of code generation (rtwtypes.h) */

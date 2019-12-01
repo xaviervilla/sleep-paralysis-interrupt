@@ -1,1 +1,1 @@
-Code generation project for CODEGEN_standalonePredictor using toolchain "LCC-win64 v2.4.1 | gmake (64-bit Windows)". MATLAB root = C:\Program Files\MATLAB\R2019b.
+Code generation project for CODEGEN_standalonePredictor using toolchain "GNU gcc/g++ | gmake (64-bit Linux)". MATLAB root = /usr/local/MATLAB/R2019b.

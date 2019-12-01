@@ -2,32 +2,27 @@
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
- * File: CODEGEN_standalonePredictor_initialize.c
  *
- * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 25-Nov-2019 01:41:57
+ * CODEGEN_standalonePredictor_initialize.c
+ *
+ * Code generation for function 'CODEGEN_standalonePredictor_initialize'
+ *
  */
 
-/* Include Files */
+/* Include files */
 #include "CODEGEN_standalonePredictor_initialize.h"
 #include "CODEGEN_standalonePredictor.h"
 #include "CODEGEN_standalonePredictor_data.h"
+#include "Wmean.h"
+#include "Wpca1.h"
+#include "Wstd.h"
 #include "rt_nonfinite.h"
 
 /* Function Definitions */
-
-/*
- * Arguments    : void
- * Return Type  : void
- */
 void CODEGEN_standalonePredictor_initialize(void)
 {
   rt_InitInfAndNaN();
   isInitialized_CODEGEN_standalonePredictor = true;
 }
 
-/*
- * File trailer for CODEGEN_standalonePredictor_initialize.c
- *
- * [EOF]
- */
+/* End of code generation (CODEGEN_standalonePredictor_initialize.c) */

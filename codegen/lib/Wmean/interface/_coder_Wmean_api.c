@@ -28,38 +28,38 @@ emlrtContext emlrtContextGlobal = { true,/* bFirstTime */
 
 /* Function Declarations */
 static real_T (*b_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
-  emlrtMsgIdentifier *parentId))[8192];
+  emlrtMsgIdentifier *parentId))[2048];
 static real_T (*c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
-  const emlrtMsgIdentifier *msgId))[8192];
+  const emlrtMsgIdentifier *msgId))[2048];
 static real_T (*emlrt_marshallIn(const emlrtStack *sp, const mxArray *X, const
-  char_T *identifier))[8192];
-static const mxArray *emlrt_marshallOut(const real_T u[64]);
+  char_T *identifier))[2048];
+static const mxArray *emlrt_marshallOut(const real_T u[16]);
 
 /* Function Definitions */
 static real_T (*b_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
-  emlrtMsgIdentifier *parentId))[8192]
+  emlrtMsgIdentifier *parentId))[2048]
 {
-  real_T (*y)[8192];
+  real_T (*y)[2048];
   y = c_emlrt_marshallIn(sp, emlrtAlias(u), parentId);
   emlrtDestroyArray(&u);
   return y;
 }
   static real_T (*c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
-  const emlrtMsgIdentifier *msgId))[8192]
+  const emlrtMsgIdentifier *msgId))[2048]
 {
-  real_T (*ret)[8192];
-  static const int32_T dims[2] = { 64, 128 };
+  real_T (*ret)[2048];
+  static const int32_T dims[2] = { 16, 128 };
 
   emlrtCheckBuiltInR2012b(sp, msgId, src, "double", false, 2U, dims);
-  ret = (real_T (*)[8192])emlrtMxGetData(src);
+  ret = (real_T (*)[2048])emlrtMxGetData(src);
   emlrtDestroyArray(&src);
   return ret;
 }
 
 static real_T (*emlrt_marshallIn(const emlrtStack *sp, const mxArray *X, const
-  char_T *identifier))[8192]
+  char_T *identifier))[2048]
 {
-  real_T (*y)[8192];
+  real_T (*y)[2048];
   emlrtMsgIdentifier thisId;
   thisId.fIdentifier = (const char *)identifier;
   thisId.fParent = NULL;
@@ -68,18 +68,18 @@ static real_T (*emlrt_marshallIn(const emlrtStack *sp, const mxArray *X, const
   emlrtDestroyArray(&X);
   return y;
 }
-  static const mxArray *emlrt_marshallOut(const real_T u[64])
+  static const mxArray *emlrt_marshallOut(const real_T u[16])
 {
   const mxArray *y;
   const mxArray *m;
   static const int32_T iv[1] = { 0 };
 
-  static const int32_T iv1[1] = { 64 };
+  static const int32_T iv1[1] = { 16 };
 
   y = NULL;
   m = emlrtCreateNumericArray(1, iv, (int16_T)mxDOUBLE_CLASS, (int16_T)mxREAL);
   emlrtMxSetData((mxArray *)m, (void *)&u[0]);
-  emlrtSetDimensions((mxArray *)m, iv1, 1);
+  emlrtSetDimensions((mxArray *)m, *(int32_T (*)[1])&iv1[0], 1);
   emlrtAssign(&y, m);
   return y;
 }
@@ -87,8 +87,8 @@ static real_T (*emlrt_marshallIn(const emlrtStack *sp, const mxArray *X, const
 void Wmean_api(const mxArray * const prhs[1], int32_T nlhs, const mxArray *plhs
                [1])
 {
-  real_T (*Y)[64];
-  real_T (*X)[8192];
+  real_T (*Y)[16];
+  real_T (*X)[2048];
   emlrtStack st = { NULL,              /* site */
     NULL,                              /* tls */
     NULL                               /* prev */
@@ -96,7 +96,7 @@ void Wmean_api(const mxArray * const prhs[1], int32_T nlhs, const mxArray *plhs
 
   (void)nlhs;
   st.tls = emlrtRootTLSGlobal;
-  Y = (real_T (*)[64])mxMalloc(sizeof(real_T [64]));
+  Y = (real_T (*)[16])mxMalloc(sizeof(real_T [16]));
 
   /* Marshall function inputs */
   X = emlrt_marshallIn(&st, emlrtAlias(prhs[0]), "X");

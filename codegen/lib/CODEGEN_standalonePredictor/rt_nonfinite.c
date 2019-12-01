@@ -2,10 +2,11 @@
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
- * File: rt_nonfinite.c
  *
- * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 25-Nov-2019 01:41:57
+ * rt_nonfinite.c
+ *
+ * Code generation for function 'CODEGEN_standalonePredictor'
+ *
  */
 
 /*
@@ -14,8 +15,7 @@
  *      (Inf, NaN and -Inf).
  */
 #include "rt_nonfinite.h"
-#include "rtGetNaN.h"
-#include "rtGetInf.h"
+#include <math.h>
 
 real_T rtInf;
 real_T rtMinusInf;
@@ -29,14 +29,29 @@ real32_T rtNaNF;
  * Initialize the rtInf, rtMinusInf, and rtNaN needed by the
  * generated code. NaN is initialized as non-signaling. Assumes IEEE.
  */
+
+/* Suppress Visual Studio 2013 INFINITY macro expansion compiler warning. */
+#if defined(_MSC_VER) && _MSC_VER == 1800
+
+#pragma warning(disable: 4756 56)
+
+#endif
+
 void rt_InitInfAndNaN()
 {
-  rtNaN = rtGetNaN();
-  rtNaNF = rtGetNaNF();
-  rtInf = rtGetInf();
-  rtInfF = rtGetInfF();
-  rtMinusInf = rtGetMinusInf();
-  rtMinusInfF = rtGetMinusInfF();
+  rtNaN = nan("");
+  rtNaNF = nanf("");
+  rtInf = (real_T)INFINITY;
+  rtInfF = (real32_T)INFINITY;
+  rtMinusInf = -(real_T)INFINITY;
+  rtMinusInfF = -(real32_T)INFINITY;
+
+#if defined(_MSC_VER) && _MSC_VER == 1800
+
+#pragma warning(default: 4756 56)
+
+#endif
+
 }
 
 /* Function: rtIsInf ==================================================
@@ -45,7 +60,7 @@ void rt_InitInfAndNaN()
  */
 boolean_T rtIsInf(real_T value)
 {
-  return ((value==rtInf || value==rtMinusInf) ? 1U : 0U);
+  return (isinf(value) ? 1U : 0U);
 }
 
 /* Function: rtIsInfF =================================================
@@ -54,7 +69,7 @@ boolean_T rtIsInf(real_T value)
  */
 boolean_T rtIsInfF(real32_T value)
 {
-  return(((value)==rtInfF || (value)==rtMinusInfF) ? 1U : 0U);
+  return (isinf((real_T)value) ? 1U : 0U);
 }
 
 /* Function: rtIsNaN ==================================================
@@ -63,7 +78,7 @@ boolean_T rtIsInfF(real32_T value)
  */
 boolean_T rtIsNaN(real_T value)
 {
-  return ((value!=value)? 1U : 0U);
+  return (isnan(value) ? 1U : 0U);
 }
 
 /* Function: rtIsNaNF =================================================
@@ -72,11 +87,7 @@ boolean_T rtIsNaN(real_T value)
  */
 boolean_T rtIsNaNF(real32_T value)
 {
-  return ((value!=value)? 1U : 0U);
+  return (isnan((real_T)value) ? 1U : 0U);
 }
 
-/*
- * File trailer for rt_nonfinite.c
- *
- * [EOF]
- */
+/* End of code generation (rt_nonfinite.c) */

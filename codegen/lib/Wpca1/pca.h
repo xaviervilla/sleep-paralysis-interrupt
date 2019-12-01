@@ -13,21 +13,21 @@
 #define PCA_H
 
 /* Include files */
-#include <stddef.h>
-#include <stdlib.h>
+#include <cstddef>
+#include <cstdlib>
 #include "rtwtypes.h"
 #include "Wpca1_types.h"
 
 /* Function Declarations */
-extern void b_localSVD(emxArray_real_T *x, int DOF, const double Weights_data[],
-  const int Weights_size[1], double coeffOut_data[], int coeffOut_size[2],
-  double scoreOut_data[], int scoreOut_size[2], double latentOut_data[], int
-  latentOut_size[1], double tsquared_data[], int tsquared_size[2], double
-  explained_data[], int explained_size[1]);
-extern void localSVD(const double x[8192], int DOF, double coeffOut_data[], int
+extern void b_localSVD(double x_data[], const int x_size[2], int DOF, const
+  double Weights_data[], const int Weights_size[1], double coeffOut_data[], int
+  coeffOut_size[2], double scoreOut_data[], int scoreOut_size[2], double
+  latentOut_data[], int latentOut_size[1], double tsquared_data[], int
+  tsquared_size[2], double explained_data[], int explained_size[1]);
+extern void localSVD(const double x[2048], int DOF, double coeffOut_data[], int
                      coeffOut_size[2], double scoreOut_data[], int
                      scoreOut_size[2], double latentOut_data[], int
-                     latentOut_size[1], double tsquared[64], double
+                     latentOut_size[1], double tsquared[16], double
                      explained_data[], int explained_size[1]);
 
 #endif
