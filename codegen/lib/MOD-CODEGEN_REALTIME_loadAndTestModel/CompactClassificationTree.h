@@ -16,14 +16,14 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include "rtwtypes.h"
-#include "CODEGEN_REALTIME_loadAndTestModel_types.h"
+#include "REDUCED_CODEGEN_REALTIME_loadAndTestModel_types.h"
 
 /* Function Declarations */
-extern void c_CompactClassificationTree_pre(const double obj_CutPredictorIndex[5],
-  const double obj_Children[10], const double obj_CutPoint[5], const double
-  obj_PruneList_data[], const bool obj_NanCutPoints[5], const double
-  obj_ClassNames[2], const double obj_Cost[4], const double
-  obj_ClassProbability[10], const double X[288], double labels[16]);
+extern void c_CompactClassificationTree_pre(const double obj_CutPredictorIndex
+  [17], const double obj_Children[34], const double obj_CutPoint[17], const
+  double obj_PruneList_data[], const bool obj_NanCutPoints[17], const double
+  obj_ClassNames[4], const double obj_Cost[16], const double
+  obj_ClassProbability[68], const double X[96], double labels[16]);
 
 #endif
 
