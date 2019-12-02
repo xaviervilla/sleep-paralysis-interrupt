@@ -20,11 +20,15 @@ A machine learning classifier that detects sleep paralysis
  - [x] Remove PCA computations completely from the library to save program storage space
  - [x] Optimize classifier for new data stream without PCA and Gyroscope
  - [x] Recompile Matlab into C code after each of the above steps  
- - [ ] Finally load the code onto an Arduino
- - [ ] Find a good library for MPU6050 accelerometer chip
- - [ ] Format data in a way that allows the matlab functions to be called
- - [ ] Solder up the mpu6050 and turn on an LED when walking is detected
+ - [X] Finally load the code onto an Arduino
+ - [X] Find a good library for MPU6050 accelerometer chip
+ - [X] Format data in a way that allows the matlab functions to be called
+ - [x] Get MPU library and custom library to both fit on an Atmega328P
+ - [X] Solder up the mpu6050 and turn on an LED when walking is detected
+ - [X] Turn Arduino light on when Sleep paralysis is detected
+ - [ ] Determine the cause of classifier only working when accelerometer is in specific orientation
+ - [ ] Fix code to allow for different orientations of the accelerometer
+ - [ ] Reduce size of code for more stability
  - [ ] Record better accelerometer data for training and predicting
- - [ ] Turn Arduino light on when Sleep paralysis is detected
  - [ ] Improve accuracy and reduce false alarms using some type of counter to measure confidence
  - [ ] 
