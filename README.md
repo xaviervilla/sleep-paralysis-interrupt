@@ -28,7 +28,8 @@ A machine learning classifier that detects sleep paralysis
  - [X] Turn Arduino light on when Sleep paralysis is detected
  - [ ] Determine the cause of classifier only working when accelerometer is in specific orientation
  - [ ] Fix code to allow for different orientations of the accelerometer
- - [ ] Reduce size of code for more stability
+ - [X] Reduce size of code for more stability
  - [ ] Record better accelerometer data for training and predicting
- - [ ] Improve accuracy and reduce false alarms using some type of counter to measure confidence
- - [ ] 
+ - [X] Improve accuracy and reduce false alarms using some type of counter to measure confidence
+ - [ ] Get more capable embedded controller, perhaps arduino mega or RPi zero
+ - [ ] Recompile code with much better sample frequency for better predictions on better platform
