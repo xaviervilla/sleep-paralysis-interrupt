@@ -13,13 +13,13 @@ for i = 1:size(testActivity)
     if (testActivity(i) == "Laying")
         result(i) = 1;
     elseif (testActivity(i) == "Sitting")
-        result(i) = 2;
+        result(i) = 1;
     elseif (testActivity(i) == "ClimbingStairs")
-        result(i) = 3;
+        result(i) = 2;
     elseif (testActivity(i) == "Standing")
-        result(i) = 4;
+        result(i) = 1;
     elseif (testActivity(i) == "Walking")
-        result(i) = 3;
+        result(i) = 2;
     else
     end
 end
@@ -28,8 +28,8 @@ end
 label = zeros(size(testActivity));
 
 % Simulate live feed 
-for i = 1:size(testActivity)
-    label(i) = REDUCED_CODEGEN_REALTIME_loadAndTestModel(total_acc_x_test(i,1:16:128), total_acc_y_test(i,1:16:128), total_acc_z_test(i,1:16:128) );
+for i = 1:7:7*floor(size(testActivity)/7)-7
+    label(i:i+7) = REDUCED_CODEGEN_REALTIME_loadAndTestModel(total_acc_x_test(i:i+7,1:16:128), total_acc_y_test(i:i+7,1:16:128), total_acc_z_test(i:i+7,1:16:128) );
 end
 
 accuracy = 0.0;

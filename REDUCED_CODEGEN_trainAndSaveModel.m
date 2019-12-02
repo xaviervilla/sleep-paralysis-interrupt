@@ -9,8 +9,9 @@ rawSensorDataTrain = table( total_acc_x_train, total_acc_y_train, total_acc_z_tr
 % Step 2: Extract features from raw sensor data
 T_mean = varfun(@Wmean, rawSensorDataTrain);
 T_stdv = varfun(@Wstd,rawSensorDataTrain);
+T_pca  = varfun(@Wpca1,rawSensorDataTrain);
 
-humanActivityData = [T_mean, T_stdv];
+humanActivityData = [T_mean, T_stdv, T_pca];
 
 % We need to convert the predictor strings to integers
 result = zeros(size(trainActivity));
@@ -18,13 +19,13 @@ for i = 1:size(trainActivity)
     if (trainActivity(i) == "Laying")
         result(i) = 1;
     elseif (trainActivity(i) == "Sitting")
-        result(i) = 2;
+        result(i) = 1;
     elseif (trainActivity(i) == "ClimbingStairs")
-        result(i) = 3;
+        result(i) = 2;
     elseif (trainActivity(i) == "Standing")
-        result(i) = 4;
+        result(i) = 1;
     elseif (trainActivity(i) == "Walking")
-        result(i) = 3;
+        result(i) = 2;
     else
     end
 end

@@ -1,15 +1,3 @@
-/*
- * Academic License - for use in teaching, academic research, and meeting
- * course requirements at degree granting institutions only.  Not for
- * government, commercial, or other organizational use.
- *
- * pca.cpp
- *
- * Code generation for function 'pca'
- *
- */
-
-/* Include files */
 #include "pca.h"
 #include "Wpca1.h"
 #include "rt_nonfinite.h"
@@ -18,14 +6,12 @@
 #include <cstring>
 #include <math.h>
 
-/* Function Declarations */
 static void b_localTSquared(const double score_data[], const int score_size[2],
   const double latent_data[], const int latent_size[1], int DOF, double
   tsquared_data[], int tsquared_size[2]);
 static void localTSquared(const double score[256], const double latent[16], int
   DOF, double tsquared[16]);
 
-/* Function Definitions */
 static void b_localTSquared(const double score_data[], const int score_size[2],
   const double latent_data[], const int latent_size[1], int DOF, double
   tsquared_data[], int tsquared_size[2])
@@ -276,5 +262,3 @@ void localSVD(const double x[2048], int DOF, double coeffOut_data[], int
     explained_data[j] = 100.0 * latentOut_data[j] / y;
   }
 }
-
-/* End of code generation (pca.cpp) */

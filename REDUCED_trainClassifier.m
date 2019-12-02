@@ -44,10 +44,10 @@ function [trainedClassifier, validationAccuracy] = REDUCED_trainClassifier(train
 % This code processes the data into the right shape for training the 
 % model.
 inputTable = trainingData;
-predictorNames = {'Wmean_total_acc_x', 'Wmean_total_acc_y', 'Wmean_total_acc_z', 'Wstd_total_acc_x', 'Wstd_total_acc_y', 'Wstd_total_acc_z'};
+predictorNames = {'Wmean_total_acc_x', 'Wmean_total_acc_y', 'Wmean_total_acc_z', 'Wstd_total_acc_x', 'Wstd_total_acc_y', 'Wstd_total_acc_z', 'Wpca1_total_acc_x', 'Wpca1_total_acc_y', 'Wpca1_total_acc_z'};
 predictors = inputTable(:, predictorNames);
 response = inputTable.activity;
-isCategoricalPredictor = [false, false, false, false, false, false];
+isCategoricalPredictor = [false, false, false, false, false, false, false, false, false];
 
 % Train a classifier 
 % This code specifies all the classifier options and trains the classifier.
@@ -55,9 +55,9 @@ classificationTree = fitctree(...
 predictors, ...
 response, ...
 'SplitCriterion', 'twoing', ...
-'MaxNumSplits', 10, ...
+'MaxNumSplits', 5, ...
 'Surrogate', 'off', ...
-'ClassNames', [1; 2; 3; 4]);
+'ClassNames', [1; 2]);
 
 % Create the result struct with predict function
 predictorExtractionFcn = @(t) t(:, predictorNames);
@@ -65,7 +65,7 @@ treePredictFcn = @(x) predict(classificationTree, x);
 trainedClassifier.predictFcn = @(x) treePredictFcn(predictorExtractionFcn(x));
 
 % Add additional fields to the result struct
-trainedClassifier.RequiredVariables = {'Wmean_total_acc_x', 'Wmean_total_acc_y', 'Wmean_total_acc_z', 'Wstd_total_acc_x', 'Wstd_total_acc_y', 'Wstd_total_acc_z'};
+trainedClassifier.RequiredVariables = {'Wmean_total_acc_x', 'Wmean_total_acc_y', 'Wmean_total_acc_z', 'Wstd_total_acc_x', 'Wstd_total_acc_y', 'Wstd_total_acc_z', 'Wpca1_total_acc_x', 'Wpca1_total_acc_y', 'Wpca1_total_acc_z'};
 trainedClassifier.ClassificationTree = classificationTree;
 trainedClassifier.About = 'This struct is a trained model exported from Classification Learner R2019b.';
 trainedClassifier.HowToPredict = sprintf('To make predictions on a new table, T, use: \n  yfit = c.predictFcn(T) \nreplacing ''c'' with the name of the variable that is this struct, e.g. ''trainedModel''. \n \nThe table, T, must contain the variables returned by: \n  c.RequiredVariables \nVariable formats (e.g. matrix/vector, datatype) must match the original training data. \nAdditional variables are ignored. \n \nFor more information, see <a href="matlab:helpview(fullfile(docroot, ''stats'', ''stats.map''), ''appclassification_exportmodeltoworkspace'')">How to predict using an exported model</a>.');
@@ -74,10 +74,10 @@ trainedClassifier.HowToPredict = sprintf('To make predictions on a new table, T,
 % This code processes the data into the right shape for training the 
 % model.
 inputTable = trainingData;
-predictorNames = {'Wmean_total_acc_x', 'Wmean_total_acc_y', 'Wmean_total_acc_z', 'Wstd_total_acc_x', 'Wstd_total_acc_y', 'Wstd_total_acc_z'};
+predictorNames = {'Wmean_total_acc_x', 'Wmean_total_acc_y', 'Wmean_total_acc_z', 'Wstd_total_acc_x', 'Wstd_total_acc_y', 'Wstd_total_acc_z', 'Wpca1_total_acc_x', 'Wpca1_total_acc_y', 'Wpca1_total_acc_z'};
 predictors = inputTable(:, predictorNames);
 response = inputTable.activity;
-isCategoricalPredictor = [false, false, false, false, false, false];
+isCategoricalPredictor = [false, false, false, false, false, false, false, false, false];
 
 % Perform cross-validation
 partitionedModel = crossval(trainedClassifier.ClassificationTree, 'KFold', 5);
