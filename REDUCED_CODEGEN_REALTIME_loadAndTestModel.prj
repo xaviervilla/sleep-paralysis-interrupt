@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.coder" plugin-version="R2018b">
-  <configuration build-checksum="1520430038" file="/home/xvilla/Documents/2019fall/195/my classifier/REDUCED_CODEGEN_REALTIME_loadAndTestModel.prj" location="/home/xvilla/Documents/2019fall/195/my classifier" name="REDUCED_CODEGEN_REALTIME_loadAndTestModel" target="target.unifiedcoder" target-name="MATLAB Coder">
+  <configuration build-checksum="2563777976" file="/home/xvilla/Documents/2019fall/195/my classifier/REDUCED_CODEGEN_REALTIME_loadAndTestModel.prj" location="/home/xvilla/Documents/2019fall/195/my classifier" name="REDUCED_CODEGEN_REALTIME_loadAndTestModel" target="target.unifiedcoder" target-name="MATLAB Coder">
     <profile key="profile.mex">
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
       <param.RanInstrumentedMex>false</param.RanInstrumentedMex>
@@ -842,7 +842,7 @@
     <param.AutoInferUnboundedSizeThreshold>2048</param.AutoInferUnboundedSizeThreshold>
     <param.EnableFixedPointStep>false</param.EnableFixedPointStep>
     <param.EnableScreener>true</param.EnableScreener>
-    <param.AnnotationChecksum>376649747</param.AnnotationChecksum>
+    <param.AnnotationChecksum>3791250101</param.AnnotationChecksum>
     <var.LegacyTarget />
     <var.MirrorOnOpen>false</var.MirrorOnOpen>
     <param.FixedPointEnabled>false</param.FixedPointEnabled>
@@ -851,12 +851,12 @@
     <param.unifiedParamStorage />
     <var.gc.lastOutputRoot>codegen/lib/REDUCED_CODEGEN_REALTIME_loadAndTestModel</var.gc.lastOutputRoot>
     <var.gc.lastOutputType>C_CODE</var.gc.lastOutputType>
-    <var.gc.preBuildChecksum>1066429821</var.gc.preBuildChecksum>
+    <var.gc.preBuildChecksum>4259291923</var.gc.preBuildChecksum>
     <var.cfi.lastOutputRoot>codegen/mex/REDUCED_CODEGEN_REALTIME_loadAndTestModel</var.cfi.lastOutputRoot>
-    <var.cfi.preBuildChecksum>2179138918</var.cfi.preBuildChecksum>
+    <var.cfi.preBuildChecksum>1135397640</var.cfi.preBuildChecksum>
     <var.lastCfiTestSnippet>CODEGEN_allCode</var.lastCfiTestSnippet>
     <var.outdatedOnRestore>false</var.outdatedOnRestore>
-    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/CODEGEN_standalonePredictor.m&lt;/file&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/REDUCED_CODEGEN_REALTIME_loadAndTestModel.m&lt;/file&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/Wmean.m&lt;/file&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/Wstd.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;3072322720&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
+    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/CODEGEN_standalonePredictor.m&lt;/file&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/REDUCED_CODEGEN_REALTIME_loadAndTestModel.m&lt;/file&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/Wmean.m&lt;/file&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/Wstd.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;942505819&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
     <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/CODEGEN_standalonePredictor.m&lt;/file&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/REDUCED_CODEGEN_REALTIME_loadAndTestModel.m&lt;/file&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/Wmean.m&lt;/file&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/Wstd.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
     <param.forceMexBuild>false</param.forceMexBuild>
     <param.NoDefaultJIT>false</param.NoDefaultJIT>
@@ -1061,7 +1061,7 @@
     </unset>
     <fileset.entrypoints>
       <file custom-data-expanded="false" value="${PROJECT_ROOT}/REDUCED_CODEGEN_REALTIME_loadAndTestModel.m">
-        <Marker>1575232790048</Marker>
+        <Marker>1575255883765</Marker>
       </file>
     </fileset.entrypoints>
     <fileset.testbench>
@@ -1076,7 +1076,7 @@
           <idpTable>
             <type typeId="0">
               <Class>double</Class>
-              <Size>16 x 16</Size>
+              <Size>1 x 8</Size>
               <Value />
               <InitialValue />
               <UserDefined>false</UserDefined>

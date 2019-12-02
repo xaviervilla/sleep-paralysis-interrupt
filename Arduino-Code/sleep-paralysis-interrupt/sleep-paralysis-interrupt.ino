@@ -11,14 +11,17 @@
 
 #include <REDUCED_CODEGEN_REALTIME_loadAndTestModel.h>
 #include "MPU6050.h"
-#include <REDUCED_CODEGEN_REALTIME_loadAndTestModel_terminate.h>
+//#include <REDUCED_CODEGEN_REALTIME_loadAndTestModel_terminate.h>
 
 #define LED_PIN 13
 
 MPU6050 accel;
 
 int16_t ax, ay, az;
-double label[16];
+double total_acc_x[8];
+double total_acc_y[8];
+double total_acc_z[8];
+uint8_t label;
 bool isWalking;
 
 void setup() {
@@ -36,38 +39,35 @@ void setup() {
 
 }
 
-static void sample16()
+void sample16()
 {
-  uint8_t idx0;
-  uint8_t idx1;
-  double total_acc_x[64];
-  double total_acc_y[64];
-  double total_acc_z[64];
-  for (idx0 = 0; idx0 < 8; idx0++) {
-    for (idx1 = 0; idx1 < 8; idx1++) {
-      accel.getAcceleration(&ax, &ay, &az);
-      total_acc_x[idx0 + (idx1 << 3)] = ax/16384;
-      total_acc_y[idx0 + (idx1 << 3)] = ay/16384;
-      total_acc_z[idx0 + (idx1 << 3)] = az/16384;
-      delay(10);
-      
-    }
-  isWalking = !isWalking;
-  digitalWrite(LED_PIN, isWalking);
-
+  uint8_t i = 0;
+  for (i = 0; i < 8; i++) {
+    accel.getAcceleration(&ax, &ay, &az);
+    total_acc_x[i] = ax/16384.0;
+    total_acc_y[i] = ay/16384.0;
+    total_acc_z[i] = az/16384.0;
+    delay(50);
   }
-  REDUCED_CODEGEN_REALTIME_loadAndTestModel(total_acc_x, total_acc_y, total_acc_z, label);
-  REDUCED_CODEGEN_REALTIME_loadAndTestModel_terminate();
+
+  label = REDUCED_CODEGEN_REALTIME_loadAndTestModel(total_acc_x, total_acc_y, total_acc_z);
+  //REDUCED_CODEGEN_REALTIME_loadAndTestModel_terminate();
 }
 
 void loop() {
 
   sample16();
+
+  Serial.println(label);
   
-  isWalking = !isWalking;
-  delay(1000);
-  digitalWrite(LED_PIN, isWalking);
-  delay(1000);
-  isWalking = !isWalking;
-  digitalWrite(LED_PIN, isWalking);
+  if(label == 3){
+    isWalking = true;
+    digitalWrite(LED_PIN, isWalking);
+    delay(200);
+  }  
+  else{
+    isWalking = false;
+    digitalWrite(LED_PIN, isWalking);
+    delay(200);
+  }
 }

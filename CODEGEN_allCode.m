@@ -28,8 +28,8 @@ end
 label = zeros(size(testActivity));
 
 % Simulate live feed 
-for i = 1:8:8*floor(size(testActivity)/8)
-    label(i:i+7) = REDUCED_CODEGEN_REALTIME_loadAndTestModel(total_acc_x_test(i:i+7,1:16:128), total_acc_y_test(i:i+7,1:16:128), total_acc_z_test(i:i+7,1:16:128) );
+for i = 1:size(testActivity)
+    label(i) = REDUCED_CODEGEN_REALTIME_loadAndTestModel(total_acc_x_test(i,1:16:128), total_acc_y_test(i,1:16:128), total_acc_z_test(i,1:16:128) );
 end
 
 accuracy = 0.0;
