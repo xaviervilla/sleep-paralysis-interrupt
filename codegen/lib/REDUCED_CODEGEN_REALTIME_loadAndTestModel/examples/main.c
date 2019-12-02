@@ -41,22 +41,22 @@
 #include "rt_nonfinite.h"
 
 /* Function Declarations */
-static void argInit_16x16_real_T(double result[256]);
+static void argInit_8x8_real_T(double result[64]);
 static double argInit_real_T(void);
 static void main_REDUCED_CODEGEN_REALTIME_loadAndTestModel(void);
 
 /* Function Definitions */
-static void argInit_16x16_real_T(double result[256])
+static void argInit_8x8_real_T(double result[64])
 {
   int idx0;
   int idx1;
 
   /* Loop over the array to initialize each element. */
-  for (idx0 = 0; idx0 < 16; idx0++) {
-    for (idx1 = 0; idx1 < 16; idx1++) {
+  for (idx0 = 0; idx0 < 8; idx0++) {
+    for (idx1 = 0; idx1 < 8; idx1++) {
       /* Set the value of the array element.
          Change this value to the value that the application requires. */
-      result[idx0 + (idx1 << 4)] = argInit_real_T();
+      result[idx0 + (idx1 << 3)] = argInit_real_T();
     }
   }
 }
@@ -68,12 +68,12 @@ static double argInit_real_T(void)
 
 static void main_REDUCED_CODEGEN_REALTIME_loadAndTestModel(void)
 {
-  double total_acc_x_test_tmp_tmp[256];
-  double label[16];
+  double total_acc_x_test_tmp_tmp[64];
+  double label[8];
 
   /* Initialize function 'REDUCED_CODEGEN_REALTIME_loadAndTestModel' input arguments. */
   /* Initialize function input argument 'total_acc_x_test'. */
-  argInit_16x16_real_T(total_acc_x_test_tmp_tmp);
+  argInit_8x8_real_T(total_acc_x_test_tmp_tmp);
 
   /* Initialize function input argument 'total_acc_y_test'. */
   /* Initialize function input argument 'total_acc_z_test'. */

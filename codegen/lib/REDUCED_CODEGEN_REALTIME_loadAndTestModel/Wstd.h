@@ -19,7 +19,7 @@
 #include "REDUCED_CODEGEN_REALTIME_loadAndTestModel_types.h"
 
 /* Function Declarations */
-extern void Wstd(const double X[256], double Y[16]);
+extern void Wstd(const double X[64], double Y[8]);
 
 #endif
 

@@ -19,25 +19,26 @@
 #include <string.h>
 
 /* Function Definitions */
-void REDUCED_CODEGEN_REALTIME_loadAndTestModel(const double total_acc_x_test[256],
-  const double total_acc_y_test[256], const double total_acc_z_test[256], double
-  label[16])
+void REDUCED_CODEGEN_REALTIME_loadAndTestModel(const double total_acc_x_test[64],
+  const double total_acc_y_test[64], const double total_acc_z_test[64], double
+  label[8])
 {
-  double y[16];
+  double y[8];
   int k;
   int xoffset;
-  double b_y[16];
+  double b_y[8];
   int j;
-  double c_y[16];
+  double c_y[8];
   double SVM_ClassNames[4];
-  double b_I[16];
   double SVM_PruneList_data[17];
   static const signed char iv[17] = { 6, 5, 1, 0, 4, 0, 0, 2, 3, 0, 2, 0, 3, 0,
     0, 0, 0 };
 
-  double dv[16];
+  signed char b_I[16];
+  double dv[8];
   double SVM_Cost[16];
-  double dv1[16];
+  double dv1[8];
+  double dv2[8];
   static const double SVM_CutPredictorIndex[17] = { 4.0, 1.0, 1.0, 0.0, 2.0, 0.0,
     0.0, 3.0, 1.0, 0.0, 3.0, 0.0, 3.0, 0.0, 0.0, 0.0, 0.0 };
 
@@ -68,42 +69,42 @@ void REDUCED_CODEGEN_REALTIME_loadAndTestModel(const double total_acc_x_test[256
     0.61666666666666681, 0.0041724617524339985, 0.28240740740740994,
     0.25806451612903236, 1.0, 1.0, 0.2583732057416292 };
 
-  double d_y[96];
+  double d_y[48];
   if (isInitialized_REDUCED_CODEGEN_REALTIME_loadAndTestModel == false) {
     REDUCED_CODEGEN_REALTIME_loadAndTestModel_initialize();
   }
 
   /*      total_acc_x_test */
-  /*  Calculate mean of all 128 samples for each channel */
+  /*  Calculate mean of all samples for each channel */
   /*  Copyright (c) 2015, MathWorks, Inc. */
-  memcpy(&y[0], &total_acc_x_test[0], 16U * sizeof(double));
-  for (k = 0; k < 15; k++) {
-    xoffset = (k + 1) << 4;
-    for (j = 0; j < 16; j++) {
+  memcpy(&y[0], &total_acc_x_test[0], 8U * sizeof(double));
+  for (k = 0; k < 7; k++) {
+    xoffset = (k + 1) << 3;
+    for (j = 0; j < 8; j++) {
       y[j] += total_acc_x_test[xoffset + j];
     }
   }
 
   /*  Copyright (c) 2015, MathWorks, Inc. */
-  memcpy(&b_y[0], &total_acc_y_test[0], 16U * sizeof(double));
-  for (k = 0; k < 15; k++) {
-    xoffset = (k + 1) << 4;
-    for (j = 0; j < 16; j++) {
+  memcpy(&b_y[0], &total_acc_y_test[0], 8U * sizeof(double));
+  for (k = 0; k < 7; k++) {
+    xoffset = (k + 1) << 3;
+    for (j = 0; j < 8; j++) {
       b_y[j] += total_acc_y_test[xoffset + j];
     }
   }
 
   /*  Copyright (c) 2015, MathWorks, Inc. */
-  memcpy(&c_y[0], &total_acc_z_test[0], 16U * sizeof(double));
-  for (k = 0; k < 15; k++) {
-    xoffset = (k + 1) << 4;
-    for (j = 0; j < 16; j++) {
+  memcpy(&c_y[0], &total_acc_z_test[0], 8U * sizeof(double));
+  for (k = 0; k < 7; k++) {
+    xoffset = (k + 1) << 3;
+    for (j = 0; j < 8; j++) {
       c_y[j] += total_acc_z_test[xoffset + j];
     }
   }
 
-  /*  Calculate std of all 128 samples for each channel */
-  /*      % Calculate pca of all 128 samples for each channel */
+  /*  Calculate std of all samples for each channel */
+  /*      % Calculate pca of all samples for each channel */
   /*      T_Wpca1_acc_x = Wpca1(total_acc_x_test(:,:)); */
   /*      T_Wpca1_acc_y = Wpca1(total_acc_y_test(:,:)); */
   /*      T_Wpca1_acc_z = Wpca1(total_acc_z_test(:,:)); */
@@ -119,26 +120,28 @@ void REDUCED_CODEGEN_REALTIME_loadAndTestModel(const double total_acc_x_test[256
     SVM_PruneList_data[k] = iv[k];
   }
 
-  memset(&b_I[0], 0, 16U * sizeof(double));
-  b_I[0] = 1.0;
-  b_I[5] = 1.0;
-  b_I[10] = 1.0;
-  b_I[15] = 1.0;
-  Wstd(total_acc_x_test, dv);
   for (k = 0; k < 16; k++) {
-    SVM_Cost[k] = 1.0 - b_I[k];
-    b_I[k] = dv[k];
+    b_I[k] = 0;
   }
 
-  Wstd(total_acc_y_test, dv);
-  Wstd(total_acc_z_test, dv1);
+  b_I[0] = 1;
+  b_I[5] = 1;
+  b_I[10] = 1;
+  b_I[15] = 1;
   for (k = 0; k < 16; k++) {
-    d_y[k] = y[k] / 16.0;
-    d_y[k + 16] = b_y[k] / 16.0;
-    d_y[k + 32] = c_y[k] / 16.0;
-    d_y[k + 48] = b_I[k];
-    d_y[k + 64] = dv[k];
-    d_y[k + 80] = dv1[k];
+    SVM_Cost[k] = 1.0 - (double)b_I[k];
+  }
+
+  Wstd(total_acc_x_test, dv);
+  Wstd(total_acc_y_test, dv1);
+  Wstd(total_acc_z_test, dv2);
+  for (k = 0; k < 8; k++) {
+    d_y[k] = y[k] / 8.0;
+    d_y[k + 8] = b_y[k] / 8.0;
+    d_y[k + 16] = c_y[k] / 8.0;
+    d_y[k + 24] = dv[k];
+    d_y[k + 32] = dv1[k];
+    d_y[k + 40] = dv2[k];
   }
 
   c_CompactClassificationTree_pre(SVM_CutPredictorIndex, SVM_Children,

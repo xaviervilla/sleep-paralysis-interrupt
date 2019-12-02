@@ -24,9 +24,8 @@ extern emlrtCTX emlrtRootTLSGlobal;
 extern emlrtContext emlrtContextGlobal;
 
 /* Function Declarations */
-extern void REDUCED_CODEGEN_REALTIME_loadAndTestModel(real_T total_acc_x_test
-  [256], real_T total_acc_y_test[256], real_T total_acc_z_test[256], real_T
-  label[16]);
+extern void REDUCED_CODEGEN_REALTIME_loadAndTestModel(real_T total_acc_x_test[64],
+  real_T total_acc_y_test[64], real_T total_acc_z_test[64], real_T label[8]);
 extern void REDUCED_CODEGEN_REALTIME_loadAndTestModel_api(const mxArray * const
   prhs[3], int32_T nlhs, const mxArray *plhs[1]);
 extern void REDUCED_CODEGEN_REALTIME_loadAndTestModel_atexit(void);

@@ -20,8 +20,8 @@
 
 /* Function Declarations */
 extern void REDUCED_CODEGEN_REALTIME_loadAndTestModel(const double
-  total_acc_x_test[256], const double total_acc_y_test[256], const double
-  total_acc_z_test[256], double label[16]);
+  total_acc_x_test[64], const double total_acc_y_test[64], const double
+  total_acc_z_test[64], double label[8]);
 
 #endif
 
