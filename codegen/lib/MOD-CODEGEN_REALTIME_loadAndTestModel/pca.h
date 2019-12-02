@@ -3,14 +3,14 @@
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
  *
- * Wstd.h
+ * pca.h
  *
- * Code generation for function 'Wstd'
+ * Code generation for function 'pca'
  *
  */
 
-#ifndef WSTD_H
-#define WSTD_H
+#ifndef PCA_H
+#define PCA_H
 
 /* Include files */
 #include <stddef.h>
@@ -19,8 +19,10 @@
 #include "REDUCED_CODEGEN_REALTIME_loadAndTestModel_types.h"
 
 /* Function Declarations */
-extern double Wstd(const double X[8]);
+extern void pca(const double x[16], double varargout_1_data[], int
+                varargout_1_size[2], double varargout_2_data[], int
+                varargout_2_size[2]);
 
 #endif
 
-/* End of code generation (Wstd.h) */
+/* End of code generation (pca.h) */

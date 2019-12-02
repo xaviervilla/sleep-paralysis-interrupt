@@ -2,7 +2,7 @@
 ## Makefile generated for MATLAB file/project 'REDUCED_CODEGEN_REALTIME_loadAndTestModel'. 
 ## 
 ## Makefile     : REDUCED_CODEGEN_REALTIME_loadAndTestModel_rtw.mk
-## Generated on : Sun Dec 01 12:22:49 2019
+## Generated on : Sun Dec 01 23:53:11 2019
 ## MATLAB Coder version: 4.3 (R2019b)
 ## 
 ## Build Info:
@@ -172,7 +172,7 @@ DEFINES = $(DEFINES_CUSTOM) $(DEFINES_STANDARD)
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = $(START_DIR)/rt_nonfinite.c $(START_DIR)/rtGetNaN.c $(START_DIR)/rtGetInf.c $(START_DIR)/REDUCED_CODEGEN_REALTIME_loadAndTestModel_data.c $(START_DIR)/REDUCED_CODEGEN_REALTIME_loadAndTestModel_initialize.c $(START_DIR)/REDUCED_CODEGEN_REALTIME_loadAndTestModel_terminate.c $(START_DIR)/REDUCED_CODEGEN_REALTIME_loadAndTestModel.c $(START_DIR)/Wstd.c $(START_DIR)/CompactClassificationTree.c
+SRCS = $(START_DIR)/rt_nonfinite.c $(START_DIR)/rtGetNaN.c $(START_DIR)/rtGetInf.c $(START_DIR)/REDUCED_CODEGEN_REALTIME_loadAndTestModel_data.c $(START_DIR)/REDUCED_CODEGEN_REALTIME_loadAndTestModel_initialize.c $(START_DIR)/REDUCED_CODEGEN_REALTIME_loadAndTestModel_terminate.c $(START_DIR)/REDUCED_CODEGEN_REALTIME_loadAndTestModel.c $(START_DIR)/std.c $(START_DIR)/xnrm2.c $(START_DIR)/pca.c $(START_DIR)/xzsvdc.c $(START_DIR)/xdotc.c $(START_DIR)/xaxpy.c $(START_DIR)/xrotg.c $(START_DIR)/xrot.c $(START_DIR)/xswap.c $(START_DIR)/CompactClassificationTree.c
 
 ALL_SRCS = $(SRCS)
 
@@ -180,7 +180,7 @@ ALL_SRCS = $(SRCS)
 ## OBJECTS
 ###########################################################################
 
-OBJS = rt_nonfinite.o rtGetNaN.o rtGetInf.o REDUCED_CODEGEN_REALTIME_loadAndTestModel_data.o REDUCED_CODEGEN_REALTIME_loadAndTestModel_initialize.o REDUCED_CODEGEN_REALTIME_loadAndTestModel_terminate.o REDUCED_CODEGEN_REALTIME_loadAndTestModel.o Wstd.o CompactClassificationTree.o
+OBJS = rt_nonfinite.o rtGetNaN.o rtGetInf.o REDUCED_CODEGEN_REALTIME_loadAndTestModel_data.o REDUCED_CODEGEN_REALTIME_loadAndTestModel_initialize.o REDUCED_CODEGEN_REALTIME_loadAndTestModel_terminate.o REDUCED_CODEGEN_REALTIME_loadAndTestModel.o std.o xnrm2.o pca.o xzsvdc.o xdotc.o xaxpy.o xrotg.o xrot.o xswap.o CompactClassificationTree.o
 
 ALL_OBJS = $(OBJS)
 
@@ -339,7 +339,39 @@ REDUCED_CODEGEN_REALTIME_loadAndTestModel.o : $(START_DIR)/REDUCED_CODEGEN_REALT
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-Wstd.o : $(START_DIR)/Wstd.c
+std.o : $(START_DIR)/std.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xnrm2.o : $(START_DIR)/xnrm2.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+pca.o : $(START_DIR)/pca.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xzsvdc.o : $(START_DIR)/xzsvdc.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xdotc.o : $(START_DIR)/xdotc.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xaxpy.o : $(START_DIR)/xaxpy.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xrotg.o : $(START_DIR)/xrotg.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xrot.o : $(START_DIR)/xrot.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xswap.o : $(START_DIR)/xswap.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 

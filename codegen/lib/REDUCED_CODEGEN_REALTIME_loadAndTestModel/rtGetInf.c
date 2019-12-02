@@ -1,4 +1,18 @@
+/*
+ * Academic License - for use in teaching, academic research, and meeting
+ * course requirements at degree granting institutions only.  Not for
+ * government, commercial, or other organizational use.
+ *
+ * rtGetInf.c
+ *
+ * Code generation for function 'REDUCED_CODEGEN_REALTIME_loadAndTestModel'
+ *
+ */
 
+/*
+ * Abstract:
+ *       MATLAB for code generation function to initialize non-finite, Inf and MinusInf
+ */
 #include "rtGetInf.h"
 
 /* Function: rtGetInf ==================================================================

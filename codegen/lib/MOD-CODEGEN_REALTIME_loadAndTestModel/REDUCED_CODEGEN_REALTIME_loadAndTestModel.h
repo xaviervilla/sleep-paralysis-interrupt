@@ -19,9 +19,9 @@
 #include "REDUCED_CODEGEN_REALTIME_loadAndTestModel_types.h"
 
 /* Function Declarations */
-extern double REDUCED_CODEGEN_REALTIME_loadAndTestModel(const double
-  total_acc_x_test[8], const double total_acc_y_test[8], const double
-  total_acc_z_test[8]);
+extern void REDUCED_CODEGEN_REALTIME_loadAndTestModel(const double
+  total_acc_x_test[16], const double total_acc_y_test[16], const double
+  total_acc_z_test[16], double label[2]);
 
 #endif
 
