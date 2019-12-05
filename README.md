@@ -31,5 +31,7 @@ A machine learning classifier that detects sleep paralysis
  - [X] Reduce size of code for more stability
  - [ ] Record better accelerometer data for training and predicting
  - [X] Improve accuracy and reduce false alarms using some type of counter to measure confidence
- - [ ] Get more capable embedded controller, perhaps arduino mega or RPi zero
+ - [X] Get more capable embedded controller, perhaps arduino mega or RPi zero
+ - [ ] Enable low pass filtering in MPU6050 of 30 Hz and sample rate of 200hz
+ - [X] Set up interrupts to communicate with sensor through SPI instead of I2C
  - [ ] Recompile code with much better sample frequency for better predictions on better platform
