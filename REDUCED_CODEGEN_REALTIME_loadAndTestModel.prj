@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.coder" plugin-version="R2018b">
-  <configuration build-checksum="1402320677" file="/home/xvilla/Documents/2019fall/195/my classifier/REDUCED_CODEGEN_REALTIME_loadAndTestModel.prj" location="/home/xvilla/Documents/2019fall/195/my classifier" name="REDUCED_CODEGEN_REALTIME_loadAndTestModel" target="target.unifiedcoder" target-name="MATLAB Coder">
+  <configuration build-checksum="2157746684" file="/home/xvilla/Documents/2019fall/195/my classifier/REDUCED_CODEGEN_REALTIME_loadAndTestModel.prj" location="/home/xvilla/Documents/2019fall/195/my classifier" name="REDUCED_CODEGEN_REALTIME_loadAndTestModel" target="target.unifiedcoder" target-name="MATLAB Coder">
     <profile key="profile.mex">
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
       <param.RanInstrumentedMex>false</param.RanInstrumentedMex>
@@ -216,54 +216,54 @@
       <param.CodeReplacementLibrary>None</param.CodeReplacementLibrary>
       <param.DeprecatedCRLFlag>false</param.DeprecatedCRLFlag>
       <param.SameHardware>true</param.SameHardware>
-      <param.Toolchain>Automatically locate an installed toolchain</param.Toolchain>
+      <param.Toolchain>GNU Tools for ARM Embedded Processors</param.Toolchain>
       <param.BuildConfiguration>Faster Builds</param.BuildConfiguration>
       <param.CustomToolchainOptions />
       <var.ToolchainSettingsVisible>true</var.ToolchainSettingsVisible>
-      <param.target.Data>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;ctdata&gt;&lt;configuredHardware/&gt;&lt;/ctdata&gt;</param.target.Data>
-      <param.target.ActiveType>option.target.TargetType.Custom</param.target.ActiveType>
-      <param.target.ActiveTarget />
-      <param.HardwareVendor.Production>Atmel</param.HardwareVendor.Production>
-      <param.HardwareType.Production>AVR (8-bit)</param.HardwareType.Production>
-      <param.HWDeviceType.Production>Atmel-&gt;AVR (8-bit)</param.HWDeviceType.Production>
+      <param.target.Data>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;ctdata&gt;&lt;configuredHardware&gt;&lt;hardware version="1.0"&gt;&lt;name&gt;ARM Cortex-M3 (QEMU)&lt;/name&gt;&lt;customValues/&gt;&lt;/hardware&gt;&lt;/configuredHardware&gt;&lt;/ctdata&gt;</param.target.Data>
+      <param.target.ActiveType>option.target.TargetType.Target</param.target.ActiveType>
+      <param.target.ActiveTarget>ARM Cortex-M3 (QEMU)</param.target.ActiveTarget>
+      <param.HardwareVendor.Production>ARM Compatible</param.HardwareVendor.Production>
+      <param.HardwareType.Production>ARM Cortex</param.HardwareType.Production>
+      <param.HWDeviceType.Production>ARM Compatible-&gt;ARM Cortex</param.HWDeviceType.Production>
       <var.instance.enabled.Production>true</var.instance.enabled.Production>
       <param.HardwareSizeChar.Production>8</param.HardwareSizeChar.Production>
       <param.HardwareSizeShort.Production>16</param.HardwareSizeShort.Production>
-      <param.HardwareSizeInt.Production>16</param.HardwareSizeInt.Production>
+      <param.HardwareSizeInt.Production>32</param.HardwareSizeInt.Production>
       <param.HardwareSizeLong.Production>32</param.HardwareSizeLong.Production>
       <param.HardwareSizeLongLong.Production>64</param.HardwareSizeLongLong.Production>
       <param.HardwareSizeFloat.Production>32</param.HardwareSizeFloat.Production>
       <param.HardwareSizeDouble.Production>64</param.HardwareSizeDouble.Production>
-      <param.HardwareSizeWord.Production>16</param.HardwareSizeWord.Production>
-      <param.HardwareSizePointer.Production>16</param.HardwareSizePointer.Production>
-      <param.HardwareSizeSizeT.Production>16</param.HardwareSizeSizeT.Production>
-      <param.HardwareSizePtrDiffT.Production>16</param.HardwareSizePtrDiffT.Production>
+      <param.HardwareSizeWord.Production>32</param.HardwareSizeWord.Production>
+      <param.HardwareSizePointer.Production>32</param.HardwareSizePointer.Production>
+      <param.HardwareSizeSizeT.Production>32</param.HardwareSizeSizeT.Production>
+      <param.HardwareSizePtrDiffT.Production>32</param.HardwareSizePtrDiffT.Production>
       <param.HardwareEndianness.Production>option.HardwareEndianness.Little</param.HardwareEndianness.Production>
       <param.HardwareArithmeticRightShift.Production>true</param.HardwareArithmeticRightShift.Production>
       <param.HardwareLongLongMode.Production>false</param.HardwareLongLongMode.Production>
-      <param.HardwareAtomicIntegerSize.Production>option.HardwareAtomicIntegerSize.Char</param.HardwareAtomicIntegerSize.Production>
-      <param.HardwareAtomicFloatSize.Production>option.HardwareAtomicFloatSize.None</param.HardwareAtomicFloatSize.Production>
+      <param.HardwareAtomicIntegerSize.Production>option.HardwareAtomicIntegerSize.Long</param.HardwareAtomicIntegerSize.Production>
+      <param.HardwareAtomicFloatSize.Production>option.HardwareAtomicFloatSize.Double</param.HardwareAtomicFloatSize.Production>
       <param.HardwareDivisionRounding.Production>option.HardwareDivisionRounding.Zero</param.HardwareDivisionRounding.Production>
-      <param.HardwareVendor.Target>Atmel</param.HardwareVendor.Target>
-      <param.HardwareType.Target>AVR (8-bit)</param.HardwareType.Target>
-      <param.HWDeviceType.Target>Atmel-&gt;AVR (8-bit)</param.HWDeviceType.Target>
+      <param.HardwareVendor.Target>ARM Compatible</param.HardwareVendor.Target>
+      <param.HardwareType.Target>ARM Cortex</param.HardwareType.Target>
+      <param.HWDeviceType.Target>ARM Compatible-&gt;ARM Cortex</param.HWDeviceType.Target>
       <var.instance.enabled.Target>false</var.instance.enabled.Target>
       <param.HardwareSizeChar.Target>8</param.HardwareSizeChar.Target>
       <param.HardwareSizeShort.Target>16</param.HardwareSizeShort.Target>
-      <param.HardwareSizeInt.Target>16</param.HardwareSizeInt.Target>
+      <param.HardwareSizeInt.Target>32</param.HardwareSizeInt.Target>
       <param.HardwareSizeLong.Target>32</param.HardwareSizeLong.Target>
       <param.HardwareSizeLongLong.Target>64</param.HardwareSizeLongLong.Target>
       <param.HardwareSizeFloat.Target>32</param.HardwareSizeFloat.Target>
       <param.HardwareSizeDouble.Target>64</param.HardwareSizeDouble.Target>
-      <param.HardwareSizeWord.Target>16</param.HardwareSizeWord.Target>
-      <param.HardwareSizePointer.Target>16</param.HardwareSizePointer.Target>
-      <param.HardwareSizeSizeT.Target>16</param.HardwareSizeSizeT.Target>
-      <param.HardwareSizePtrDiffT.Target>16</param.HardwareSizePtrDiffT.Target>
+      <param.HardwareSizeWord.Target>32</param.HardwareSizeWord.Target>
+      <param.HardwareSizePointer.Target>32</param.HardwareSizePointer.Target>
+      <param.HardwareSizeSizeT.Target>32</param.HardwareSizeSizeT.Target>
+      <param.HardwareSizePtrDiffT.Target>32</param.HardwareSizePtrDiffT.Target>
       <param.HardwareEndianness.Target>option.HardwareEndianness.Little</param.HardwareEndianness.Target>
       <param.HardwareArithmeticRightShift.Target>true</param.HardwareArithmeticRightShift.Target>
       <param.HardwareLongLongMode.Target>false</param.HardwareLongLongMode.Target>
-      <param.HardwareAtomicIntegerSize.Target>option.HardwareAtomicIntegerSize.Char</param.HardwareAtomicIntegerSize.Target>
-      <param.HardwareAtomicFloatSize.Target>option.HardwareAtomicFloatSize.None</param.HardwareAtomicFloatSize.Target>
+      <param.HardwareAtomicIntegerSize.Target>option.HardwareAtomicIntegerSize.Long</param.HardwareAtomicIntegerSize.Target>
+      <param.HardwareAtomicFloatSize.Target>option.HardwareAtomicFloatSize.Double</param.HardwareAtomicFloatSize.Target>
       <param.HardwareDivisionRounding.Target>option.HardwareDivisionRounding.Zero</param.HardwareDivisionRounding.Target>
       <var.SuppressHardwareChange>false</var.SuppressHardwareChange>
       <param.CastingMode>option.CastingMode.Nominal</param.CastingMode>
@@ -300,7 +300,7 @@
       <param.CustomBLASCallback />
       <param.GenerateDefaultInSwitch>false</param.GenerateDefaultInSwitch>
       <param.EnableTraceability>true</param.EnableTraceability>
-      <param.UseECoderFeatures>false</param.UseECoderFeatures>
+      <param.UseECoderFeatures>true</param.UseECoderFeatures>
       <param.psCustomPrjState>false</param.psCustomPrjState>
       <param.psCustomProjectFile />
       <param.psCheckConfValue>option.psCheckConfValue.onWarnCheckConfDlg</param.psCheckConfValue>
@@ -399,35 +399,39 @@
         <param.CodeReplacementLibrary />
         <param.DeprecatedCRLFlag />
         <param.SameHardware />
-        <param.Toolchain />
         <param.BuildConfiguration />
         <param.CustomToolchainOptions />
         <var.ToolchainSettingsVisible />
-        <param.target.ActiveTarget />
         <param.HWDeviceType.Production />
         <var.instance.enabled.Production />
         <param.HardwareSizeChar.Production />
         <param.HardwareSizeShort.Production />
+        <param.HardwareSizeInt.Production />
         <param.HardwareSizeLong.Production />
         <param.HardwareSizeLongLong.Production />
         <param.HardwareSizeFloat.Production />
         <param.HardwareSizeDouble.Production />
+        <param.HardwareSizeWord.Production />
+        <param.HardwareSizePointer.Production />
+        <param.HardwareSizeSizeT.Production />
+        <param.HardwareSizePtrDiffT.Production />
         <param.HardwareEndianness.Production />
         <param.HardwareLongLongMode.Production />
-        <param.HardwareAtomicIntegerSize.Production />
-        <param.HardwareAtomicFloatSize.Production />
         <param.HWDeviceType.Target />
         <var.instance.enabled.Target />
         <param.HardwareSizeChar.Target />
         <param.HardwareSizeShort.Target />
+        <param.HardwareSizeInt.Target />
         <param.HardwareSizeLong.Target />
         <param.HardwareSizeLongLong.Target />
         <param.HardwareSizeFloat.Target />
         <param.HardwareSizeDouble.Target />
+        <param.HardwareSizeWord.Target />
+        <param.HardwareSizePointer.Target />
+        <param.HardwareSizeSizeT.Target />
+        <param.HardwareSizePtrDiffT.Target />
         <param.HardwareEndianness.Target />
         <param.HardwareLongLongMode.Target />
-        <param.HardwareAtomicIntegerSize.Target />
-        <param.HardwareAtomicFloatSize.Target />
         <var.SuppressHardwareChange />
         <param.CastingMode />
         <param.IndentStyle />
@@ -821,7 +825,7 @@
       </unset>
     </profile>
     <param.objective>option.objective.c</param.objective>
-    <param.WorkflowStep>workflowSummary</param.WorkflowStep>
+    <param.WorkflowStep>generateCode</param.WorkflowStep>
     <param.TestSnippets>
       <item>CODEGEN_allCode</item>
     </param.TestSnippets>
@@ -829,7 +833,7 @@
     <param.UseGlobals>option.UseGlobals.No</param.UseGlobals>
     <param.outputfile>${PROJECT_ROOT}/codegen/lib/REDUCED_CODEGEN_REALTIME_loadAndTestModel/REDUCED_CODEGEN_REALTIME_loadAndTestModel.a</param.outputfile>
     <param.version>R2012a</param.version>
-    <param.HasECoderFeatures>false</param.HasECoderFeatures>
+    <param.HasECoderFeatures>true</param.HasECoderFeatures>
     <param.HasGpuCoder>false</param.HasGpuCoder>
     <var.HasNeuralNetworkToolbox>true</var.HasNeuralNetworkToolbox>
     <param.mex.mainhtml />
@@ -842,7 +846,7 @@
     <param.AutoInferUnboundedSizeThreshold>2048</param.AutoInferUnboundedSizeThreshold>
     <param.EnableFixedPointStep>false</param.EnableFixedPointStep>
     <param.EnableScreener>true</param.EnableScreener>
-    <param.AnnotationChecksum>1413859952</param.AnnotationChecksum>
+    <param.AnnotationChecksum>3431695312</param.AnnotationChecksum>
     <var.LegacyTarget />
     <var.MirrorOnOpen>false</var.MirrorOnOpen>
     <param.FixedPointEnabled>false</param.FixedPointEnabled>
@@ -851,9 +855,9 @@
     <param.unifiedParamStorage />
     <var.gc.lastOutputRoot>codegen/lib/REDUCED_CODEGEN_REALTIME_loadAndTestModel</var.gc.lastOutputRoot>
     <var.gc.lastOutputType>C_CODE</var.gc.lastOutputType>
-    <var.gc.preBuildChecksum>916074894</var.gc.preBuildChecksum>
+    <var.gc.preBuildChecksum>1222183628</var.gc.preBuildChecksum>
     <var.cfi.lastOutputRoot>codegen/mex/REDUCED_CODEGEN_REALTIME_loadAndTestModel</var.cfi.lastOutputRoot>
-    <var.cfi.preBuildChecksum>2296994197</var.cfi.preBuildChecksum>
+    <var.cfi.preBuildChecksum>681149742</var.cfi.preBuildChecksum>
     <var.lastCfiTestSnippet>CODEGEN_allCode</var.lastCfiTestSnippet>
     <var.outdatedOnRestore>false</var.outdatedOnRestore>
     <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/REDUCED_CODEGEN_REALTIME_loadAndTestModel.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;3088550455&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
@@ -865,7 +869,7 @@
     <var.notGpuCoder>true</var.notGpuCoder>
     <var.boundToGui>true</var.boundToGui>
     <var.isConfigDialog>false</var.isConfigDialog>
-    <var.ecoderEnabled>false</var.ecoderEnabled>
+    <var.ecoderEnabled>true</var.ecoderEnabled>
     <param.mex.outputfile>REDUCED_CODEGEN_REALTIME_loadAndTestModel_mex</param.mex.outputfile>
     <param.grt.outputfile>REDUCED_CODEGEN_REALTIME_loadAndTestModel</param.grt.outputfile>
     <param.artifact>option.target.artifact.lib</param.artifact>
@@ -891,8 +895,8 @@
     <var.isDeepLearningForMatlabCoderEnabled>true</var.isDeepLearningForMatlabCoderEnabled>
     <param.deeplearning.TargetLib>option.deeplearning.targetlibrary.none</param.deeplearning.TargetLib>
     <var.cfiTargetLibSuppression>false</var.cfiTargetLibSuppression>
-    <var.hasMatlabDeepLearningSupportPackage>true</var.hasMatlabDeepLearningSupportPackage>
-    <var.hasGpuDeepLearningSupportPackage>true</var.hasGpuDeepLearningSupportPackage>
+    <var.hasMatlabDeepLearningSupportPackage>false</var.hasMatlabDeepLearningSupportPackage>
+    <var.hasGpuDeepLearningSupportPackage>false</var.hasGpuDeepLearningSupportPackage>
     <param.tensorrt.DataType>option.tensorrt.datatype.fp32</param.tensorrt.DataType>
     <param.tensorrt.DataPath />
     <param.tensorrt.NumCalibrationBatches>1</param.tensorrt.NumCalibrationBatches>
@@ -1003,8 +1007,6 @@
       <var.isDeepLearningForMatlabCoderEnabled />
       <param.deeplearning.TargetLib />
       <var.cfiTargetLibSuppression />
-      <var.hasMatlabDeepLearningSupportPackage />
-      <var.hasGpuDeepLearningSupportPackage />
       <param.tensorrt.DataType />
       <param.tensorrt.DataPath />
       <param.tensorrt.NumCalibrationBatches />
@@ -1061,7 +1063,7 @@
     </unset>
     <fileset.entrypoints>
       <file custom-data-expanded="false" value="${PROJECT_ROOT}/REDUCED_CODEGEN_REALTIME_loadAndTestModel.m">
-        <Marker>1575279732306</Marker>
+        <Marker>1575885251393</Marker>
       </file>
     </fileset.entrypoints>
     <fileset.testbench>
@@ -1076,7 +1078,7 @@
           <idpTable>
             <type typeId="0">
               <Class>double</Class>
-              <Size>2 x 8</Size>
+              <Size>4 x 32</Size>
               <Value />
               <InitialValue />
               <UserDefined>false</UserDefined>
@@ -1095,12 +1097,18 @@
       <root>/usr/local/MATLAB/R2019b</root>
       <toolboxes>
         <toolbox name="matlabcoder" />
+        <toolbox name="embeddedcoder" />
         <toolbox name="neuralnetwork" />
       </toolboxes>
       <toolbox>
         <matlabcoder>
           <enabled>true</enabled>
         </matlabcoder>
+      </toolbox>
+      <toolbox>
+        <embeddedcoder>
+          <enabled>true</enabled>
+        </embeddedcoder>
       </toolbox>
       <toolbox>
         <neuralnetwork>

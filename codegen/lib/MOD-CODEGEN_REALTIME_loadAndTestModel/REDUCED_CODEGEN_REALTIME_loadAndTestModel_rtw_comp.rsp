@@ -1,0 +1,10 @@
+-I/home/xvilla/Documents/2019fall/195/my\ classifier/codegen/lib/REDUCED_CODEGEN_REALTIME_loadAndTestModel
+-I/home/xvilla/Documents/2019fall/195/my\ classifier
+-I/home/xvilla/Documents/MATLAB/SupportPackages/R2019b/3P.instrset/cmsis.instrset/CMSIS/Include
+-I/home/xvilla/Documents/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arm_cortex_m/include
+-I/home/xvilla/Documents/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/armcortexmbase/scheduler/include
+-I/usr/local/MATLAB/R2019b/extern/include
+-I/usr/local/MATLAB/R2019b/simulink/include
+-I/usr/local/MATLAB/R2019b/rtw/c/src
+-I/usr/local/MATLAB/R2019b/rtw/c/src/ext_mode/common
+-I/usr/local/MATLAB/R2019b/rtw/c/ert

@@ -2,17 +2,16 @@
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
+ * File: REDUCED_CODEGEN_REALTIME_loadAndTestModel_initialize.h
  *
- * REDUCED_CODEGEN_REALTIME_loadAndTestModel_initialize.h
- *
- * Code generation for function 'REDUCED_CODEGEN_REALTIME_loadAndTestModel_initialize'
- *
+ * MATLAB Coder version            : 4.3
+ * C/C++ source code generated on  : 09-Dec-2019 01:55:25
  */
 
 #ifndef REDUCED_CODEGEN_REALTIME_LOADANDTESTMODEL_INITIALIZE_H
 #define REDUCED_CODEGEN_REALTIME_LOADANDTESTMODEL_INITIALIZE_H
 
-/* Include files */
+/* Include Files */
 #include <stddef.h>
 #include <stdlib.h>
 #include "rtwtypes.h"
@@ -23,4 +22,8 @@ extern void REDUCED_CODEGEN_REALTIME_loadAndTestModel_initialize(void);
 
 #endif
 
-/* End of code generation (REDUCED_CODEGEN_REALTIME_loadAndTestModel_initialize.h) */
+/*
+ * File trailer for REDUCED_CODEGEN_REALTIME_loadAndTestModel_initialize.h
+ *
+ * [EOF]
+ */

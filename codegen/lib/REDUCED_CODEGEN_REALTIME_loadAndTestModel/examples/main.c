@@ -2,11 +2,10 @@
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
+ * File: main.c
  *
- * main.c
- *
- * Code generation for function 'main'
- *
+ * MATLAB Coder version            : 4.3
+ * C/C++ source code generated on  : 09-Dec-2019 01:55:25
  */
 
 /*************************************************************************/
@@ -34,46 +33,59 @@
 /*                                                                       */
 /*************************************************************************/
 
-/* Include files */
+/* Include Files */
 #include "main.h"
 #include "REDUCED_CODEGEN_REALTIME_loadAndTestModel.h"
 #include "REDUCED_CODEGEN_REALTIME_loadAndTestModel_terminate.h"
 #include "rt_nonfinite.h"
 
 /* Function Declarations */
-static void argInit_2x8_real_T(double result[16]);
+static void argInit_4x32_real_T(double result[128]);
 static double argInit_real_T(void);
 static void main_REDUCED_CODEGEN_REALTIME_loadAndTestModel(void);
 
 /* Function Definitions */
-static void argInit_2x8_real_T(double result[16])
+
+/*
+ * Arguments    : double result[128]
+ * Return Type  : void
+ */
+static void argInit_4x32_real_T(double result[128])
 {
   int idx0;
   int idx1;
 
   /* Loop over the array to initialize each element. */
-  for (idx0 = 0; idx0 < 2; idx0++) {
-    for (idx1 = 0; idx1 < 8; idx1++) {
+  for (idx0 = 0; idx0 < 4; idx0++) {
+    for (idx1 = 0; idx1 < 32; idx1++) {
       /* Set the value of the array element.
          Change this value to the value that the application requires. */
-      result[idx0 + (idx1 << 1)] = argInit_real_T();
+      result[idx0 + (idx1 << 2)] = argInit_real_T();
     }
   }
 }
 
+/*
+ * Arguments    : void
+ * Return Type  : double
+ */
 static double argInit_real_T(void)
 {
   return 0.0;
 }
 
+/*
+ * Arguments    : void
+ * Return Type  : void
+ */
 static void main_REDUCED_CODEGEN_REALTIME_loadAndTestModel(void)
 {
-  double total_acc_x_test_tmp_tmp[16];
-  double label[2];
+  double total_acc_x_test_tmp_tmp[128];
+  double label[4];
 
   /* Initialize function 'REDUCED_CODEGEN_REALTIME_loadAndTestModel' input arguments. */
   /* Initialize function input argument 'total_acc_x_test'. */
-  argInit_2x8_real_T(total_acc_x_test_tmp_tmp);
+  argInit_4x32_real_T(total_acc_x_test_tmp_tmp);
 
   /* Initialize function input argument 'total_acc_y_test'. */
   /* Initialize function input argument 'total_acc_z_test'. */
@@ -82,6 +94,11 @@ static void main_REDUCED_CODEGEN_REALTIME_loadAndTestModel(void)
     total_acc_x_test_tmp_tmp, total_acc_x_test_tmp_tmp, label);
 }
 
+/*
+ * Arguments    : int argc
+ *                const char * const argv[]
+ * Return Type  : int
+ */
 int main(int argc, const char * const argv[])
 {
   (void)argc;
@@ -98,4 +115,8 @@ int main(int argc, const char * const argv[])
   return 0;
 }
 
-/* End of code generation (main.c) */
+/*
+ * File trailer for main.c
+ *
+ * [EOF]
+ */

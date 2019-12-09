@@ -2,20 +2,28 @@
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
+ * File: xrot.c
  *
- * xrot.c
- *
- * Code generation for function 'xrot'
- *
+ * MATLAB Coder version            : 4.3
+ * C/C++ source code generated on  : 09-Dec-2019 01:55:25
  */
 
-/* Include files */
+/* Include Files */
 #include "xrot.h"
 #include "REDUCED_CODEGEN_REALTIME_loadAndTestModel.h"
 #include "rt_nonfinite.h"
 
 /* Function Definitions */
-void b_xrot(double x[4], int ix0, int iy0, double c, double s)
+
+/*
+ * Arguments    : double x[16]
+ *                int ix0
+ *                int iy0
+ *                double c
+ *                double s
+ * Return Type  : void
+ */
+void b_xrot(double x[16], int ix0, int iy0, double c, double s)
 {
   int ix;
   int iy;
@@ -30,8 +38,27 @@ void b_xrot(double x[4], int ix0, int iy0, double c, double s)
   temp = c * x[ix] + s * x[iy];
   x[iy] = c * x[iy] - s * x[ix];
   x[ix] = temp;
+  iy++;
+  ix++;
+  temp = c * x[ix] + s * x[iy];
+  x[iy] = c * x[iy] - s * x[ix];
+  x[ix] = temp;
+  iy++;
+  ix++;
+  temp = c * x[ix] + s * x[iy];
+  x[iy] = c * x[iy] - s * x[ix];
+  x[ix] = temp;
 }
 
+/*
+ * Arguments    : int n
+ *                double x_data[]
+ *                int ix0
+ *                int iy0
+ *                double c
+ *                double s
+ * Return Type  : void
+ */
 void c_xrot(int n, double x_data[], int ix0, int iy0, double c, double s)
 {
   int ix;
@@ -51,7 +78,15 @@ void c_xrot(int n, double x_data[], int ix0, int iy0, double c, double s)
   }
 }
 
-void xrot(double x[64], int ix0, int iy0, double c, double s)
+/*
+ * Arguments    : double x[1024]
+ *                int ix0
+ *                int iy0
+ *                double c
+ *                double s
+ * Return Type  : void
+ */
+void xrot(double x[1024], int ix0, int iy0, double c, double s)
 {
   int ix;
   int iy;
@@ -59,7 +94,7 @@ void xrot(double x[64], int ix0, int iy0, double c, double s)
   double temp;
   ix = ix0 - 1;
   iy = iy0 - 1;
-  for (k = 0; k < 8; k++) {
+  for (k = 0; k < 32; k++) {
     temp = c * x[ix] + s * x[iy];
     x[iy] = c * x[iy] - s * x[ix];
     x[ix] = temp;
@@ -68,4 +103,8 @@ void xrot(double x[64], int ix0, int iy0, double c, double s)
   }
 }
 
-/* End of code generation (xrot.c) */
+/*
+ * File trailer for xrot.c
+ *
+ * [EOF]
+ */

@@ -2,20 +2,27 @@
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
+ * File: xrotg.c
  *
- * xrotg.c
- *
- * Code generation for function 'xrotg'
- *
+ * MATLAB Coder version            : 4.3
+ * C/C++ source code generated on  : 09-Dec-2019 01:55:25
  */
 
-/* Include files */
+/* Include Files */
 #include "xrotg.h"
 #include "REDUCED_CODEGEN_REALTIME_loadAndTestModel.h"
 #include "rt_nonfinite.h"
 #include <math.h>
 
 /* Function Definitions */
+
+/*
+ * Arguments    : double *a
+ *                double *b
+ *                double *c
+ *                double *s
+ * Return Type  : void
+ */
 void xrotg(double *a, double *b, double *c, double *s)
 {
   double roe;
@@ -59,4 +66,8 @@ void xrotg(double *a, double *b, double *c, double *s)
   }
 }
 
-/* End of code generation (xrotg.c) */
+/*
+ * File trailer for xrotg.c
+ *
+ * [EOF]
+ */

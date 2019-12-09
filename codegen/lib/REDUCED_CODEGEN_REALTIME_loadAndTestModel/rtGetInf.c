@@ -2,11 +2,10 @@
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
+ * File: rtGetInf.c
  *
- * rtGetInf.c
- *
- * Code generation for function 'REDUCED_CODEGEN_REALTIME_loadAndTestModel'
- *
+ * MATLAB Coder version            : 4.3
+ * C/C++ source code generated on  : 09-Dec-2019 01:55:25
  */
 
 /*
@@ -51,4 +50,8 @@ real32_T rtGetMinusInfF(void)
   return rtMinusInfF;
 }
 
-/* End of code generation (rtGetInf.c) */
+/*
+ * File trailer for rtGetInf.c
+ *
+ * [EOF]
+ */

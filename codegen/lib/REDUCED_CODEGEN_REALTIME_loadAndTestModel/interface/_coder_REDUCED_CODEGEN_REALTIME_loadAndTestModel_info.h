@@ -2,17 +2,16 @@
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
+ * File: _coder_REDUCED_CODEGEN_REALTIME_loadAndTestModel_info.h
  *
- * _coder_REDUCED_CODEGEN_REALTIME_loadAndTestModel_info.h
- *
- * Code generation for function '_coder_REDUCED_CODEGEN_REALTIME_loadAndTestModel_info'
- *
+ * MATLAB Coder version            : 4.3
+ * C/C++ source code generated on  : 09-Dec-2019 01:55:25
  */
 
 #ifndef _CODER_REDUCED_CODEGEN_REALTIME_LOADANDTESTMODEL_INFO_H
 #define _CODER_REDUCED_CODEGEN_REALTIME_LOADANDTESTMODEL_INFO_H
 
-/* Include files */
+/* Include Files */
 #include "mex.h"
 
 /* Function Declarations */
@@ -20,4 +19,8 @@ MEXFUNCTION_LINKAGE mxArray *emlrtMexFcnProperties(void);
 
 #endif
 
-/* End of code generation (_coder_REDUCED_CODEGEN_REALTIME_loadAndTestModel_info.h) */
+/*
+ * File trailer for _coder_REDUCED_CODEGEN_REALTIME_loadAndTestModel_info.h
+ *
+ * [EOF]
+ */

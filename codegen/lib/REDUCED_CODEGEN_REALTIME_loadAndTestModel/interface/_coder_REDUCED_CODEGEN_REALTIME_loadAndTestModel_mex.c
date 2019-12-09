@@ -2,14 +2,13 @@
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
+ * File: _coder_REDUCED_CODEGEN_REALTIME_loadAndTestModel_mex.c
  *
- * _coder_REDUCED_CODEGEN_REALTIME_loadAndTestModel_mex.c
- *
- * Code generation for function '_coder_REDUCED_CODEGEN_REALTIME_loadAndTestModel_mex'
- *
+ * MATLAB Coder version            : 4.3
+ * C/C++ source code generated on  : 09-Dec-2019 01:55:25
  */
 
-/* Include files */
+/* Include Files */
 #include "_coder_REDUCED_CODEGEN_REALTIME_loadAndTestModel_mex.h"
 #include "_coder_REDUCED_CODEGEN_REALTIME_loadAndTestModel_api.h"
 
@@ -18,6 +17,14 @@ MEXFUNCTION_LINKAGE void c_REDUCED_CODEGEN_REALTIME_load(int32_T nlhs, mxArray
   *plhs[1], int32_T nrhs, const mxArray *prhs[3]);
 
 /* Function Definitions */
+
+/*
+ * Arguments    : int32_T nlhs
+ *                mxArray *plhs[1]
+ *                int32_T nrhs
+ *                const mxArray *prhs[3]
+ * Return Type  : void
+ */
 void c_REDUCED_CODEGEN_REALTIME_load(int32_T nlhs, mxArray *plhs[1], int32_T
   nrhs, const mxArray *prhs[3])
 {
@@ -47,6 +54,13 @@ void c_REDUCED_CODEGEN_REALTIME_load(int32_T nlhs, mxArray *plhs[1], int32_T
   emlrtReturnArrays(1, plhs, outputs);
 }
 
+/*
+ * Arguments    : int32_T nlhs
+ *                mxArray *plhs[]
+ *                int32_T nrhs
+ *                const mxArray *prhs[]
+ * Return Type  : void
+ */
 void mexFunction(int32_T nlhs, mxArray *plhs[], int32_T nrhs, const mxArray
                  *prhs[])
 {
@@ -62,10 +76,18 @@ void mexFunction(int32_T nlhs, mxArray *plhs[], int32_T nrhs, const mxArray
   REDUCED_CODEGEN_REALTIME_loadAndTestModel_terminate();
 }
 
+/*
+ * Arguments    : void
+ * Return Type  : emlrtCTX
+ */
 emlrtCTX mexFunctionCreateRootTLS(void)
 {
   emlrtCreateRootTLS(&emlrtRootTLSGlobal, &emlrtContextGlobal, NULL, 1);
   return emlrtRootTLSGlobal;
 }
 
-/* End of code generation (_coder_REDUCED_CODEGEN_REALTIME_loadAndTestModel_mex.c) */
+/*
+ * File trailer for _coder_REDUCED_CODEGEN_REALTIME_loadAndTestModel_mex.c
+ *
+ * [EOF]
+ */

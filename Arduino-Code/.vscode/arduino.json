@@ -1,0 +1,6 @@
+{
+    "programmer": "AVRISP mkII",
+    "port": "/dev/ttyACM0",
+    "board": "arduino:avr:esplora",
+    "sketch": "sleep-paralysis-interrupt/sleep-paralysis-interrupt.ino"
+}

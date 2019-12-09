@@ -2,11 +2,10 @@
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
+ * File: rt_nonfinite.c
  *
- * rt_nonfinite.c
- *
- * Code generation for function 'REDUCED_CODEGEN_REALTIME_loadAndTestModel'
- *
+ * MATLAB Coder version            : 4.3
+ * C/C++ source code generated on  : 09-Dec-2019 01:55:25
  */
 
 /*
@@ -90,4 +89,8 @@ boolean_T rtIsNaNF(real32_T value)
   return (isnan((real_T)value) ? 1U : 0U);
 }
 
-/* End of code generation (rt_nonfinite.c) */
+/*
+ * File trailer for rt_nonfinite.c
+ *
+ * [EOF]
+ */

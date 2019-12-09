@@ -2,21 +2,27 @@
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
+ * File: xnrm2.c
  *
- * xnrm2.c
- *
- * Code generation for function 'xnrm2'
- *
+ * MATLAB Coder version            : 4.3
+ * C/C++ source code generated on  : 09-Dec-2019 01:55:25
  */
 
-/* Include files */
+/* Include Files */
 #include "xnrm2.h"
 #include "REDUCED_CODEGEN_REALTIME_loadAndTestModel.h"
 #include "rt_nonfinite.h"
 #include <math.h>
 
 /* Function Definitions */
-double b_xnrm2(int n, const double x[8], int ix0)
+
+/*
+ * Arguments    : int n
+ *                const double x[32]
+ *                int ix0
+ * Return Type  : double
+ */
+double b_xnrm2(int n, const double x[32], int ix0)
 {
   double y;
   double scale;
@@ -42,6 +48,12 @@ double b_xnrm2(int n, const double x[8], int ix0)
   return scale * sqrt(y);
 }
 
+/*
+ * Arguments    : int n
+ *                const double x_data[]
+ *                int ix0
+ * Return Type  : double
+ */
 double c_xnrm2(int n, const double x_data[], int ix0)
 {
   double y;
@@ -56,7 +68,7 @@ double c_xnrm2(int n, const double x_data[], int ix0)
       y = fabs(x_data[ix0 - 1]);
     } else {
       scale = 3.3121686421112381E-170;
-      kend = ix0 + 1;
+      kend = (ix0 + n) - 1;
       for (k = ix0; k <= kend; k++) {
         absxk = fabs(x_data[k - 1]);
         if (absxk > scale) {
@@ -76,7 +88,13 @@ double c_xnrm2(int n, const double x_data[], int ix0)
   return y;
 }
 
-double xnrm2(int n, const double x[16], int ix0)
+/*
+ * Arguments    : int n
+ *                const double x[128]
+ *                int ix0
+ * Return Type  : double
+ */
+double xnrm2(int n, const double x[128], int ix0)
 {
   double y;
   double scale;
@@ -89,7 +107,7 @@ double xnrm2(int n, const double x[16], int ix0)
     y = fabs(x[ix0 - 1]);
   } else {
     scale = 3.3121686421112381E-170;
-    kend = ix0 + 1;
+    kend = (ix0 + n) - 1;
     for (k = ix0; k <= kend; k++) {
       absxk = fabs(x[k - 1]);
       if (absxk > scale) {
@@ -108,4 +126,8 @@ double xnrm2(int n, const double x[16], int ix0)
   return y;
 }
 
-/* End of code generation (xnrm2.c) */
+/*
+ * File trailer for xnrm2.c
+ *
+ * [EOF]
+ */
