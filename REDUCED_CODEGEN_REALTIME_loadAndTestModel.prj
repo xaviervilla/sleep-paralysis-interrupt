@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.coder" plugin-version="R2018b">
-  <configuration build-checksum="2157746684" file="/home/xvilla/Documents/2019fall/195/my classifier/REDUCED_CODEGEN_REALTIME_loadAndTestModel.prj" location="/home/xvilla/Documents/2019fall/195/my classifier" name="REDUCED_CODEGEN_REALTIME_loadAndTestModel" target="target.unifiedcoder" target-name="MATLAB Coder">
+  <configuration build-checksum="2785401815" file="/home/xvilla/Documents/2019fall/195/my classifier/REDUCED_CODEGEN_REALTIME_loadAndTestModel.prj" location="/home/xvilla/Documents/2019fall/195/my classifier" name="REDUCED_CODEGEN_REALTIME_loadAndTestModel" target="target.unifiedcoder" target-name="MATLAB Coder">
     <profile key="profile.mex">
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
       <param.RanInstrumentedMex>false</param.RanInstrumentedMex>
@@ -825,7 +825,7 @@
       </unset>
     </profile>
     <param.objective>option.objective.c</param.objective>
-    <param.WorkflowStep>generateCode</param.WorkflowStep>
+    <param.WorkflowStep>workflowSummary</param.WorkflowStep>
     <param.TestSnippets>
       <item>CODEGEN_allCode</item>
     </param.TestSnippets>
@@ -846,7 +846,7 @@
     <param.AutoInferUnboundedSizeThreshold>2048</param.AutoInferUnboundedSizeThreshold>
     <param.EnableFixedPointStep>false</param.EnableFixedPointStep>
     <param.EnableScreener>true</param.EnableScreener>
-    <param.AnnotationChecksum>3431695312</param.AnnotationChecksum>
+    <param.AnnotationChecksum>2807760746</param.AnnotationChecksum>
     <var.LegacyTarget />
     <var.MirrorOnOpen>false</var.MirrorOnOpen>
     <param.FixedPointEnabled>false</param.FixedPointEnabled>
@@ -855,12 +855,12 @@
     <param.unifiedParamStorage />
     <var.gc.lastOutputRoot>codegen/lib/REDUCED_CODEGEN_REALTIME_loadAndTestModel</var.gc.lastOutputRoot>
     <var.gc.lastOutputType>C_CODE</var.gc.lastOutputType>
-    <var.gc.preBuildChecksum>1222183628</var.gc.preBuildChecksum>
+    <var.gc.preBuildChecksum>1849706727</var.gc.preBuildChecksum>
     <var.cfi.lastOutputRoot>codegen/mex/REDUCED_CODEGEN_REALTIME_loadAndTestModel</var.cfi.lastOutputRoot>
-    <var.cfi.preBuildChecksum>681149742</var.cfi.preBuildChecksum>
+    <var.cfi.preBuildChecksum>234931973</var.cfi.preBuildChecksum>
     <var.lastCfiTestSnippet>CODEGEN_allCode</var.lastCfiTestSnippet>
     <var.outdatedOnRestore>false</var.outdatedOnRestore>
-    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/REDUCED_CODEGEN_REALTIME_loadAndTestModel.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;3088550455&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
+    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/REDUCED_CODEGEN_REALTIME_loadAndTestModel.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;1462952786&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
     <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/REDUCED_CODEGEN_REALTIME_loadAndTestModel.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
     <param.forceMexBuild>false</param.forceMexBuild>
     <param.NoDefaultJIT>false</param.NoDefaultJIT>
@@ -895,8 +895,8 @@
     <var.isDeepLearningForMatlabCoderEnabled>true</var.isDeepLearningForMatlabCoderEnabled>
     <param.deeplearning.TargetLib>option.deeplearning.targetlibrary.none</param.deeplearning.TargetLib>
     <var.cfiTargetLibSuppression>false</var.cfiTargetLibSuppression>
-    <var.hasMatlabDeepLearningSupportPackage>false</var.hasMatlabDeepLearningSupportPackage>
-    <var.hasGpuDeepLearningSupportPackage>false</var.hasGpuDeepLearningSupportPackage>
+    <var.hasMatlabDeepLearningSupportPackage>true</var.hasMatlabDeepLearningSupportPackage>
+    <var.hasGpuDeepLearningSupportPackage>true</var.hasGpuDeepLearningSupportPackage>
     <param.tensorrt.DataType>option.tensorrt.datatype.fp32</param.tensorrt.DataType>
     <param.tensorrt.DataPath />
     <param.tensorrt.NumCalibrationBatches>1</param.tensorrt.NumCalibrationBatches>
@@ -1007,6 +1007,8 @@
       <var.isDeepLearningForMatlabCoderEnabled />
       <param.deeplearning.TargetLib />
       <var.cfiTargetLibSuppression />
+      <var.hasMatlabDeepLearningSupportPackage />
+      <var.hasGpuDeepLearningSupportPackage />
       <param.tensorrt.DataType />
       <param.tensorrt.DataPath />
       <param.tensorrt.NumCalibrationBatches />
@@ -1063,7 +1065,7 @@
     </unset>
     <fileset.entrypoints>
       <file custom-data-expanded="false" value="${PROJECT_ROOT}/REDUCED_CODEGEN_REALTIME_loadAndTestModel.m">
-        <Marker>1575885251393</Marker>
+        <Marker>1576123499807</Marker>
       </file>
     </fileset.entrypoints>
     <fileset.testbench>

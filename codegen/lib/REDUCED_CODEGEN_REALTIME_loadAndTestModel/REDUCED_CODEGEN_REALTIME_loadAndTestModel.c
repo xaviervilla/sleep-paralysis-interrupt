@@ -5,7 +5,7 @@
  * File: REDUCED_CODEGEN_REALTIME_loadAndTestModel.c
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 09-Dec-2019 01:55:25
+ * C/C++ source code generated on  : 11-Dec-2019 20:06:08
  */
 
 /* Include Files */
@@ -40,21 +40,28 @@ void REDUCED_CODEGEN_REALTIME_loadAndTestModel(const double total_acc_x_test[128
   int T_wpca1_acc_x_size[2];
   double T_wpca1_acc_y_data[12];
   double T_wpca1_acc_z_data[12];
+  int i;
+  creal_T b_y1[4];
+  double b[128];
+  int i1;
+  creal_T c_y1[4];
+  double SVM_CutPredictorIndex[9];
+  double SVM_Children[18];
+  double SVM_CutPoint[9];
+  double SVM_PruneList_data[9];
+  int SVM_PruneList_size[1];
+  bool SVM_NanCutPoints[9];
+  bool expl_temp[9];
   double SVM_ClassNames[2];
-  double SVM_PruneList_data[3];
-  double dv[4];
+  c_classreg_learning_coderutils_ b_expl_temp;
+  double c_expl_temp[2];
+  bool d_expl_temp[2];
   double SVM_Cost[4];
-  double b_I[24];
+  double SVM_ClassProbability[18];
+  double dv[4];
   double dv1[4];
-  static const double SVM_Children[6] = { 2.0, 3.0, 0.0, 0.0, 0.0, 0.0 };
-
-  static const double SVM_CutPoint[3] = { 4865.8001042878095, 0.0, 0.0 };
-
-  static const bool SVM_NanCutPoints[3] = { false, true, true };
-
-  static const double SVM_ClassProbability[6] = { 0.87547169811320757,
-    0.95473251028806583, 0.0, 0.12452830188679245, 0.045267489711934158, 1.0 };
-
+  double dv2[4];
+  double dv3[36];
   if (isInitialized_REDUCED_CODEGEN_REALTIME_loadAndTestModel == false) {
     REDUCED_CODEGEN_REALTIME_loadAndTestModel_initialize();
   }
@@ -68,47 +75,82 @@ void REDUCED_CODEGEN_REALTIME_loadAndTestModel(const double total_acc_x_test[128
   pca(total_acc_z_test, unusedU0_data, unusedU0_size, T_wpca1_acc_z_data,
       T_wpca1_acc_x_size);
 
+  /*  Calculate std of all samples for each channel */
+  for (i = 0; i < 4; i++) {
+    for (i1 = 0; i1 < 32; i1++) {
+      b[i1 + (i << 5)] = total_acc_x_test[i + (i1 << 2)];
+    }
+  }
+
+  b_y1[0].re = b[0];
+  b_y1[1].re = b[32];
+  b_y1[2].re = b[64];
+  b_y1[3].re = b[96];
+  for (i = 0; i < 4; i++) {
+    for (i1 = 0; i1 < 32; i1++) {
+      b[i1 + (i << 5)] = total_acc_y_test[i + (i1 << 2)];
+    }
+  }
+
+  c_y1[0].re = b[0];
+  c_y1[1].re = b[32];
+  c_y1[2].re = b[64];
+  c_y1[3].re = b[96];
+  for (i = 0; i < 4; i++) {
+    for (i1 = 0; i1 < 32; i1++) {
+      b[i1 + (i << 5)] = total_acc_z_test[i + (i1 << 2)];
+    }
+  }
+
   /*  Create a matrix of all the features */
-  SVM_ClassNames[0] = 0.0;
-  SVM_ClassNames[1] = 1.0;
-  SVM_PruneList_data[0] = 1.0;
-  SVM_PruneList_data[1] = 0.0;
-  SVM_PruneList_data[2] = 0.0;
+  c_CompactClassificationTree_Com(SVM_CutPredictorIndex, SVM_Children,
+    SVM_CutPoint, SVM_PruneList_data, SVM_PruneList_size, SVM_NanCutPoints,
+    expl_temp, SVM_ClassNames, T_wpca1_acc_x_size, &b_expl_temp, c_expl_temp,
+    d_expl_temp, SVM_Cost, SVM_ClassProbability);
 
   /*  Create a label of predictions */
   b_std(total_acc_x_test, dv);
-  SVM_Cost[0] = 0.0;
-  b_I[0] = dv[0];
-  SVM_Cost[1] = 1.0;
-  b_I[1] = dv[1];
-  SVM_Cost[2] = 1.0;
-  b_I[2] = dv[2];
-  SVM_Cost[3] = 0.0;
-  b_I[3] = dv[3];
-  b_std(total_acc_y_test, dv);
-  b_std(total_acc_z_test, dv1);
-  b_I[4] = dv[0];
-  b_I[8] = dv1[0];
-  b_I[12] = T_wpca1_acc_x_data[0];
-  b_I[16] = T_wpca1_acc_y_data[0];
-  b_I[20] = T_wpca1_acc_z_data[0];
-  b_I[5] = dv[1];
-  b_I[9] = dv1[1];
-  b_I[13] = T_wpca1_acc_x_data[1];
-  b_I[17] = T_wpca1_acc_y_data[1];
-  b_I[21] = T_wpca1_acc_z_data[1];
-  b_I[6] = dv[2];
-  b_I[10] = dv1[2];
-  b_I[14] = T_wpca1_acc_x_data[2];
-  b_I[18] = T_wpca1_acc_y_data[2];
-  b_I[22] = T_wpca1_acc_z_data[2];
-  b_I[7] = dv[3];
-  b_I[11] = dv1[3];
-  b_I[15] = T_wpca1_acc_x_data[3];
-  b_I[19] = T_wpca1_acc_y_data[3];
-  b_I[23] = T_wpca1_acc_z_data[3];
-  c_CompactClassificationTree_pre(SVM_Children, SVM_CutPoint, SVM_PruneList_data,
-    SVM_NanCutPoints, SVM_ClassNames, SVM_Cost, SVM_ClassProbability, b_I, label);
+  b_std(total_acc_y_test, dv1);
+  b_std(total_acc_z_test, dv2);
+  dv3[0] = dv[0];
+  dv3[4] = dv1[0];
+  dv3[8] = dv2[0];
+  dv3[12] = T_wpca1_acc_x_data[0];
+  dv3[16] = T_wpca1_acc_y_data[0];
+  dv3[20] = T_wpca1_acc_z_data[0];
+  dv3[24] = b_y1[0].re;
+  dv3[28] = c_y1[0].re;
+  dv3[32] = b[0];
+  dv3[1] = dv[1];
+  dv3[5] = dv1[1];
+  dv3[9] = dv2[1];
+  dv3[13] = T_wpca1_acc_x_data[1];
+  dv3[17] = T_wpca1_acc_y_data[1];
+  dv3[21] = T_wpca1_acc_z_data[1];
+  dv3[25] = b_y1[1].re;
+  dv3[29] = c_y1[1].re;
+  dv3[33] = b[32];
+  dv3[2] = dv[2];
+  dv3[6] = dv1[2];
+  dv3[10] = dv2[2];
+  dv3[14] = T_wpca1_acc_x_data[2];
+  dv3[18] = T_wpca1_acc_y_data[2];
+  dv3[22] = T_wpca1_acc_z_data[2];
+  dv3[26] = b_y1[2].re;
+  dv3[30] = c_y1[2].re;
+  dv3[34] = b[64];
+  dv3[3] = dv[3];
+  dv3[7] = dv1[3];
+  dv3[11] = dv2[3];
+  dv3[15] = T_wpca1_acc_x_data[3];
+  dv3[19] = T_wpca1_acc_y_data[3];
+  dv3[23] = T_wpca1_acc_z_data[3];
+  dv3[27] = b_y1[3].re;
+  dv3[31] = c_y1[3].re;
+  dv3[35] = b[96];
+  c_CompactClassificationTree_pre(SVM_CutPredictorIndex, SVM_Children,
+    SVM_CutPoint, SVM_PruneList_data, SVM_NanCutPoints, SVM_ClassNames, SVM_Cost,
+    SVM_ClassProbability, dv3, label);
 }
 
 /*

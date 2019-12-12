@@ -8,8 +8,9 @@ rawSensorDataTrain = table( total_acc_x_train, total_acc_y_train, total_acc_z_tr
 %T_mean = varfun(@Wmean, rawSensorDataTrain);
 T_stdv = varfun(@Wstd,rawSensorDataTrain);
 T_pca  = varfun(@Wpca1,rawSensorDataTrain);
+T_fft = varfun(@Wfft, rawSensorDataTrain);
 
-humanActivityData = [T_stdv, T_pca];
+humanActivityData = [T_stdv, T_pca, T_fft];
 
 humanActivityData.activity = trainActivity;
 

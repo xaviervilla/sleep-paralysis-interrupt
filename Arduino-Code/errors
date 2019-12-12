@@ -1,0 +1,20 @@
+Arduino: 1.8.10 (Linux), TD: 1.48, Board: "Teensy 3.2 / 3.1, Serial, 96 MHz (overclock), Faster, US English"
+
+/home/xvilla/Documents/2019fall/195/my classifier/Arduino-Code/sleep-paralysis-interrupt/sleep-paralysis-interrupt.ino: In function 'void loop()':
+/home/xvilla/Documents/2019fall/195/my classifier/Arduino-Code/sleep-paralysis-interrupt/sleep-paralysis-interrupt.ino:184:33: error: too many arguments to function 'int allTrue()'
+                 if(allTrue(label)){
+                                 ^
+/home/xvilla/Documents/2019fall/195/my classifier/Arduino-Code/sleep-paralysis-interrupt/sleep-paralysis-interrupt.ino:58:5: note: declared here
+ int allTrue(){
+     ^
+Multiple libraries were found for "REDUCED_CODEGEN_REALTIME_loadAndTestModel.h"
+ Used: /home/xvilla/Arduino/libraries/CODEGEN_REALTIME_loadAndTestModel
+Multiple libraries were found for "MPU6050_6Axis_MotionApps_V6_12.h"
+ Used: /home/xvilla/Arduino/libraries/MPU6050-0.0.2
+Multiple libraries were found for "Wire.h"
+ Used: /home/xvilla/arduino-1.8.10/hardware/teensy/avr/libraries/Wire
+Error compiling for board Teensy 3.2 / 3.1.
+
+This report would have more information with
+"Show verbose output during compilation"
+option enabled in File -> Preferences.
