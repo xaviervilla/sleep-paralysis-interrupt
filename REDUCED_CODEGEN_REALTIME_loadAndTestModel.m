@@ -22,8 +22,8 @@ function label = REDUCED_CODEGEN_REALTIME_loadAndTestModel(total_acc_x_test, tot
     
     % Create a matrix of all the features
     SVM = loadLearnerForCoder('myLearnerForCoder');
-    ans = [T_std_acc_x, T_std_acc_y, T_std_acc_z, T_wpca1_acc_x(:,1), T_wpca1_acc_y(:,1), T_wpca1_acc_z(:,1), T_fft_acc_x(:,1), T_fft_acc_y(:,1), T_fft_acc_z(:,1) ];
+    ans = [T_std_acc_x, T_std_acc_y, T_std_acc_z, T_wpca1_acc_x, T_wpca1_acc_y, T_wpca1_acc_z, T_fft_acc_x(:,1), T_fft_acc_y(:,1), T_fft_acc_z(:,1) ];
     % Create a label of predictions
-    label = predict(SVM,[T_std_acc_x, T_std_acc_y, T_std_acc_z, T_wpca1_acc_x(:,1), T_wpca1_acc_y(:,1), T_wpca1_acc_z(:,1), T_fft_acc_x(:,1), T_fft_acc_y(:,1), T_fft_acc_z(:,1) ]);
+    label = predict(SVM,[T_std_acc_x, T_std_acc_y, T_std_acc_z, T_wpca1_acc_x(:), T_wpca1_acc_y(:), T_wpca1_acc_z(:), T_fft_acc_x(:,1), T_fft_acc_y(:,1), T_fft_acc_z(:,1) ]);
     
 end

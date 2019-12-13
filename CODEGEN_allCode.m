@@ -15,7 +15,7 @@ label = zeros(size(trainActivity));
 
 % Simulate live feed 
 for i = 1:1:size(trainActivity)-4
-    label(i:i+3) = REDUCED_CODEGEN_REALTIME_loadAndTestModel(total_acc_x_train(i:i+3,1:32), total_acc_y_train(i:i+3,1:32), total_acc_z_train(i:i+3,1:32) );
+    label(i:i+1) = REDUCED_CODEGEN_REALTIME_loadAndTestModel(total_acc_x_train(i:i+1,1:32), total_acc_y_train(i:i+1,1:32), total_acc_z_train(i:i+1,1:32) );
 end
 
 accuracy = 0.0;

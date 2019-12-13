@@ -5,7 +5,7 @@
  * File: xrot.h
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 11-Dec-2019 20:06:08
+ * C/C++ source code generated on  : 12-Dec-2019 18:03:22
  */
 
 #ifndef XROT_H
@@ -18,7 +18,7 @@
 #include "REDUCED_CODEGEN_REALTIME_loadAndTestModel_types.h"
 
 /* Function Declarations */
-extern void b_xrot(double x[16], int ix0, int iy0, double c, double s);
+extern void b_xrot(double x[4], int ix0, int iy0, double c, double s);
 extern void c_xrot(int n, double x_data[], int ix0, int iy0, double c, double s);
 extern void xrot(double x[1024], int ix0, int iy0, double c, double s);
 

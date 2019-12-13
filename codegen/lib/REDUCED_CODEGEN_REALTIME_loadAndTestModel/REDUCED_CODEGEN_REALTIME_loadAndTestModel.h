@@ -5,7 +5,7 @@
  * File: REDUCED_CODEGEN_REALTIME_loadAndTestModel.h
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 11-Dec-2019 20:06:08
+ * C/C++ source code generated on  : 12-Dec-2019 18:03:22
  */
 
 #ifndef REDUCED_CODEGEN_REALTIME_LOADANDTESTMODEL_H
@@ -19,8 +19,8 @@
 
 /* Function Declarations */
 extern void REDUCED_CODEGEN_REALTIME_loadAndTestModel(const double
-  total_acc_x_test[128], const double total_acc_y_test[128], const double
-  total_acc_z_test[128], double label[4]);
+  total_acc_x_test[64], const double total_acc_y_test[64], const double
+  total_acc_z_test[64], double label[2]);
 
 #endif
 

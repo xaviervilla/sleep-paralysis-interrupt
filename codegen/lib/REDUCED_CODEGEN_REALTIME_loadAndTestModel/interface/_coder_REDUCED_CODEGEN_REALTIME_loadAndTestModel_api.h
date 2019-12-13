@@ -5,7 +5,7 @@
  * File: _coder_REDUCED_CODEGEN_REALTIME_loadAndTestModel_api.h
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 11-Dec-2019 20:06:08
+ * C/C++ source code generated on  : 12-Dec-2019 18:03:22
  */
 
 #ifndef _CODER_REDUCED_CODEGEN_REALTIME_LOADANDTESTMODEL_API_H
@@ -23,9 +23,8 @@ extern emlrtCTX emlrtRootTLSGlobal;
 extern emlrtContext emlrtContextGlobal;
 
 /* Function Declarations */
-extern void REDUCED_CODEGEN_REALTIME_loadAndTestModel(real_T total_acc_x_test
-  [128], real_T total_acc_y_test[128], real_T total_acc_z_test[128], real_T
-  label[4]);
+extern void REDUCED_CODEGEN_REALTIME_loadAndTestModel(real_T total_acc_x_test[64],
+  real_T total_acc_y_test[64], real_T total_acc_z_test[64], real_T label[2]);
 extern void REDUCED_CODEGEN_REALTIME_loadAndTestModel_api(const mxArray * const
   prhs[3], int32_T nlhs, const mxArray *plhs[1]);
 extern void REDUCED_CODEGEN_REALTIME_loadAndTestModel_atexit(void);

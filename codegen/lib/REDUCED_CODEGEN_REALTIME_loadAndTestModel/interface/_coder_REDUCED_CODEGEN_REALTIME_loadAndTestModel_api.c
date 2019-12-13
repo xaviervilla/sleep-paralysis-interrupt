@@ -5,7 +5,7 @@
  * File: _coder_REDUCED_CODEGEN_REALTIME_loadAndTestModel_api.c
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 11-Dec-2019 20:06:08
+ * C/C++ source code generated on  : 12-Dec-2019 18:03:22
  */
 
 /* Include Files */
@@ -27,12 +27,12 @@ emlrtContext emlrtContextGlobal = { true,/* bFirstTime */
 
 /* Function Declarations */
 static real_T (*b_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
-  emlrtMsgIdentifier *parentId))[128];
+  emlrtMsgIdentifier *parentId))[64];
 static real_T (*c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
-  const emlrtMsgIdentifier *msgId))[128];
+  const emlrtMsgIdentifier *msgId))[64];
 static real_T (*emlrt_marshallIn(const emlrtStack *sp, const mxArray
-  *total_acc_x_test, const char_T *identifier))[128];
-static const mxArray *emlrt_marshallOut(const real_T u[4]);
+  *total_acc_x_test, const char_T *identifier))[64];
+static const mxArray *emlrt_marshallOut(const real_T u[2]);
 
 /* Function Definitions */
 
@@ -40,12 +40,12 @@ static const mxArray *emlrt_marshallOut(const real_T u[4]);
  * Arguments    : const emlrtStack *sp
  *                const mxArray *u
  *                const emlrtMsgIdentifier *parentId
- * Return Type  : real_T (*)[128]
+ * Return Type  : real_T (*)[64]
  */
 static real_T (*b_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
-  emlrtMsgIdentifier *parentId))[128]
+  emlrtMsgIdentifier *parentId))[64]
 {
-  real_T (*y)[128];
+  real_T (*y)[64];
   y = c_emlrt_marshallIn(sp, emlrtAlias(u), parentId);
   emlrtDestroyArray(&u);
   return y;
@@ -54,16 +54,16 @@ static real_T (*b_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
  * Arguments    : const emlrtStack *sp
  *                const mxArray *src
  *                const emlrtMsgIdentifier *msgId
- * Return Type  : real_T (*)[128]
+ * Return Type  : real_T (*)[64]
  */
   static real_T (*c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
-  const emlrtMsgIdentifier *msgId))[128]
+  const emlrtMsgIdentifier *msgId))[64]
 {
-  real_T (*ret)[128];
-  static const int32_T dims[2] = { 4, 32 };
+  real_T (*ret)[64];
+  static const int32_T dims[2] = { 2, 32 };
 
   emlrtCheckBuiltInR2012b(sp, msgId, src, "double", false, 2U, dims);
-  ret = (real_T (*)[128])emlrtMxGetData(src);
+  ret = (real_T (*)[64])emlrtMxGetData(src);
   emlrtDestroyArray(&src);
   return ret;
 }
@@ -72,12 +72,12 @@ static real_T (*b_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
  * Arguments    : const emlrtStack *sp
  *                const mxArray *total_acc_x_test
  *                const char_T *identifier
- * Return Type  : real_T (*)[128]
+ * Return Type  : real_T (*)[64]
  */
 static real_T (*emlrt_marshallIn(const emlrtStack *sp, const mxArray
-  *total_acc_x_test, const char_T *identifier))[128]
+  *total_acc_x_test, const char_T *identifier))[64]
 {
-  real_T (*y)[128];
+  real_T (*y)[64];
   emlrtMsgIdentifier thisId;
   thisId.fIdentifier = (const char *)identifier;
   thisId.fParent = NULL;
@@ -87,16 +87,16 @@ static real_T (*emlrt_marshallIn(const emlrtStack *sp, const mxArray
   return y;
 }
 /*
- * Arguments    : const real_T u[4]
+ * Arguments    : const real_T u[2]
  * Return Type  : const mxArray *
  */
-  static const mxArray *emlrt_marshallOut(const real_T u[4])
+  static const mxArray *emlrt_marshallOut(const real_T u[2])
 {
   const mxArray *y;
   const mxArray *m;
   static const int32_T iv[1] = { 0 };
 
-  static const int32_T iv1[1] = { 4 };
+  static const int32_T iv1[1] = { 2 };
 
   y = NULL;
   m = emlrtCreateNumericArray(1, iv, mxDOUBLE_CLASS, mxREAL);
@@ -115,10 +115,10 @@ static real_T (*emlrt_marshallIn(const emlrtStack *sp, const mxArray
 void REDUCED_CODEGEN_REALTIME_loadAndTestModel_api(const mxArray * const prhs[3],
   int32_T nlhs, const mxArray *plhs[1])
 {
-  real_T (*label)[4];
-  real_T (*total_acc_x_test)[128];
-  real_T (*total_acc_y_test)[128];
-  real_T (*total_acc_z_test)[128];
+  real_T (*label)[2];
+  real_T (*total_acc_x_test)[64];
+  real_T (*total_acc_y_test)[64];
+  real_T (*total_acc_z_test)[64];
   emlrtStack st = { NULL,              /* site */
     NULL,                              /* tls */
     NULL                               /* prev */
@@ -126,7 +126,7 @@ void REDUCED_CODEGEN_REALTIME_loadAndTestModel_api(const mxArray * const prhs[3]
 
   (void)nlhs;
   st.tls = emlrtRootTLSGlobal;
-  label = (real_T (*)[4])mxMalloc(sizeof(real_T [4]));
+  label = (real_T (*)[2])mxMalloc(sizeof(real_T [2]));
 
   /* Marshall function inputs */
   total_acc_x_test = emlrt_marshallIn(&st, emlrtAlias(prhs[0]),

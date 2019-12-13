@@ -5,7 +5,7 @@
  * File: xzsvdc.h
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 11-Dec-2019 20:06:08
+ * C/C++ source code generated on  : 12-Dec-2019 18:03:22
  */
 
 #ifndef XZSVDC_H
@@ -21,7 +21,7 @@
 extern void b_xzsvdc(double A_data[], const int A_size[2], double U_data[], int
                      U_size[2], double S_data[], int S_size[1], double V_data[],
                      int V_size[2]);
-extern void xzsvdc(double A[128], double U[16], double S[4], double V[128]);
+extern void xzsvdc(double A[64], double U[4], double S[2], double V[64]);
 
 #endif
 

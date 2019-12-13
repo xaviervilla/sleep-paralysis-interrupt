@@ -5,7 +5,7 @@
  * File: xrot.c
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 11-Dec-2019 20:06:08
+ * C/C++ source code generated on  : 12-Dec-2019 18:03:22
  */
 
 /* Include Files */
@@ -16,30 +16,20 @@
 /* Function Definitions */
 
 /*
- * Arguments    : double x[16]
+ * Arguments    : double x[4]
  *                int ix0
  *                int iy0
  *                double c
  *                double s
  * Return Type  : void
  */
-void b_xrot(double x[16], int ix0, int iy0, double c, double s)
+void b_xrot(double x[4], int ix0, int iy0, double c, double s)
 {
   int ix;
   int iy;
   double temp;
   ix = ix0 - 1;
   iy = iy0 - 1;
-  temp = c * x[ix] + s * x[iy];
-  x[iy] = c * x[iy] - s * x[ix];
-  x[ix] = temp;
-  iy++;
-  ix++;
-  temp = c * x[ix] + s * x[iy];
-  x[iy] = c * x[iy] - s * x[ix];
-  x[ix] = temp;
-  iy++;
-  ix++;
   temp = c * x[ix] + s * x[iy];
   x[iy] = c * x[iy] - s * x[ix];
   x[ix] = temp;

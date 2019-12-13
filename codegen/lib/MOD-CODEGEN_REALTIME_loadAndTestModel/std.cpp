@@ -5,7 +5,7 @@
  * File: std.c
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 11-Dec-2019 20:06:08
+ * C/C++ source code generated on  : 12-Dec-2019 18:03:22
  */
 
 /* Include Files */
@@ -17,11 +17,11 @@
 /* Function Definitions */
 
 /*
- * Arguments    : const double x[128]
- *                double y[4]
+ * Arguments    : const double x[64]
+ *                double y[2]
  * Return Type  : void
  */
-void b_std(const double x[128], double y[4])
+void b_std(const double x[64], double y[2])
 {
   int j;
   int k;
@@ -33,11 +33,9 @@ void b_std(const double x[128], double y[4])
   double t;
   y[0] = 0.0;
   y[1] = 0.0;
-  y[2] = 0.0;
-  y[3] = 0.0;
-  for (j = 0; j < 4; j++) {
+  for (j = 0; j < 2; j++) {
     for (k = 0; k < 32; k++) {
-      xv[k] = x[j + (k << 2)];
+      xv[k] = x[j + (k << 1)];
     }
 
     xbar = xv[0];

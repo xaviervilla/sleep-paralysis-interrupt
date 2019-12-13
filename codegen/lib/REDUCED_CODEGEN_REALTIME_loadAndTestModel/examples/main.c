@@ -5,7 +5,7 @@
  * File: main.c
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 11-Dec-2019 20:06:08
+ * C/C++ source code generated on  : 12-Dec-2019 18:03:22
  */
 
 /*************************************************************************/
@@ -40,27 +40,27 @@
 #include "rt_nonfinite.h"
 
 /* Function Declarations */
-static void argInit_4x32_real_T(double result[128]);
+static void argInit_2x32_real_T(double result[64]);
 static double argInit_real_T(void);
 static void main_REDUCED_CODEGEN_REALTIME_loadAndTestModel(void);
 
 /* Function Definitions */
 
 /*
- * Arguments    : double result[128]
+ * Arguments    : double result[64]
  * Return Type  : void
  */
-static void argInit_4x32_real_T(double result[128])
+static void argInit_2x32_real_T(double result[64])
 {
   int idx0;
   int idx1;
 
   /* Loop over the array to initialize each element. */
-  for (idx0 = 0; idx0 < 4; idx0++) {
+  for (idx0 = 0; idx0 < 2; idx0++) {
     for (idx1 = 0; idx1 < 32; idx1++) {
       /* Set the value of the array element.
          Change this value to the value that the application requires. */
-      result[idx0 + (idx1 << 2)] = argInit_real_T();
+      result[idx0 + (idx1 << 1)] = argInit_real_T();
     }
   }
 }
@@ -80,12 +80,12 @@ static double argInit_real_T(void)
  */
 static void main_REDUCED_CODEGEN_REALTIME_loadAndTestModel(void)
 {
-  double total_acc_x_test_tmp_tmp[128];
-  double label[4];
+  double total_acc_x_test_tmp_tmp[64];
+  double label[2];
 
   /* Initialize function 'REDUCED_CODEGEN_REALTIME_loadAndTestModel' input arguments. */
   /* Initialize function input argument 'total_acc_x_test'. */
-  argInit_4x32_real_T(total_acc_x_test_tmp_tmp);
+  argInit_2x32_real_T(total_acc_x_test_tmp_tmp);
 
   /* Initialize function input argument 'total_acc_y_test'. */
   /* Initialize function input argument 'total_acc_z_test'. */

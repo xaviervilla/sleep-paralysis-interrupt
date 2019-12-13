@@ -5,7 +5,7 @@
  * File: REDUCED_CODEGEN_REALTIME_loadAndTestModel_initialize.c
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 11-Dec-2019 20:06:08
+ * C/C++ source code generated on  : 12-Dec-2019 18:03:22
  */
 
 /* Include Files */

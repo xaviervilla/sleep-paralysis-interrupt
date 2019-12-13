@@ -19,14 +19,15 @@ MPU6050 mpu;
 unsigned long timer = 0;
 bool blinkState = false;
 
-double label[4];
-#define maxSize 128 //4sec*32hz
-double total_acc_x[maxSize];
-double total_acc_y[maxSize];
-double total_acc_z[maxSize];
-bool dataDisplay = true;//true; // this controls whether we are testing ML functions or recording data
+#define numWin 2
+#define winSize 32 //4sec*32hz
+double label[numWin];
+double total_acc_x[winSize*(numWin*2-1)];
+double total_acc_y[winSize*(numWin*2-1)];
+double total_acc_z[winSize*(numWin*2-1)];
+bool dataDisplay = false;//true; // this controls whether we are testing ML functions or recording data
 bool trainerTest = true;
-uint8_t counter = 0;
+int counter = 0;
 
 // MPU control/status vars
 uint8_t mpuIntStatus;   // holds actual interrupt status byte from MPU
@@ -51,6 +52,14 @@ uint8_t teapotPacket[14] = { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, '\r', '\
 volatile bool mpuInterrupt = false;     // indicates whether MPU interrupt pin has gone high
 void dmpDataReady() {
     mpuInterrupt = true;
+}
+
+int allTrue(const double* myArr){
+    for(int i = 0; i < numWin; i++){
+        if (0 == label[i]) { return 0; }
+        else{ return 1; }
+    }
+    return 1;
 }
 
 void setup() {
@@ -97,12 +106,13 @@ void setup() {
   // get expected DMP packet size for later comparison
   packetSize = mpu.dmpGetFIFOPacketSize();
 
-  delay(1000);
+  mpuInterrupt = false;
 }
 
 void loop() {
       
     // wait for MPU interrupt or extra packet(s) available
+    
     while (!mpuInterrupt && fifoCount < packetSize) {
         if (mpuInterrupt && fifoCount < packetSize) {
           // try to get out of the infinite loop 
@@ -110,10 +120,6 @@ void loop() {
         }
     }
 
-    mpuInterrupt = false;
-    timer = (millis()-timer);
-    //Serial.printf("time between samples: %lu\n", timer);
-    timer = millis();
     // reset interrupt flag and get INT_STATUS byte
     mpuIntStatus = mpu.getIntStatus();
 
@@ -138,6 +144,11 @@ void loop() {
         // track FIFO count here in case there is > 1 packet available
         // (this lets us immediately read more without waiting for an interrupt)
         fifoCount -= packetSize;
+    
+        // Print time between samples for debugging
+        // timer = (millis()-timer);
+        // Serial.printf("time between samples: %lu\n", timer);
+        // timer = millis();
 
         // display initial world-frame acceleration, adjusted to remove gravity
         // and rotated based on known orientation from quaternion
@@ -148,60 +159,49 @@ void loop() {
         mpu.dmpGetLinearAccelInWorld(&aaWorld, &aaReal, &q);
 
         //Fill the 16 byte buffers
-        total_acc_x[counter] = aaWorld.x;
-        total_acc_y[counter] = aaWorld.y;
-        total_acc_z[counter] = aaWorld.z;
+        total_acc_x[counter] = aa.x;
+        total_acc_y[counter] = aa.y;
+        total_acc_z[counter] = aa.z;
         counter++;
-        if(counter == maxSize){
-            counter = 0;
+        if(counter == winSize*numWin){
             if (dataDisplay){
                 // print it in a format that can be exported to csv
-                for(int i = 0; i < maxSize; i++){
-                    Serial.print(total_acc_x[i]);
-                    Serial.print(", ");
-                    Serial.print(total_acc_y[i]);
-                    Serial.print(", ");
-                    Serial.println(total_acc_z[i]);
+                for(int i = 0; i < winSize; i++){
+                    //Serial.printf("(counter-winSize)+i: %u\n", (counter-winSize)+i);
+                    Serial.print(total_acc_x[(counter-winSize)+i]);
+                    Serial.print(F(", "));
+                    Serial.print(total_acc_y[(counter-winSize)+i]);
+                    Serial.print(F(", "));
+                    Serial.println(total_acc_z[(counter-winSize)+i]);
                 }
             }
             if (trainerTest){
-                REDUCED_CODEGEN_REALTIME_loadAndTestModel(total_acc_x, total_acc_y, total_acc_z, label);
-                Serial.print(label[0]);
-                Serial.print(F("\t"));
-                Serial.print(label[1]);
-                Serial.print(F("\t"));
-                Serial.print(label[2]);
-                Serial.print(F("\t"));
-                Serial.println(label[3]);
-                if(label[0] && label[1] && label[2] && label[3]){
+                // blink to indicate activity
+                digitalWrite(LED_PIN, HIGH);
+                REDUCED_CODEGEN_REALTIME_loadAndTestModel(total_acc_x, total_acc_y, total_acc_z, label);    
+                digitalWrite(LED_PIN, LOW);     
+                //Serial.printf("counter-winSize: %u\n", counter-winSize);
+
+                // Serial.printf("Label[0]:%f  \tLabel[1]:%f\n", label[0], label[1]);
+
+                if(label[0]==1 || label[1]==1){
+                    Serial.println("SP DETECTED");
                     blinkState = true;
                 }
                 else{
                     blinkState = false;
                 }
             }
-        }
-        /*
-        bool label[2];
-        double total_acc_x[16];
-        double total_acc_y[16];
-        double total_acc_z[16];
-        uint8_t counter = 0;
-        */
+            //if(counter/winSize == numWin*2-1){
+                counter = 0;
 
+            //}
+        }
         // blink LED to indicate activity
         //blinkState = !blinkState;
         digitalWrite(LED_PIN, blinkState);
     }
+    else{
+            mpuInterrupt = false;
+    }
 }
-    
-//    for(uint8_t j = 0; j < 2; j++){
-//      for (uint8_t i = 0; i < 8; i++) {
-//        int16_t ax, ay, az;
-//        mpu.getAcceleration(&ax, &ay, &az);
-//        total_acc_x[i + (j<<3)] = ax/(double)16384;
-//        total_acc_y[i + (j<<3)] = ay/(double)16384;
-//        total_acc_z[i + (j<<3)] = az/(double)16384;
-//      }
-//    }
-    //REDUCED_CODEGEN_REALTIME_loadAndTestModel(total_acc_x, total_acc_x, total_acc_x, label);

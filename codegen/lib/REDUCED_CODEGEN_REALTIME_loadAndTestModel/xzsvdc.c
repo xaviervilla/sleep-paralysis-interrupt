@@ -5,7 +5,7 @@
  * File: xzsvdc.c
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 11-Dec-2019 20:06:08
+ * C/C++ source code generated on  : 12-Dec-2019 18:03:22
  */
 
 /* Include Files */
@@ -38,23 +38,22 @@ void b_xzsvdc(double A_data[], const int A_size[2], double U_data[], int U_size
               [2], double S_data[], int S_size[1], double V_data[], int V_size[2])
 {
   int n;
-  int qp1q;
-  double s_data[5];
+  int qjj;
+  double s_data[3];
   double e[32];
-  double work_data[4];
+  double work_data[2];
   double Vf[1024];
-  int ii;
   int y;
+  int ii;
+  int i;
   int q;
-  int k;
   int m;
   int qp1;
   int qq;
   int nmq;
+  int k;
   bool apply_transform;
   double nrm;
-  int jj;
-  int qjj;
   double r;
   double snorm;
   bool exitg1;
@@ -63,22 +62,22 @@ void b_xzsvdc(double A_data[], const int A_size[2], double U_data[], int U_size
   double sqds;
   double b;
   n = A_size[0];
-  qp1q = (signed char)(A_size[0] + 1);
-  if (0 <= qp1q - 1) {
-    memset(&s_data[0], 0, qp1q * sizeof(double));
+  qjj = (signed char)(A_size[0] + 1);
+  if (0 <= qjj - 1) {
+    memset(&s_data[0], 0, qjj * sizeof(double));
   }
 
   memset(&e[0], 0, 32U * sizeof(double));
-  qp1q = (signed char)A_size[0];
-  if (0 <= qp1q - 1) {
-    memset(&work_data[0], 0, qp1q * sizeof(double));
+  qjj = (signed char)A_size[0];
+  if (0 <= qjj - 1) {
+    memset(&work_data[0], 0, qjj * sizeof(double));
   }
 
   U_size[0] = (signed char)A_size[0];
   U_size[1] = (signed char)A_size[0];
-  qp1q = (signed char)A_size[0] * (signed char)A_size[0];
-  if (0 <= qp1q - 1) {
-    memset(&U_data[0], 0, qp1q * sizeof(double));
+  qjj = (signed char)A_size[0] * (signed char)A_size[0];
+  if (0 <= qjj - 1) {
+    memset(&U_data[0], 0, qjj * sizeof(double));
   }
 
   memset(&Vf[0], 0, 1024U * sizeof(double));
@@ -87,18 +86,9 @@ void b_xzsvdc(double A_data[], const int A_size[2], double U_data[], int U_size
       Vf[ii + (ii << 5)] = 1.0;
     }
   } else {
-    if (A_size[0] > 1) {
-      y = A_size[0] - 1;
-    } else {
-      y = 0;
-    }
-
-    qp1q = A_size[0];
-    if (y > qp1q) {
-      qp1q = y;
-    }
-
-    for (q = 0; q < qp1q; q++) {
+    y = (A_size[0] > 1);
+    i = A_size[0];
+    for (q = 0; q < i; q++) {
       qp1 = q + 2;
       qq = (q + n * q) + 1;
       nmq = n - q;
@@ -109,46 +99,44 @@ void b_xzsvdc(double A_data[], const int A_size[2], double U_data[], int U_size
           apply_transform = true;
           if (A_data[qq - 1] < 0.0) {
             r = -nrm;
-            s_data[q] = -nrm;
+            s_data[0] = -nrm;
           } else {
             r = nrm;
-            s_data[q] = nrm;
+            s_data[0] = nrm;
           }
 
           if (fabs(r) >= 1.0020841800044864E-292) {
             nrm = 1.0 / r;
-            jj = (qq + nmq) - 1;
-            for (k = qq; k <= jj; k++) {
+            qjj = (qq + nmq) - 1;
+            for (k = qq; k <= qjj; k++) {
               A_data[k - 1] *= nrm;
             }
           } else {
-            jj = (qq + nmq) - 1;
-            for (k = qq; k <= jj; k++) {
-              A_data[k - 1] /= s_data[q];
+            qjj = (qq + nmq) - 1;
+            for (k = qq; k <= qjj; k++) {
+              A_data[k - 1] /= s_data[0];
             }
           }
 
           A_data[qq - 1]++;
-          s_data[q] = -s_data[q];
+          s_data[0] = -s_data[0];
         } else {
-          s_data[q] = 0.0;
+          s_data[0] = 0.0;
         }
       }
 
-      for (jj = qp1; jj < 33; jj++) {
-        qjj = q + n * (jj - 1);
+      for (k = qp1; k < 33; k++) {
+        qjj = q + n * (k - 1);
         if (apply_transform) {
           f_xaxpy(nmq, -(d_xdotc(nmq, A_data, qq, A_data, qjj + 1) / A_data[q +
                          A_size[0] * q]), qq, A_data, qjj + 1);
         }
 
-        e[jj - 1] = A_data[qjj];
+        e[k - 1] = A_data[qjj];
       }
 
-      if (q + 1 <= y) {
-        for (ii = q + 1; ii <= n; ii++) {
-          U_data[(ii + U_size[0] * q) - 1] = A_data[(ii + A_size[0] * q) - 1];
-        }
+      if ((q + 1 <= y) && (1 <= n)) {
+        memcpy(&U_data[0], &A_data[0], n * sizeof(double));
       }
 
       if (q + 1 <= n) {
@@ -177,18 +165,14 @@ void b_xzsvdc(double A_data[], const int A_size[2], double U_data[], int U_size
           e[q + 1]++;
           e[q] = -e[q];
           if (q + 2 <= n) {
-            if (qp1 <= n) {
-              memset(&work_data[qp1 + -1], 0, ((n - qp1) + 1) * sizeof(double));
+            work_data[1] = 0.0;
+            for (k = 0; k < 31; k++) {
+              g_xaxpy(nmq - 1, e[k + 1], A_data, ((k + 1) << 1) + 2, work_data);
             }
 
-            for (jj = qp1; jj < 33; jj++) {
-              g_xaxpy(nmq - 1, e[jj - 1], A_data, (q + n * (jj - 1)) + 2,
-                      work_data, q + 2);
-            }
-
-            for (jj = qp1; jj < 33; jj++) {
-              g_xaxpy(nmq - 1, -e[jj - 1] / e[q + 1], work_data, q + 2, A_data,
-                      (q + n * (jj - 1)) + 2);
+            for (k = 0; k < 31; k++) {
+              h_xaxpy(nmq - 1, -e[k + 1] / e[1], work_data, A_data, ((k + 1) <<
+                       1) + 2);
             }
           }
         }
@@ -207,53 +191,44 @@ void b_xzsvdc(double A_data[], const int A_size[2], double U_data[], int U_size
 
     e[A_size[0]] = 0.0;
     if (y + 1 <= A_size[0]) {
-      for (jj = y + 1; jj <= n; jj++) {
+      for (k = y + 1; k <= n; k++) {
         for (ii = 0; ii < n; ii++) {
-          U_data[ii + U_size[0] * (jj - 1)] = 0.0;
+          U_data[ii + U_size[0] * (k - 1)] = 0.0;
         }
 
-        U_data[(jj + U_size[0] * (jj - 1)) - 1] = 1.0;
+        U_data[(k + U_size[0] * (k - 1)) - 1] = 1.0;
       }
     }
 
     for (q = y; q >= 1; q--) {
-      qp1 = q + 1;
-      qp1q = n - q;
-      nmq = qp1q + 1;
-      qq = (q + n * (q - 1)) - 1;
-      if (s_data[q - 1] != 0.0) {
-        for (jj = qp1; jj <= n; jj++) {
-          qjj = q + n * (jj - 1);
-          f_xaxpy(qp1q + 1, -(d_xdotc(nmq, U_data, qq + 1, U_data, qjj) /
-                              U_data[qq]), qq + 1, U_data, qjj);
+      if (s_data[0] != 0.0) {
+        for (k = 2; k <= n; k++) {
+          i_xaxpy(n, -(e_xdotc(n, U_data, U_data, n + 1) / U_data[0]), U_data, n
+                  + 1);
         }
 
-        for (ii = q; ii <= n; ii++) {
-          qp1q = (ii + U_size[0] * (q - 1)) - 1;
-          U_data[qp1q] = -U_data[qp1q];
+        for (ii = 1; ii <= n; ii++) {
+          U_data[ii - 1] = -U_data[ii - 1];
         }
 
-        U_data[qq]++;
-        for (ii = 0; ii <= q - 2; ii++) {
-          U_data[ii + U_size[0] * (q - 1)] = 0.0;
-        }
+        U_data[0]++;
       } else {
-        for (ii = 0; ii < n; ii++) {
-          U_data[ii + U_size[0] * (q - 1)] = 0.0;
+        if (0 <= n - 1) {
+          memset(&U_data[0], 0, n * sizeof(double));
         }
 
-        U_data[qq] = 1.0;
+        U_data[0] = 1.0;
       }
     }
 
     for (q = 31; q >= 0; q--) {
       if ((q + 1 <= n) && (e[q] != 0.0)) {
         qp1 = q + 2;
-        qp1q = (q + (q << 5)) + 2;
-        for (jj = qp1; jj < 33; jj++) {
-          nmq = (q + ((jj - 1) << 5)) + 2;
-          e_xaxpy(31 - q, -(c_xdotc(31 - q, Vf, qp1q, Vf, nmq) / Vf[qp1q - 1]),
-                  qp1q, Vf, nmq);
+        qjj = (q + (q << 5)) + 2;
+        for (k = qp1; k < 33; k++) {
+          qq = (q + ((k - 1) << 5)) + 2;
+          e_xaxpy(31 - q, -(c_xdotc(31 - q, Vf, qjj, Vf, qq) / Vf[qjj - 1]), qjj,
+                  Vf, qq);
         }
       }
 
@@ -261,7 +236,7 @@ void b_xzsvdc(double A_data[], const int A_size[2], double U_data[], int U_size
       Vf[q + (q << 5)] = 1.0;
     }
 
-    qjj = 0;
+    nmq = 0;
     snorm = 0.0;
     for (q = 0; q <= n; q++) {
       if (s_data[q] != 0.0) {
@@ -273,9 +248,9 @@ void b_xzsvdc(double A_data[], const int A_size[2], double U_data[], int U_size
         }
 
         if (q + 1 <= n) {
-          qp1q = n * q;
-          jj = qp1q + n;
-          for (k = qp1q + 1; k <= jj; k++) {
+          qjj = n * q;
+          i = qjj + n;
+          for (k = qjj + 1; k <= i; k++) {
             U_data[k - 1] *= r;
           }
         }
@@ -286,9 +261,9 @@ void b_xzsvdc(double A_data[], const int A_size[2], double U_data[], int U_size
         r = nrm / e[q];
         e[q] = nrm;
         s_data[q + 1] *= r;
-        qp1q = (q + 1) << 5;
-        jj = qp1q + 32;
-        for (k = qp1q + 1; k <= jj; k++) {
+        qjj = (q + 1) << 5;
+        i = qjj + 32;
+        for (k = qjj + 1; k <= i; k++) {
           Vf[k - 1] *= r;
         }
       }
@@ -296,13 +271,13 @@ void b_xzsvdc(double A_data[], const int A_size[2], double U_data[], int U_size
       snorm = fmax(snorm, fmax(fabs(s_data[q]), fabs(e[q])));
     }
 
-    while ((m + 1 > 0) && (qjj < 75)) {
+    while ((m + 1 > 0) && (nmq < 75)) {
       ii = m;
       exitg1 = false;
       while (!(exitg1 || (ii == 0))) {
         nrm = fabs(e[ii - 1]);
         if ((nrm <= 2.2204460492503131E-16 * (fabs(s_data[ii - 1]) + fabs
-              (s_data[ii]))) || (nrm <= 1.0020841800044864E-292) || ((qjj > 20) &&
+              (s_data[ii]))) || (nrm <= 1.0020841800044864E-292) || ((nmq > 20) &&
              (nrm <= 2.2204460492503131E-16 * snorm))) {
           e[ii - 1] = 0.0;
           exitg1 = true;
@@ -312,56 +287,55 @@ void b_xzsvdc(double A_data[], const int A_size[2], double U_data[], int U_size
       }
 
       if (ii == m) {
-        qp1q = 4;
+        qjj = 4;
       } else {
-        nmq = m + 1;
-        qp1q = m + 1;
+        qq = m + 1;
+        qjj = m + 1;
         exitg1 = false;
-        while ((!exitg1) && (qp1q >= ii)) {
-          nmq = qp1q;
-          if (qp1q == ii) {
+        while ((!exitg1) && (qjj >= ii)) {
+          qq = qjj;
+          if (qjj == ii) {
             exitg1 = true;
           } else {
             nrm = 0.0;
-            if (qp1q < m + 1) {
-              nrm = fabs(e[qp1q - 1]);
+            if (qjj < m + 1) {
+              nrm = fabs(e[qjj - 1]);
             }
 
-            if (qp1q > ii + 1) {
-              nrm += fabs(e[qp1q - 2]);
+            if (qjj > ii + 1) {
+              nrm += fabs(e[qjj - 2]);
             }
 
-            r = fabs(s_data[qp1q - 1]);
+            r = fabs(s_data[qjj - 1]);
             if ((r <= 2.2204460492503131E-16 * nrm) || (r <=
                  1.0020841800044864E-292)) {
-              s_data[qp1q - 1] = 0.0;
+              s_data[qjj - 1] = 0.0;
               exitg1 = true;
             } else {
-              qp1q--;
+              qjj--;
             }
           }
         }
 
-        if (nmq == ii) {
-          qp1q = 3;
-        } else if (nmq == m + 1) {
-          qp1q = 1;
+        if (qq == ii) {
+          qjj = 3;
+        } else if (qq == m + 1) {
+          qjj = 1;
         } else {
-          qp1q = 2;
-          ii = nmq;
+          qjj = 2;
+          ii = qq;
         }
       }
 
-      switch (qp1q) {
+      switch (qjj) {
        case 1:
         r = e[m - 1];
         e[m - 1] = 0.0;
         for (k = m; k >= ii + 1; k--) {
           xrotg(&s_data[k - 1], &r, &sqds, &sm);
           if (k > ii + 1) {
-            b = e[k - 2];
-            r = -sm * b;
-            e[k - 2] = b * sqds;
+            r = -sm * e[0];
+            e[0] *= sqds;
           }
 
           xrot(Vf, ((k - 1) << 5) + 1, (m << 5) + 1, sqds, sm);
@@ -408,7 +382,7 @@ void b_xzsvdc(double A_data[], const int A_size[2], double U_data[], int U_size
         for (k = ii + 1; k <= m; k++) {
           xrotg(&r, &nrm, &sqds, &sm);
           if (k > ii + 1) {
-            e[k - 2] = r;
+            e[0] = r;
           }
 
           nrm = e[k - 1];
@@ -424,20 +398,20 @@ void b_xzsvdc(double A_data[], const int A_size[2], double U_data[], int U_size
           nrm = sm * e[k];
           e[k] *= sqds;
           if (k < n) {
-            c_xrot(n, U_data, n * (k - 1) + 1, n * k + 1, sqds, sm);
+            c_xrot(2, U_data, 1, 3, sqds, sm);
           }
         }
 
         e[m - 1] = r;
-        qjj++;
+        nmq++;
         break;
 
        default:
         if (s_data[ii] < 0.0) {
           s_data[ii] = -s_data[ii];
-          qp1q = ii << 5;
-          jj = qp1q + 32;
-          for (k = qp1q + 1; k <= jj; k++) {
+          qjj = ii << 5;
+          i = qjj + 32;
+          for (k = qjj + 1; k <= i; k++) {
             Vf[k - 1] = -Vf[k - 1];
           }
         }
@@ -449,14 +423,14 @@ void b_xzsvdc(double A_data[], const int A_size[2], double U_data[], int U_size
           s_data[qp1] = nrm;
           xswap(Vf, (ii << 5) + 1, ((ii + 1) << 5) + 1);
           if (ii + 1 < n) {
-            c_xswap(n, U_data, n * ii + 1, n * (ii + 1) + 1);
+            c_xswap(U_data, n + 1);
           }
 
           ii = qp1;
           qp1++;
         }
 
-        qjj = 0;
+        nmq = 0;
         m--;
         break;
       }
@@ -473,28 +447,28 @@ void b_xzsvdc(double A_data[], const int A_size[2], double U_data[], int U_size
 }
 
 /*
- * Arguments    : double A[128]
- *                double U[16]
- *                double S[4]
- *                double V[128]
+ * Arguments    : double A[64]
+ *                double U[4]
+ *                double S[2]
+ *                double V[64]
  * Return Type  : void
  */
-void xzsvdc(double A[128], double U[16], double S[4], double V[128])
+void xzsvdc(double A[64], double U[4], double S[2], double V[64])
 {
+  double s[3];
   double e[32];
-  double work[4];
+  double work[2];
   double Vf[1024];
+  int q;
+  int m;
+  int qp1;
+  int qq;
   bool apply_transform;
   double nrm;
-  double s[5];
-  int k;
+  int qs;
   int qjj;
   double r;
-  int m;
-  int q;
-  int qp1;
-  int qp1jj;
-  int qq;
+  int k;
   double snorm;
   int exitg1;
   bool exitg2;
@@ -502,314 +476,124 @@ void xzsvdc(double A[128], double U[16], double S[4], double V[128])
   double sm;
   double sqds;
   double b;
+  s[0] = 0.0;
   memset(&e[0], 0, 32U * sizeof(double));
   work[0] = 0.0;
-  work[1] = 0.0;
-  work[2] = 0.0;
-  work[3] = 0.0;
-  memset(&U[0], 0, 16U * sizeof(double));
+  U[0] = 0.0;
+  U[1] = 0.0;
   memset(&Vf[0], 0, 1024U * sizeof(double));
-  apply_transform = false;
-  nrm = xnrm2(4, A, 1);
-  if (nrm > 0.0) {
-    apply_transform = true;
-    if (A[0] < 0.0) {
-      nrm = -nrm;
-    }
-
-    if (fabs(nrm) >= 1.0020841800044864E-292) {
-      r = 1.0 / nrm;
-      for (k = 1; k < 5; k++) {
-        A[k - 1] *= r;
-      }
-    } else {
-      for (k = 1; k < 5; k++) {
-        A[k - 1] /= nrm;
-      }
-    }
-
-    A[0]++;
-    s[0] = -nrm;
-  } else {
-    s[0] = 0.0;
-  }
-
-  for (k = 2; k < 33; k++) {
-    qjj = (k - 1) << 2;
-    if (apply_transform) {
-      xaxpy(4, -(xdotc(4, A, 1, A, qjj + 1) / A[0]), 1, A, qjj + 1);
-    }
-
-    e[k - 1] = A[qjj];
-  }
-
-  for (k = 1; k < 5; k++) {
-    U[k - 1] = A[k - 1];
-  }
-
-  nrm = b_xnrm2(31, e, 2);
-  if (nrm == 0.0) {
-    e[0] = 0.0;
-  } else {
-    if (e[1] < 0.0) {
-      e[0] = -nrm;
-    } else {
-      e[0] = nrm;
-    }
-
-    r = e[0];
-    if (fabs(e[0]) >= 1.0020841800044864E-292) {
-      r = 1.0 / e[0];
-      for (k = 2; k < 33; k++) {
-        e[k - 1] *= r;
-      }
-    } else {
-      for (k = 2; k < 33; k++) {
-        e[k - 1] /= r;
-      }
-    }
-
-    e[1]++;
-    e[0] = -e[0];
-    for (k = 2; k < 5; k++) {
-      work[k - 1] = 0.0;
-    }
-
-    for (k = 2; k < 33; k++) {
-      b_xaxpy(3, e[k - 1], A, ((k - 1) << 2) + 2, work, 2);
-    }
-
-    for (k = 2; k < 33; k++) {
-      c_xaxpy(3, -e[k - 1] / e[1], work, 2, A, ((k - 1) << 2) + 2);
-    }
-  }
-
-  memcpy(&Vf[1], &e[1], 31U * sizeof(double));
-  apply_transform = false;
-  nrm = xnrm2(3, A, 6);
-  if (nrm > 0.0) {
-    apply_transform = true;
-    if (A[5] < 0.0) {
-      nrm = -nrm;
-    }
-
-    if (fabs(nrm) >= 1.0020841800044864E-292) {
-      r = 1.0 / nrm;
-      for (k = 6; k < 9; k++) {
-        A[k - 1] *= r;
-      }
-    } else {
-      for (k = 6; k < 9; k++) {
-        A[k - 1] /= nrm;
-      }
-    }
-
-    A[5]++;
-    s[1] = -nrm;
-  } else {
-    s[1] = 0.0;
-  }
-
-  for (k = 3; k < 33; k++) {
-    qjj = ((k - 1) << 2) + 1;
-    if (apply_transform) {
-      xaxpy(3, -(xdotc(3, A, 6, A, qjj + 1) / A[5]), 6, A, qjj + 1);
-    }
-
-    e[k - 1] = A[qjj];
-  }
-
-  for (k = 2; k < 5; k++) {
-    U[k + 3] = A[k + 3];
-  }
-
-  nrm = b_xnrm2(30, e, 3);
-  if (nrm == 0.0) {
-    e[1] = 0.0;
-  } else {
-    if (e[2] < 0.0) {
-      e[1] = -nrm;
-    } else {
-      e[1] = nrm;
-    }
-
-    r = e[1];
-    if (fabs(e[1]) >= 1.0020841800044864E-292) {
-      r = 1.0 / e[1];
-      for (k = 3; k < 33; k++) {
-        e[k - 1] *= r;
-      }
-    } else {
-      for (k = 3; k < 33; k++) {
-        e[k - 1] /= r;
-      }
-    }
-
-    e[2]++;
-    e[1] = -e[1];
-    for (k = 3; k < 5; k++) {
-      work[k - 1] = 0.0;
-    }
-
-    for (k = 3; k < 33; k++) {
-      b_xaxpy(2, e[k - 1], A, ((k - 1) << 2) + 3, work, 3);
-    }
-
-    for (k = 3; k < 33; k++) {
-      c_xaxpy(2, -e[k - 1] / e[2], work, 3, A, ((k - 1) << 2) + 3);
-    }
-  }
-
-  memcpy(&Vf[34], &e[2], 30U * sizeof(double));
-  apply_transform = false;
-  nrm = xnrm2(2, A, 11);
-  if (nrm > 0.0) {
-    apply_transform = true;
-    if (A[10] < 0.0) {
-      nrm = -nrm;
-    }
-
-    if (fabs(nrm) >= 1.0020841800044864E-292) {
-      r = 1.0 / nrm;
-      for (k = 11; k < 13; k++) {
-        A[k - 1] *= r;
-      }
-    } else {
-      for (k = 11; k < 13; k++) {
-        A[k - 1] /= nrm;
-      }
-    }
-
-    A[10]++;
-    s[2] = -nrm;
-  } else {
-    s[2] = 0.0;
-  }
-
-  for (k = 4; k < 33; k++) {
-    qjj = ((k - 1) << 2) + 2;
-    if (apply_transform) {
-      xaxpy(2, -(xdotc(2, A, 11, A, qjj + 1) / A[10]), 11, A, qjj + 1);
-    }
-
-    e[k - 1] = A[qjj];
-  }
-
-  for (k = 3; k < 5; k++) {
-    U[k + 7] = A[k + 7];
-  }
-
-  nrm = b_xnrm2(29, e, 4);
-  if (nrm == 0.0) {
-    e[2] = 0.0;
-  } else {
-    if (e[3] < 0.0) {
-      e[2] = -nrm;
-    } else {
-      e[2] = nrm;
-    }
-
-    r = e[2];
-    if (fabs(e[2]) >= 1.0020841800044864E-292) {
-      r = 1.0 / e[2];
-      for (k = 4; k < 33; k++) {
-        e[k - 1] *= r;
-      }
-    } else {
-      for (k = 4; k < 33; k++) {
-        e[k - 1] /= r;
-      }
-    }
-
-    e[3]++;
-    e[2] = -e[2];
-    work[3] = 0.0;
-    for (k = 4; k < 33; k++) {
-      b_xaxpy(1, e[k - 1], A, ((k - 1) << 2) + 4, work, 4);
-    }
-
-    for (k = 4; k < 33; k++) {
-      c_xaxpy(1, -e[k - 1] / e[3], work, 4, A, ((k - 1) << 2) + 4);
-    }
-  }
-
-  memcpy(&Vf[67], &e[3], 29U * sizeof(double));
-  for (k = 5; k < 33; k++) {
-    e[k - 1] = A[((k - 1) << 2) + 3];
-  }
-
-  nrm = b_xnrm2(28, e, 5);
-  if (nrm == 0.0) {
-    e[3] = 0.0;
-  } else {
-    if (e[4] < 0.0) {
-      e[3] = -nrm;
-    } else {
-      e[3] = nrm;
-    }
-
-    r = e[3];
-    if (fabs(e[3]) >= 1.0020841800044864E-292) {
-      r = 1.0 / e[3];
-      for (k = 5; k < 33; k++) {
-        e[k - 1] *= r;
-      }
-    } else {
-      for (k = 5; k < 33; k++) {
-        e[k - 1] /= r;
-      }
-    }
-
-    e[4]++;
-    e[3] = -e[3];
-  }
-
-  memcpy(&Vf[100], &e[4], 28U * sizeof(double));
-  m = 3;
-  s[3] = A[15];
-  s[4] = 0.0;
-  e[4] = 0.0;
-  U[12] = 0.0;
-  U[13] = 0.0;
-  U[14] = 0.0;
-  U[15] = 1.0;
-  for (q = 2; q >= 0; q--) {
+  for (q = 0; q < 2; q++) {
     qp1 = q + 2;
-    qp1jj = q << 2;
-    qq = q + qp1jj;
-    if (s[q] != 0.0) {
-      for (k = qp1; k < 5; k++) {
-        qjj = (q + ((k - 1) << 2)) + 1;
-        d_xaxpy(4 - q, -(b_xdotc(4 - q, U, qq + 1, U, qjj) / U[qq]), qq + 1, U,
-                qjj);
-      }
+    qq = (q + (q << 1)) + 1;
+    apply_transform = false;
+    if (q + 1 <= 1) {
+      nrm = xnrm2(2, A, qq);
+      if (nrm > 0.0) {
+        apply_transform = true;
+        if (A[qq - 1] < 0.0) {
+          nrm = -nrm;
+        }
 
-      for (k = q + 1; k < 5; k++) {
-        qjj = (k + qp1jj) - 1;
-        U[qjj] = -U[qjj];
-      }
+        if (fabs(nrm) >= 1.0020841800044864E-292) {
+          r = 1.0 / nrm;
+          qs = qq + 1;
+          for (k = qq; k <= qs; k++) {
+            A[k - 1] *= r;
+          }
+        } else {
+          qs = qq + 1;
+          for (k = qq; k <= qs; k++) {
+            A[k - 1] /= nrm;
+          }
+        }
 
-      U[qq]++;
-      for (k = 0; k < q; k++) {
-        U[k + qp1jj] = 0.0;
+        A[qq - 1]++;
+        s[0] = -nrm;
+      } else {
+        s[0] = 0.0;
       }
-    } else {
-      U[qp1jj] = 0.0;
-      U[qp1jj + 1] = 0.0;
-      U[qp1jj + 2] = 0.0;
-      U[qp1jj + 3] = 0.0;
-      U[qq] = 1.0;
     }
+
+    for (qs = qp1; qs < 33; qs++) {
+      qjj = q + ((qs - 1) << 1);
+      if (apply_transform) {
+        xaxpy(2 - q, -(xdotc(2 - q, A, qq, A, qjj + 1) / A[q + (q << 1)]), qq, A,
+              qjj + 1);
+      }
+
+      e[qs - 1] = A[qjj];
+    }
+
+    if (q + 1 <= 1) {
+      U[0] = A[0];
+      U[1] = A[1];
+    }
+
+    nrm = b_xnrm2(31 - q, e, q + 2);
+    if (nrm == 0.0) {
+      e[q] = 0.0;
+    } else {
+      if (e[q + 1] < 0.0) {
+        e[q] = -nrm;
+      } else {
+        e[q] = nrm;
+      }
+
+      r = e[q];
+      if (fabs(e[q]) >= 1.0020841800044864E-292) {
+        r = 1.0 / e[q];
+        for (k = qp1; k < 33; k++) {
+          e[k - 1] *= r;
+        }
+      } else {
+        for (k = qp1; k < 33; k++) {
+          e[k - 1] /= r;
+        }
+      }
+
+      e[q + 1]++;
+      e[q] = -e[q];
+      if (q + 2 <= 2) {
+        work[1] = 0.0;
+        for (qs = 0; qs < 31; qs++) {
+          b_xaxpy(1 - q, e[qs + 1], A, ((qs + 1) << 1) + 2, work);
+        }
+
+        for (qs = 0; qs < 31; qs++) {
+          c_xaxpy(1 - q, -e[qs + 1] / e[1], work, A, ((qs + 1) << 1) + 2);
+        }
+      }
+    }
+
+    for (qq = qp1; qq < 33; qq++) {
+      Vf[(qq + (q << 5)) - 1] = e[qq - 1];
+    }
+  }
+
+  m = 1;
+  s[1] = A[3];
+  s[2] = 0.0;
+  e[2] = 0.0;
+  U[2] = 0.0;
+  U[3] = 1.0;
+  if (s[0] != 0.0) {
+    d_xaxpy(-(b_xdotc(U, U) / U[0]), U);
+    U[0] = -U[0];
+    U[1] = -U[1];
+    U[0]++;
+  } else {
+    U[1] = 0.0;
+    U[0] = 1.0;
   }
 
   for (q = 31; q >= 0; q--) {
-    if ((q + 1 <= 4) && (e[q] != 0.0)) {
+    if ((q + 1 <= 2) && (e[q] != 0.0)) {
       qp1 = q + 2;
       qjj = (q + (q << 5)) + 2;
-      for (k = qp1; k < 33; k++) {
-        qp1jj = (q + ((k - 1) << 5)) + 2;
-        e_xaxpy(31 - q, -(c_xdotc(31 - q, Vf, qjj, Vf, qp1jj) / Vf[qjj - 1]),
-                qjj, Vf, qp1jj);
+      for (qs = qp1; qs < 33; qs++) {
+        qq = (q + ((qs - 1) << 5)) + 2;
+        e_xaxpy(31 - q, -(c_xdotc(31 - q, Vf, qjj, Vf, qq) / Vf[qjj - 1]), qjj,
+                Vf, qq);
       }
     }
 
@@ -819,32 +603,32 @@ void xzsvdc(double A[128], double U[16], double S[4], double V[128])
 
   qp1 = 0;
   snorm = 0.0;
-  for (q = 0; q < 5; q++) {
+  for (q = 0; q < 3; q++) {
     if (s[q] != 0.0) {
       nrm = fabs(s[q]);
       r = s[q] / nrm;
       s[q] = nrm;
-      if (q + 1 < 5) {
+      if (q + 1 < 3) {
         e[q] /= r;
       }
 
-      if (q + 1 <= 4) {
-        qjj = q << 2;
-        qp1jj = qjj + 4;
-        for (k = qjj + 1; k <= qp1jj; k++) {
+      if (q + 1 <= 2) {
+        qjj = q << 1;
+        qs = qjj + 2;
+        for (k = qjj + 1; k <= qs; k++) {
           U[k - 1] *= r;
         }
       }
     }
 
-    if ((q + 1 < 5) && (e[q] != 0.0)) {
+    if ((q + 1 < 3) && (e[q] != 0.0)) {
       nrm = fabs(e[q]);
       r = nrm / e[q];
       e[q] = nrm;
       s[q + 1] *= r;
       qjj = (q + 1) << 5;
-      qp1jj = qjj + 32;
-      for (k = qjj + 1; k <= qp1jj; k++) {
+      qs = qjj + 32;
+      for (k = qjj + 1; k <= qs; k++) {
         Vf[k - 1] *= r;
       }
     }
@@ -853,34 +637,34 @@ void xzsvdc(double A[128], double U[16], double S[4], double V[128])
   }
 
   while ((m + 2 > 0) && (qp1 < 75)) {
-    k = m;
+    qq = m;
     do {
       exitg1 = 0;
-      q = k + 1;
-      if (k + 1 == 0) {
+      q = qq + 1;
+      if (qq + 1 == 0) {
         exitg1 = 1;
       } else {
-        nrm = fabs(e[k]);
-        if ((nrm <= 2.2204460492503131E-16 * (fabs(s[k]) + fabs(s[k + 1]))) ||
+        nrm = fabs(e[qq]);
+        if ((nrm <= 2.2204460492503131E-16 * (fabs(s[qq]) + fabs(s[qq + 1]))) ||
             (nrm <= 1.0020841800044864E-292) || ((qp1 > 20) && (nrm <=
               2.2204460492503131E-16 * snorm))) {
-          e[k] = 0.0;
+          e[qq] = 0.0;
           exitg1 = 1;
         } else {
-          k--;
+          qq--;
         }
       }
     } while (exitg1 == 0);
 
-    if (k + 1 == m + 1) {
+    if (qq + 1 == m + 1) {
       qjj = 4;
     } else {
-      qp1jj = m + 2;
+      qs = m + 2;
       qjj = m + 2;
       exitg2 = false;
-      while ((!exitg2) && (qjj >= k + 1)) {
-        qp1jj = qjj;
-        if (qjj == k + 1) {
+      while ((!exitg2) && (qjj >= qq + 1)) {
+        qs = qjj;
+        if (qjj == qq + 1) {
           exitg2 = true;
         } else {
           nrm = 0.0;
@@ -888,7 +672,7 @@ void xzsvdc(double A[128], double U[16], double S[4], double V[128])
             nrm = fabs(e[qjj - 1]);
           }
 
-          if (qjj > k + 2) {
+          if (qjj > qq + 2) {
             nrm += fabs(e[qjj - 2]);
           }
 
@@ -903,13 +687,13 @@ void xzsvdc(double A[128], double U[16], double S[4], double V[128])
         }
       }
 
-      if (qp1jj == k + 1) {
+      if (qs == qq + 1) {
         qjj = 3;
-      } else if (qp1jj == m + 2) {
+      } else if (qs == m + 2) {
         qjj = 1;
       } else {
         qjj = 2;
-        q = qp1jj;
+        q = qs;
       }
     }
 
@@ -917,13 +701,12 @@ void xzsvdc(double A[128], double U[16], double S[4], double V[128])
      case 1:
       r = e[m];
       e[m] = 0.0;
-      qp1jj = m + 1;
-      for (k = qp1jj; k >= q + 1; k--) {
+      qs = m + 1;
+      for (k = qs; k >= q + 1; k--) {
         xrotg(&s[k - 1], &r, &sm, &sqds);
         if (k > q + 1) {
-          b = e[k - 2];
-          r = -sqds * b;
-          e[k - 2] = b * sm;
+          r = -sqds * e[0];
+          e[0] *= sm;
         }
 
         xrot(Vf, ((k - 1) << 5) + 1, ((m + 1) << 5) + 1, sm, sqds);
@@ -938,7 +721,7 @@ void xzsvdc(double A[128], double U[16], double S[4], double V[128])
         b = e[k - 1];
         r = -sqds * b;
         e[k - 1] = b * sm;
-        b_xrot(U, ((k - 1) << 2) + 1, ((q - 1) << 2) + 1, sm, sqds);
+        b_xrot(U, ((k - 1) << 1) + 1, ((q - 1) << 1) + 1, sm, sqds);
       }
       break;
 
@@ -970,7 +753,7 @@ void xzsvdc(double A[128], double U[16], double S[4], double V[128])
       for (k = q + 1; k <= qjj; k++) {
         xrotg(&r, &nrm, &sm, &sqds);
         if (k > q + 1) {
-          e[k - 2] = r;
+          e[0] = r;
         }
 
         nrm = e[k - 1];
@@ -985,8 +768,8 @@ void xzsvdc(double A[128], double U[16], double S[4], double V[128])
         s[k] = -sqds * e[k - 1] + sm * s[k];
         nrm = sqds * e[k];
         e[k] *= sm;
-        if (k < 4) {
-          b_xrot(U, ((k - 1) << 2) + 1, (k << 2) + 1, sm, sqds);
+        if (k < 2) {
+          b_xrot(U, 1, 3, sm, sqds);
         }
       }
 
@@ -998,20 +781,20 @@ void xzsvdc(double A[128], double U[16], double S[4], double V[128])
       if (s[q] < 0.0) {
         s[q] = -s[q];
         qjj = q << 5;
-        qp1jj = qjj + 32;
-        for (k = qjj + 1; k <= qp1jj; k++) {
+        qs = qjj + 32;
+        for (k = qjj + 1; k <= qs; k++) {
           Vf[k - 1] = -Vf[k - 1];
         }
       }
 
       qp1 = q + 1;
-      while ((q + 1 < 5) && (s[q] < s[qp1])) {
+      while ((q + 1 < 3) && (s[q] < s[qp1])) {
         nrm = s[q];
         s[q] = s[qp1];
         s[qp1] = nrm;
         xswap(Vf, (q << 5) + 1, ((q + 1) << 5) + 1);
-        if (q + 1 < 4) {
-          b_xswap(U, (q << 2) + 1, ((q + 1) << 2) + 1);
+        if (q + 1 < 2) {
+          b_xswap(U);
         }
 
         q = qp1;
@@ -1024,7 +807,7 @@ void xzsvdc(double A[128], double U[16], double S[4], double V[128])
     }
   }
 
-  for (k = 0; k < 4; k++) {
+  for (k = 0; k < 2; k++) {
     S[k] = s[k];
     memcpy(&V[k * 32], &Vf[k * 32], 32U * sizeof(double));
   }

@@ -846,7 +846,7 @@
     <param.AutoInferUnboundedSizeThreshold>2048</param.AutoInferUnboundedSizeThreshold>
     <param.EnableFixedPointStep>false</param.EnableFixedPointStep>
     <param.EnableScreener>true</param.EnableScreener>
-    <param.AnnotationChecksum>2807760746</param.AnnotationChecksum>
+    <param.AnnotationChecksum>3778827589</param.AnnotationChecksum>
     <var.LegacyTarget />
     <var.MirrorOnOpen>false</var.MirrorOnOpen>
     <param.FixedPointEnabled>false</param.FixedPointEnabled>
@@ -1065,7 +1065,7 @@
     </unset>
     <fileset.entrypoints>
       <file custom-data-expanded="false" value="${PROJECT_ROOT}/REDUCED_CODEGEN_REALTIME_loadAndTestModel.m">
-        <Marker>1576123499807</Marker>
+        <Marker>1576202539173</Marker>
       </file>
     </fileset.entrypoints>
     <fileset.testbench>
@@ -1080,7 +1080,7 @@
           <idpTable>
             <type typeId="0">
               <Class>double</Class>
-              <Size>4 x 32</Size>
+              <Size>2 x 32</Size>
               <Value />
               <InitialValue />
               <UserDefined>false</UserDefined>

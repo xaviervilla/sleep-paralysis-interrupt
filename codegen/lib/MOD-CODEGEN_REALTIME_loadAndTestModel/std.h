@@ -5,7 +5,7 @@
  * File: std.h
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 11-Dec-2019 20:06:08
+ * C/C++ source code generated on  : 12-Dec-2019 18:03:22
  */
 
 #ifndef STD_H
@@ -18,7 +18,7 @@
 #include "REDUCED_CODEGEN_REALTIME_loadAndTestModel_types.h"
 
 /* Function Declarations */
-extern void b_std(const double x[128], double y[4]);
+extern void b_std(const double x[64], double y[2]);
 
 #endif
 

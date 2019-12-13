@@ -15,20 +15,20 @@ x1 = xyz1(128:528, 1);
 y1 = xyz1(128:528, 2);
 z1 = xyz1(128:528, 3);
 
-FX0 = fft (x0);
-FX1 = fft (x1);
-FY0 = fft (y0);
-FY1 = fft (y1);
-FZ0 = fft (z0);
-FZ1 = fft (z1);
-
-testx0 = mean(FX0);
-testx1 = mean(FX1);
-testy0 = mean(FY0);
-testy1 = mean(FY1);
-testz0 = mean(FZ0);
-testz1 = mean(FZ1);
-bar([testx0, testx1, testy0, testy1, testz0, testz1])
+% FX0 = fft (x0);
+% FX1 = fft (x1);
+% FY0 = fft (y0);
+% FY1 = fft (y1);
+% FZ0 = fft (z0);
+% FZ1 = fft (z1);
+% 
+% testx0 = mean(FX0);
+% testx1 = mean(FX1);
+% testy0 = mean(FY0);
+% testy1 = mean(FY1);
+% testz0 = mean(FZ0);
+% testz1 = mean(FZ1);
+% bar([testx0, testx1, testy0, testy1, testz0, testz1])
 
 % plot(FX0);
 % hold on

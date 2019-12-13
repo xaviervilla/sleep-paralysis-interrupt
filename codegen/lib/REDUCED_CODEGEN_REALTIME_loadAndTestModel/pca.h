@@ -5,7 +5,7 @@
  * File: pca.h
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 11-Dec-2019 20:06:08
+ * C/C++ source code generated on  : 12-Dec-2019 18:03:22
  */
 
 #ifndef PCA_H
@@ -18,7 +18,7 @@
 #include "REDUCED_CODEGEN_REALTIME_loadAndTestModel_types.h"
 
 /* Function Declarations */
-extern void pca(const double x[128], double varargout_1_data[], int
+extern void pca(const double x[64], double varargout_1_data[], int
                 varargout_1_size[2], double varargout_2_data[], int
                 varargout_2_size[2]);
 
