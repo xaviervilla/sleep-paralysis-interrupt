@@ -26,12 +26,19 @@ A machine learning classifier that detects sleep paralysis
  - [x] Get MPU library and custom library to both fit on an Atmega328P
  - [X] Solder up the mpu6050 and turn on an LED when walking is detected
  - [X] Turn Arduino light on when Sleep paralysis is detected
- - [ ] Determine the cause of classifier only working when accelerometer is in specific orientation
- - [ ] Fix code to allow for different orientations of the accelerometer
+ - [X] Determine the cause of classifier only working when accelerometer is in specific orientation
+ - [X] Fix code to allow for different orientations of the accelerometer
  - [X] Reduce size of code for more stability
- - [ ] Record better accelerometer data for training and predicting
+ - [X] Record better accelerometer data for training and predicting
+ - [x] Make it easier to make fundamental changes and recompile all of the code to the arduino
  - [X] Improve accuracy and reduce false alarms using some type of counter to measure confidence
  - [X] Get more capable embedded controller, perhaps arduino mega or RPi zero
- - [ ] Enable low pass filtering in MPU6050 of 30 Hz and sample rate of 200hz
+ - [X] Enable low pass filtering in MPU6050 of 30 Hz and sample rate of 200hz
  - [X] Set up interrupts to communicate with sensor through SPI instead of I2C
- - [ ] Recompile code with much better sample frequency for better predictions on better platform
+ - [X] Recompile code with much better sample frequency for better predictions on better platform
+ - [ ] Design wearable for overnight testing
+ - [ ] Come up with way to record overnight data, or at least data without tethering to PC??
+ - [ ] Possibly reenable mean function if it improves accuracy
+ - [ ] Reinvestigate frequency domain characteristics and determine if necessary
+ - [ ] Impliment sliding window of samples to improve speed of response rather than descrete sample windows
+ - [ ] Record better quality SP data for training
