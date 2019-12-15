@@ -25,7 +25,7 @@ double label[numWin];
 double total_acc_x[winSize*(numWin*2-1)];
 double total_acc_y[winSize*(numWin*2-1)];
 double total_acc_z[winSize*(numWin*2-1)];
-bool dataDisplay = false;//true; // this controls whether we are testing ML functions or recording data
+bool dataDisplay = true;//true; // this controls whether we are testing ML functions or recording data
 bool trainerTest = true;
 int counter = 0;
 
@@ -112,11 +112,10 @@ void setup() {
 void loop() {
       
     // wait for MPU interrupt or extra packet(s) available
-    
     while (!mpuInterrupt && fifoCount < packetSize) {
         if (mpuInterrupt && fifoCount < packetSize) {
           // try to get out of the infinite loop 
-          fifoCount = mpu.getFIFOCount();
+          fifoCount = mpu.getFIFOCount();        // Print time between samples for debugging
         }
     }
 
@@ -146,9 +145,9 @@ void loop() {
         fifoCount -= packetSize;
     
         // Print time between samples for debugging
-        // timer = (millis()-timer);
-        // Serial.printf("time between samples: %lu\n", timer);
-        // timer = millis();
+//        timer = (millis()-timer);
+//        Serial.printf("time between samples: %lu\n", timer);
+//        timer = millis();
 
         // display initial world-frame acceleration, adjusted to remove gravity
         // and rotated based on known orientation from quaternion
@@ -159,9 +158,9 @@ void loop() {
         mpu.dmpGetLinearAccelInWorld(&aaWorld, &aaReal, &q);
 
         //Fill the 16 byte buffers
-        total_acc_x[counter] = aa.x;
-        total_acc_y[counter] = aa.y;
-        total_acc_z[counter] = aa.z;
+        total_acc_x[counter] = aa.x+aa.x*.6;
+        total_acc_y[counter] = aa.y+aa.y*.6;
+        total_acc_z[counter] = aa.z+aa.z*.6;
         counter++;
         if(counter == winSize*numWin){
             if (dataDisplay){
@@ -194,14 +193,14 @@ void loop() {
             }
             //if(counter/winSize == numWin*2-1){
                 counter = 0;
-
             //}
         }
-        // blink LED to indicate activity
-        //blinkState = !blinkState;
+        // Update LED state
         digitalWrite(LED_PIN, blinkState);
     }
     else{
-            mpuInterrupt = false;
+            // Don't fully understand this case, but without setting interrupt to false, sometimes the main loop iterates too many times and becomes buggy
+            //mpuInterrupt = false;
+            //Serial.println(F("Bad?"));
     }
 }

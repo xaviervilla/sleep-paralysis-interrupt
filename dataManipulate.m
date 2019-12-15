@@ -8,12 +8,16 @@ xyz0 = csvread('xyz0.csv');
 xyz1 = csvread('xyz1.csv');
 
 % This is just to be able to process the data with a signal processor
-x0 = xyz0(:, 1);
-y0 = xyz0(:, 2);
-z0 = xyz0(:, 3);
-x1 = xyz1(128:528, 1);
-y1 = xyz1(128:528, 2);
-z1 = xyz1(128:528, 3);
+% x0 = xyz0(:, 1);
+% y0 = xyz0(:, 2);
+% z0 = xyz0(:, 3);
+% x1 = xyz1(128:528, 1);
+% y1 = xyz1(128:528, 2);
+% z1 = xyz1(128:528, 3);
+
+% plot(z0);
+% hold on 
+% plot(z1);
 
 % FX0 = fft (x0);
 % FX1 = fft (x1);
