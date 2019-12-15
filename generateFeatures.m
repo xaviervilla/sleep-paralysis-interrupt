@@ -1,5 +1,5 @@
-clc;
 clear variables;
+clc;
 
 load rawCustomSensorData_train;
 
@@ -16,11 +16,3 @@ T_fft = varfun(@Wfft, rawSensorDataTrain);
 humanActivityData = [T_stdv, T_pca, T_fft];
 
 humanActivityData.activity = trainActivity;
-
-if type == 0
-    trainedModel = trainClassifier(humanActivityData);
-    saveLearnerForCoder(trainedModel.ClassificationTree, 'myLearnerForCoder')
-elseif type == 1
-    trainedModel = trainClassifier(humanActivityData);
-    saveLearnerForCoder(trainedModel.ClassificationTree, 'myLearnerForCoder')
-end

@@ -9,7 +9,7 @@
  *
  */
 
-#include <REDUCED_CODEGEN_REALTIME_loadAndTestModel.h>
+#include <loadAndTestModel.h>
 #include "MPU6050_6Axis_MotionApps_V6_12.h"
 
 #define INTERRUPT_PIN 2
@@ -66,13 +66,19 @@ void setup() {
   Wire.begin();
   Wire.setClock(400000); // 400kHz I2C clock. Comment this line if having compilation difficulties
   Serial.begin(115200);
-  delay(500);
+  // Since the solder pad on the default SDA pinout lifted, I am using the neighborin pin.
+  Wire.setSDA(17);
   
   // initialize device
   Serial.println(F("Initializing I2C devices..."));
   mpu.initialize();
   Serial.println(F("Testing device connections..."));
-  Serial.println(mpu.testConnection() ? F("MPU6050 connection successful") : F("MPU6050 connection failed"));
+  delay(500);
+  while(!mpu.testConnection()){
+      mpu.initialize();
+      delay(500);
+      Serial.println(mpu.testConnection() ? F("MPU6050 connection successful") : F("MPU6050 connection failed"));
+  }
   Serial.println(F("Initializing DMP..."));
   devStatus = mpu.dmpInitialize();
   delay(500);
@@ -103,6 +109,11 @@ void setup() {
   // set our DMP Ready flag so the main loop() function knows it's okay to use it
   Serial.println(F("DMP ready! Waiting for first interrupt..."));
   
+  // If writing data, add delay for user to start putty
+  if(dataDisplay){
+    delay(10000);
+  }
+
   // get expected DMP packet size for later comparison
   packetSize = mpu.dmpGetFIFOPacketSize();
 
@@ -130,7 +141,7 @@ void loop() {
         // reset so we can continue cleanly
         mpu.resetFIFO();
         fifoCount = mpu.getFIFOCount();
-        Serial.println(F("FIFO overflow!"));
+        //Serial.println(F("FIFO overflow!"));
 
     // otherwise, check for DMP data ready interrupt (this should happen frequently)
     } else if (mpuIntStatus & _BV(MPU6050_INTERRUPT_DMP_INT_BIT)) {
@@ -149,13 +160,12 @@ void loop() {
 //        Serial.printf("time between samples: %lu\n", timer);
 //        timer = millis();
 
-        // display initial world-frame acceleration, adjusted to remove gravity
-        // and rotated based on known orientation from quaternion
+        // display raw accelerometer data
         mpu.dmpGetQuaternion(&q, fifoBuffer);
         mpu.dmpGetAccel(&aa, fifoBuffer);
-        mpu.dmpGetGravity(&gravity, &q);
-        mpu.dmpGetLinearAccel(&aaReal, &aa, &gravity);
-        mpu.dmpGetLinearAccelInWorld(&aaWorld, &aaReal, &q);
+        // mpu.dmpGetGravity(&gravity, &q);
+        // mpu.dmpGetLinearAccel(&aaReal, &aa, &gravity);
+        // mpu.dmpGetLinearAccelInWorld(&aaWorld, &aaReal, &q);
 
         //Fill the 16 byte buffers
         total_acc_x[counter] = aa.x+aa.x*.6;
@@ -163,28 +173,28 @@ void loop() {
         total_acc_z[counter] = aa.z+aa.z*.6;
         counter++;
         if(counter == winSize*numWin){
-            if (dataDisplay){
-                // print it in a format that can be exported to csv
-                for(int i = 0; i < winSize; i++){
-                    //Serial.printf("(counter-winSize)+i: %u\n", (counter-winSize)+i);
-                    Serial.print(total_acc_x[(counter-winSize)+i]);
-                    Serial.print(F(", "));
-                    Serial.print(total_acc_y[(counter-winSize)+i]);
-                    Serial.print(F(", "));
-                    Serial.println(total_acc_z[(counter-winSize)+i]);
-                }
-            }
             if (trainerTest){
                 // blink to indicate activity
                 digitalWrite(LED_PIN, HIGH);
-                REDUCED_CODEGEN_REALTIME_loadAndTestModel(total_acc_x, total_acc_y, total_acc_z, label);    
+                loadAndTestModel(total_acc_x, total_acc_y, total_acc_z, label);    
                 digitalWrite(LED_PIN, LOW);     
                 //Serial.printf("counter-winSize: %u\n", counter-winSize);
-
                 // Serial.printf("Label[0]:%f  \tLabel[1]:%f\n", label[0], label[1]);
-
+                if (dataDisplay){
+                    // print it in a format that can be exported to csv
+                    for(int i = 0; i < winSize*numWin; i++){
+                        //Serial.printf("(counter-winSize)+i: %u\n", (counter-winSize)+i);
+                        Serial.print(total_acc_x[i]);
+                        Serial.print(F(", "));
+                        Serial.print(total_acc_y[i]);
+                        Serial.print(F(", "));
+                        Serial.print(total_acc_z[i]);
+                        Serial.print(F(", "));
+                        Serial.println(label[0]==1 || label[1]==1);
+                    }
+                }
                 if(label[0]==1 || label[1]==1){
-                    Serial.println("SP DETECTED");
+                    //Serial.println("SP DETECTED");
                     blinkState = true;
                 }
                 else{

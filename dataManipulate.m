@@ -7,6 +7,10 @@ width = 32;
 xyz0 = csvread('xyz0.csv');
 xyz1 = csvread('xyz1.csv');
 
+% add more '1s' for training
+% putty = csvread('putty.csv');
+% xyz1 = [xyz1; putty(:,1),putty(:,2),putty(:,3) ];
+
 % This is just to be able to process the data with a signal processor
 % x0 = xyz0(:, 1);
 % y0 = xyz0(:, 2);
