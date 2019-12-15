@@ -36,9 +36,11 @@ A machine learning classifier that detects sleep paralysis
  - [X] Enable low pass filtering in MPU6050 of 30 Hz and sample rate of 200hz
  - [X] Set up interrupts to communicate with sensor through SPI instead of I2C
  - [X] Recompile code with much better sample frequency for better predictions on better platform
- - [ ] Design wearable for overnight testing
- - [ ] Come up with way to record overnight data, or at least data without tethering to PC??
- - [ ] Possibly reenable mean function if it improves accuracy
+ - [X] Design wearable for overnight testing
+ - [X] Come up with way to record overnight data, or at least data without tethering to PC??
+ - [X] Possibly reenable mean function if it improves accuracy
  - [ ] Reinvestigate frequency domain characteristics and determine if necessary
+ - [X] Disable gravity subtraction (world-frame view) for sensor data and re-train
+ - [X] Investigate accuracy/memory tradeoff of KNN vs. Decision Tree models
  - [ ] Impliment sliding window of samples to improve speed of response rather than descrete sample windows
  - [ ] Record better quality SP data for training
