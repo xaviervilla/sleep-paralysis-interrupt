@@ -57,6 +57,31 @@ xyz1 = csvread('xyz1.csv');
 % PSD1 = (1/length(FY1)) * FY1 .* conj(FY1);
 % plot(PSD1)
 
+% This is just to use signal analyzer
+
+alfonso = csvread('alfonso.csv');
+xyz1 = [xyz1; alfonso(:,1:3)];
+xyzAll = [xyz0, zeros(size(xyz0,1), 1); xyz1, ones(size(xyz1,1), 1).*(5.00e+4)];
+signal = labeledSignalSet({xyzAll},'SampleRate',32);
+
+spRaw = alfonso(96:448,1);
+plot(spRaw);
+ylim([0 30000])
+
+spfft = fft(spRaw);
+figure
+plot(spfft);
+
+[max1, max2] = max(spfft);
+
+[spPeaks, spPeakIdx] = findpeaks(spRaw);
+figure
+plot(spRaw);
+hold on
+plot(spPeakIdx, spPeaks);
+
+return
+
 %% Handle xyz0 first
 height = size(xyz0,1);
 height = (height-mod(height,width)) /width;
