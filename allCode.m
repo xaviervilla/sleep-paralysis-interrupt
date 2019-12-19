@@ -2,10 +2,11 @@
 % a single label given a 6x16 matrix
 
 clear variables;
+close all
 clc;
 
 %% Now we can load test data and check accuracy from data that was not used to train the classifier
-load rawCustomSensorData_train;
+load rawCustomSensorData_train64;
 
 % We need to convert the predictor strings to integers
 result = trainActivity;
@@ -14,8 +15,8 @@ result = trainActivity;
 label = zeros(size(trainActivity));
 
 % Simulate live feed 
-for i = 1:1:size(trainActivity)-4
-    label(i:i+1) = loadAndTestModel(total_acc_x_train(i:i+1,1:32), total_acc_y_train(i:i+1,1:32), total_acc_z_train(i:i+1,1:32) );
+for i = 1:size(trainActivity)
+    label(i) = loadAndTestModel(total_acc_x_train(i,1:64), total_acc_y_train(i,1:64), total_acc_z_train(i,1:64) );
 end
 
 accuracy = 0.0;

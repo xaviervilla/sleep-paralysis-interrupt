@@ -8,45 +8,21 @@ clc
 % with some zero-mean random noise:
 
 % Sensor Data:
-accel = csvread('alfonso.csv');
-% Number of samples:
-numSamples = 64;
-% Number of seconds:
-numSeconds = 2;
+%accel = csvread('alfonso.csv');
 
-%%%%%%%%%%%%%%% No need to modify anything below this line %%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-sampleFreq = numSamples/numSeconds;
+% [strongestFreqX, strengthX] = Wfreq(accel(139:202, 1).');
+% [strongestFreqY, strengthY] = Wfreq(accel(139:202, 2).');
+% [strongestFreqZ, strengthZ] = Wfreq(accel(139:202, 3).');
 
-t = (0:numSamples-1)/sampleFreq;
-x = accel(139:202, 1).';
-x=x-mean(x);
-y = x;
+rawSensorDataTrain = table( accel(:,1), accel(:,2), accel(:,3), 'VariableNames', {'total_acc_x', 'total_acc_y', 'total_acc_z'} );
 
-figure
-plot(t,y)
-title('Panic Breathing Signal with Noise')
-xlabel('time (seconds)')
-hold off
+%T_mean = varfun(@Wmean, rawSensorDataTrain);
+T_stdv = varfun(@Wstd,rawSensorDataTrain);
+T_pca  = varfun(@Wpca1,rawSensorDataTrain);
+T_freq = varfun(@Wfreq,rawSensorDataTrain);
 
-% It is difficult to identify the frequency components by looking at the 
-% original signal. Converting to the frequency domain, the discrete 
-% Fourier transform of the noisy signal y is found by taking the 512-point 
-% fast Fourier transform (FFT):
-Y = fft(y,64);
+% get most prominent freq of signals for x y and z and their strengths
 
-% The power spectrum, a measurement of the power at various frequencies:
-Pyy = Y.* conj(Y) / 64;
+humanActivityData = [T_stdv, T_pca, T_freq];
 
-% Graph the first 257 points (the other 255 points are redundant) on a 
-% meaningful frequency axis:
-figure
-f = 32*(1:sampleFreq*numSeconds)/(sampleFreq*2);
-[pk,loc] = max(Pyy);
-%test = f(locs)
-plot(f(1:32),Pyy(1:32))
-hold on
-plot(f(loc),pk,'or')
-title('Frequency component of Panic Breathing')
-xlabel('frequency (Hz)')
-
+humanActivityData.activity = trainActivity;
