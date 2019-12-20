@@ -5,7 +5,7 @@
  * File: CompactClassificationTree.h
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 15-Dec-2019 01:50:49
+ * C/C++ source code generated on  : 19-Dec-2019 22:53:17
  */
 
 #ifndef COMPACTCLASSIFICATIONTREE_H
@@ -18,11 +18,11 @@
 #include "loadAndTestModel_types.h"
 
 /* Function Declarations */
-extern void c_CompactClassificationTree_pre(const double obj_CutPredictorIndex
-  [11], const double obj_Children[22], const double obj_CutPoint[11], const
-  double obj_PruneList_data[], const bool obj_NanCutPoints[11], const double
-  obj_ClassNames[2], const double obj_Cost[4], const double
-  obj_ClassProbability[22], const double X[18], double labels[2]);
+extern double c_CompactClassificationTree_pre(const double
+  obj_CutPredictorIndex[21], const double obj_Children[42], const double
+  obj_CutPoint[21], const double obj_PruneList_data[], const bool
+  obj_NanCutPoints[21], const double obj_ClassNames[2], const double obj_Cost[4],
+  const double obj_ClassProbability[42], const double X[12]);
 
 #endif
 

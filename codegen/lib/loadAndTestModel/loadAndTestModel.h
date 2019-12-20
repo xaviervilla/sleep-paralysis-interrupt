@@ -5,7 +5,7 @@
  * File: loadAndTestModel.h
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 15-Dec-2019 01:50:49
+ * C/C++ source code generated on  : 19-Dec-2019 22:53:17
  */
 
 #ifndef LOADANDTESTMODEL_H
@@ -18,8 +18,8 @@
 #include "loadAndTestModel_types.h"
 
 /* Function Declarations */
-extern void loadAndTestModel(const double total_acc_x_test[64], const double
-  total_acc_y_test[64], const double total_acc_z_test[64], double label[2]);
+extern double loadAndTestModel(const double total_acc_x_test[64], const double
+  total_acc_y_test[64], const double total_acc_z_test[64]);
 
 #endif
 

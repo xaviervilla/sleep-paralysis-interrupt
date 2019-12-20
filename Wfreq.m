@@ -18,7 +18,7 @@ function promFreq = Wfreq(X)
     Y = fft(Y,64,2);
     Pyy = zeros(size(Y,1),64);
     for i=1:size(Y,1)
-        Pyy(i, :) = Y(i, :).* conj(Y(i, :)) / 64;
+        Pyy(i, :) = real(Y(i, :).* conj(Y(i, :)) / 64);
     end
     
     f = 32*(1:sampleFreq*numSeconds)/(sampleFreq*2);

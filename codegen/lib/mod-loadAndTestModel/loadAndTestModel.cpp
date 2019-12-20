@@ -5,130 +5,119 @@
  * File: loadAndTestModel.c
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 15-Dec-2019 01:21:20
+ * C/C++ source code generated on  : 19-Dec-2019 22:31:39
  */
 
 /* Include Files */
 #include "loadAndTestModel.h"
 #include "CompactClassificationTree.h"
+#include "Wfreq.h"
 #include "loadAndTestModel_data.h"
 #include "loadAndTestModel_initialize.h"
 #include "pca.h"
 #include "rt_nonfinite.h"
 #include "std.h"
-#include <string.h>
 
 /* Function Definitions */
 
 /*
  * Calculate mean of all samples for each channel
- *      T_mean_acc_x = mean(total_acc_x_test(:,:), 2);
- *      T_mean_acc_y = mean(total_acc_y_test(:,:), 2);
- *      T_mean_acc_z = mean(total_acc_z_test(:,:), 2);
  * Arguments    : const double total_acc_x_test[64]
  *                const double total_acc_y_test[64]
  *                const double total_acc_z_test[64]
- *                double label[2]
- * Return Type  : void
+ * Return Type  : double
  */
-void loadAndTestModel(const double total_acc_x_test[64], const double
-                      total_acc_y_test[64], const double total_acc_z_test[64],
-                      double label[2])
+double loadAndTestModel(const double total_acc_x_test[64], const double
+  total_acc_y_test[64], const double total_acc_z_test[64])
 {
-  double reshapes_f1[2];
-  double reshapes_f2[2];
-  double reshapes_f3[2];
+  double y;
+  double b_y;
+  double c_y;
+  int k;
+  double b_total_acc_x_test[64];
   double unusedU0_data[32];
   int unusedU0_size[2];
   double T_wpca1_acc_x_data[2];
   int T_wpca1_acc_x_size[2];
+  int total_acc_x_test_tmp;
   double T_wpca1_acc_y_data[2];
-  int T_wpca1_acc_y_size[2];
   double T_wpca1_acc_z_data[2];
-  int T_wpca1_acc_z_size[2];
-  int unnamed_idx_0;
-  double reshapes_f7_idx_0;
-  double b[64];
-  int b_unnamed_idx_0;
-  double reshapes_f7_idx_1;
-  double reshapes_f8_idx_0;
-  double reshapes_f8_idx_1;
   double SVM_ClassNames[2];
   double SVM_Cost[4];
-  double SVM_PruneList_data[11];
-  static const signed char iv[11] = { 5, 2, 4, 1, 0, 0, 3, 0, 0, 0, 0 };
+  double SVM_PruneList_data[17];
+  static const signed char iv[17] = { 3, 1, 3, 1, 0, 2, 3, 0, 1, 2, 0, 0, 0, 0,
+    0, 0, 0 };
 
-  int c_unnamed_idx_0;
-  double b_reshapes_f1[18];
-  static const double SVM_CutPredictorIndex[11] = { 6.0, 5.0, 3.0, 5.0, 0.0, 0.0,
-    2.0, 0.0, 0.0, 0.0, 0.0 };
+  double d_y[12];
+  static const double SVM_CutPredictorIndex[17] = { 10.0, 6.0, 3.0, 5.0, 0.0,
+    2.0, 2.0, 0.0, 2.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
 
-  static const double SVM_Children[22] = { 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0,
-    9.0, 0.0, 0.0, 0.0, 0.0, 10.0, 11.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
-  };
+  static const double SVM_Children[34] = { 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0,
+    9.0, 0.0, 0.0, 10.0, 11.0, 12.0, 13.0, 0.0, 0.0, 14.0, 15.0, 16.0, 17.0, 0.0,
+    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
 
-  static const double SVM_CutPoint[11] = { 10243.984493696515, 68483.6770389129,
-    1798.4241161137211, -79680.257341773307, 0.0, 0.0, 2874.9726170009067, 0.0,
-    0.0, 0.0, 0.0 };
+  static const double SVM_CutPoint[17] = { 2.25, 7320.1953213740126, 12398.84375,
+    6178.9792274556248, 0.0, -11347.140625, -7012.5, 0.0, -3082.03125,
+    -8347.15625, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
 
-  static const bool SVM_NanCutPoints[11] = { false, false, false, false, true,
-    true, false, true, true, true, true };
+  static const bool SVM_NanCutPoints[17] = { false, false, false, false, true,
+    false, false, true, false, false, true, true, true, true, true, true, true };
 
-  static const double SVM_ClassProbability[22] = { 0.80140186915887857, 0.95,
-    0.36111111111111116, 0.97734627831715215, 0.1818181818181818,
-    0.888888888888889, 0.18518518518518517, 0.3, 1.0, 0.0, 0.75,
-    0.19859813084112135, 0.050000000000000031, 0.638888888888889,
-    0.022653721682847912, 0.81818181818181812, 0.1111111111111111,
-    0.81481481481481477, 0.70000000000000007, 0.0, 1.0, 0.25 };
+  static const double SVM_ClassProbability[34] = { 0.9387442572741197,
+    0.99027237354085607, 0.74820143884892076, 0.99407114624505932, 0.75,
+    0.91836734693877542, 0.34146341463414631, 0.99796747967479671,
+    0.8571428571428571, 0.6, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+    0.061255742725880344, 0.00972762645914393, 0.25179856115107929,
+    0.0059288537549406894, 0.25, 0.0816326530612246, 0.65853658536585358,
+    0.0020325203252032444, 0.14285714285714282, 0.39999999999999997, 0.0, 1.0,
+    0.0, 1.0, 0.0, 1.0, 0.0 };
 
   if (isInitialized_loadAndTestModel == false) {
     loadAndTestModel_initialize();
   }
 
-  /*  Calculate std of all samples for each channel */
-  b_std(total_acc_x_test, reshapes_f1);
-  b_std(total_acc_y_test, reshapes_f2);
-  b_std(total_acc_z_test, reshapes_f3);
+  y = total_acc_x_test[0];
+  b_y = total_acc_y_test[0];
+  c_y = total_acc_z_test[0];
+  for (k = 0; k < 63; k++) {
+    y += total_acc_x_test[k + 1];
+    b_y += total_acc_y_test[k + 1];
+    c_y += total_acc_z_test[k + 1];
+  }
 
+  /*  Calculate std of all samples for each channel */
   /*  Calculate pca of all samples for each channel */
-  pca(total_acc_x_test, unusedU0_data, unusedU0_size, T_wpca1_acc_x_data,
+  for (k = 0; k < 32; k++) {
+    total_acc_x_test_tmp = k << 1;
+    b_total_acc_x_test[total_acc_x_test_tmp] = total_acc_x_test[k];
+    b_total_acc_x_test[total_acc_x_test_tmp + 1] = total_acc_x_test[k + 32];
+  }
+
+  pca(b_total_acc_x_test, unusedU0_data, unusedU0_size, T_wpca1_acc_x_data,
       T_wpca1_acc_x_size);
-  pca(total_acc_y_test, unusedU0_data, unusedU0_size, T_wpca1_acc_y_data,
-      T_wpca1_acc_y_size);
-  pca(total_acc_z_test, unusedU0_data, unusedU0_size, T_wpca1_acc_z_data,
-      T_wpca1_acc_z_size);
+  for (k = 0; k < 32; k++) {
+    total_acc_x_test_tmp = k << 1;
+    b_total_acc_x_test[total_acc_x_test_tmp] = total_acc_y_test[k];
+    b_total_acc_x_test[total_acc_x_test_tmp + 1] = total_acc_y_test[k + 32];
+  }
+
+  pca(b_total_acc_x_test, unusedU0_data, unusedU0_size, T_wpca1_acc_y_data,
+      T_wpca1_acc_x_size);
+  for (k = 0; k < 32; k++) {
+    total_acc_x_test_tmp = k << 1;
+    b_total_acc_x_test[total_acc_x_test_tmp] = total_acc_z_test[k];
+    b_total_acc_x_test[total_acc_x_test_tmp + 1] = total_acc_z_test[k + 32];
+  }
+
+  pca(b_total_acc_x_test, unusedU0_data, unusedU0_size, T_wpca1_acc_z_data,
+      T_wpca1_acc_x_size);
 
   /*  Calculate std of all samples for each channel */
-  for (unnamed_idx_0 = 0; unnamed_idx_0 < 2; unnamed_idx_0++) {
-    for (b_unnamed_idx_0 = 0; b_unnamed_idx_0 < 32; b_unnamed_idx_0++) {
-      b[b_unnamed_idx_0 + (unnamed_idx_0 << 5)] = total_acc_x_test[unnamed_idx_0
-        + (b_unnamed_idx_0 << 1)];
-    }
-  }
-
-  reshapes_f7_idx_0 = b[0];
-  reshapes_f7_idx_1 = b[32];
-  for (unnamed_idx_0 = 0; unnamed_idx_0 < 2; unnamed_idx_0++) {
-    for (b_unnamed_idx_0 = 0; b_unnamed_idx_0 < 32; b_unnamed_idx_0++) {
-      b[b_unnamed_idx_0 + (unnamed_idx_0 << 5)] = total_acc_y_test[unnamed_idx_0
-        + (b_unnamed_idx_0 << 1)];
-    }
-  }
-
-  reshapes_f8_idx_0 = b[0];
-  reshapes_f8_idx_1 = b[32];
-  for (unnamed_idx_0 = 0; unnamed_idx_0 < 2; unnamed_idx_0++) {
-    for (b_unnamed_idx_0 = 0; b_unnamed_idx_0 < 32; b_unnamed_idx_0++) {
-      b[b_unnamed_idx_0 + (unnamed_idx_0 << 5)] = total_acc_z_test[unnamed_idx_0
-        + (b_unnamed_idx_0 << 1)];
-    }
-  }
-
   /*  Create a matrix of all the features */
   SVM_ClassNames[0] = 0.0;
   SVM_ClassNames[1] = 1.0;
-  for (unnamed_idx_0 = 0; unnamed_idx_0 < 11; unnamed_idx_0++) {
-    SVM_PruneList_data[unnamed_idx_0] = iv[unnamed_idx_0];
+  for (k = 0; k < 17; k++) {
+    SVM_PruneList_data[k] = iv[k];
   }
 
   SVM_Cost[0] = 0.0;
@@ -137,39 +126,21 @@ void loadAndTestModel(const double total_acc_x_test[64], const double
   SVM_Cost[3] = 0.0;
 
   /*  Create a label of predictions */
-  unnamed_idx_0 = T_wpca1_acc_x_size[1] << 1;
-  b_unnamed_idx_0 = T_wpca1_acc_y_size[1] << 1;
-  c_unnamed_idx_0 = T_wpca1_acc_z_size[1] << 1;
-  b_reshapes_f1[0] = reshapes_f1[0];
-  b_reshapes_f1[2] = reshapes_f2[0];
-  b_reshapes_f1[4] = reshapes_f3[0];
-  b_reshapes_f1[1] = reshapes_f1[1];
-  b_reshapes_f1[3] = reshapes_f2[1];
-  b_reshapes_f1[5] = reshapes_f3[1];
-  if (0 <= unnamed_idx_0 - 1) {
-    memcpy(&b_reshapes_f1[6], &T_wpca1_acc_x_data[0], unnamed_idx_0 * sizeof
-           (double));
-  }
-
-  if (0 <= b_unnamed_idx_0 - 1) {
-    memcpy(&b_reshapes_f1[8], &T_wpca1_acc_y_data[0], b_unnamed_idx_0 * sizeof
-           (double));
-  }
-
-  if (0 <= c_unnamed_idx_0 - 1) {
-    memcpy(&b_reshapes_f1[10], &T_wpca1_acc_z_data[0], c_unnamed_idx_0 * sizeof
-           (double));
-  }
-
-  b_reshapes_f1[12] = reshapes_f7_idx_0;
-  b_reshapes_f1[14] = reshapes_f8_idx_0;
-  b_reshapes_f1[16] = b[0];
-  b_reshapes_f1[13] = reshapes_f7_idx_1;
-  b_reshapes_f1[15] = reshapes_f8_idx_1;
-  b_reshapes_f1[17] = b[32];
-  c_CompactClassificationTree_pre(SVM_CutPredictorIndex, SVM_Children,
+  d_y[0] = y / 64.0;
+  d_y[1] = b_y / 64.0;
+  d_y[2] = c_y / 64.0;
+  d_y[3] = b_std(total_acc_x_test);
+  d_y[4] = b_std(total_acc_y_test);
+  d_y[5] = b_std(total_acc_z_test);
+  d_y[6] = T_wpca1_acc_x_data[0];
+  d_y[7] = T_wpca1_acc_y_data[0];
+  d_y[8] = T_wpca1_acc_z_data[0];
+  d_y[9] = Wfreq(total_acc_x_test);
+  d_y[10] = Wfreq(total_acc_y_test);
+  d_y[11] = Wfreq(total_acc_z_test);
+  return c_CompactClassificationTree_pre(SVM_CutPredictorIndex, SVM_Children,
     SVM_CutPoint, SVM_PruneList_data, SVM_NanCutPoints, SVM_ClassNames, SVM_Cost,
-    SVM_ClassProbability, b_reshapes_f1, label);
+    SVM_ClassProbability, d_y);
 }
 
 /*

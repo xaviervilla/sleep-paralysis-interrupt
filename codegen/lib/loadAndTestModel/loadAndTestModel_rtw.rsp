@@ -1,4 +1,5 @@
 CompactClassificationTree.o
+Wfreq.o
 loadAndTestModel.o
 loadAndTestModel_data.o
 loadAndTestModel_initialize.o

@@ -19,8 +19,8 @@ MPU6050 mpu;
 unsigned long timer = 0;
 bool blinkState = false;
 
-#define numWin 2
-#define winSize 32 //4sec*32hz
+#define numWin 1
+#define winSize 64 //4sec*32hz
 double label[numWin];
 double total_acc_x[winSize*(numWin*2-1)];
 double total_acc_y[winSize*(numWin*2-1)];
@@ -109,11 +109,6 @@ void setup() {
   // set our DMP Ready flag so the main loop() function knows it's okay to use it
   Serial.println(F("DMP ready! Waiting for first interrupt..."));
   
-  // If writing data, add delay for user to start putty
-  if(dataDisplay){
-    delay(10000);
-  }
-
   // get expected DMP packet size for later comparison
   packetSize = mpu.dmpGetFIFOPacketSize();
 
@@ -168,32 +163,32 @@ void loop() {
         // mpu.dmpGetLinearAccelInWorld(&aaWorld, &aaReal, &q);
 
         //Fill the 16 byte buffers
-        total_acc_x[counter] = aa.x+aa.x*.6;
-        total_acc_y[counter] = aa.y+aa.y*.6;
-        total_acc_z[counter] = aa.z+aa.z*.6;
+        total_acc_x[counter] = aa.x+aa.x;
+        total_acc_y[counter] = aa.y+aa.y;
+        total_acc_z[counter] = aa.z+aa.z;
+        
+                if (dataDisplay){
+                  // print it in a format that can be exported to csv
+                  //Serial.printf("(counter-winSize)+i: %u\n", (counter-winSize)+i);
+                  Serial.print(total_acc_x[counter]);
+                  Serial.print(F(", "));
+                  Serial.print(total_acc_y[counter]);
+                  Serial.print(F(", "));
+                  Serial.print(total_acc_z[counter]);
+                  Serial.print(F(", "));
+                  Serial.println(label[0]==1);
+                }
         counter++;
         if(counter == winSize*numWin){
             if (trainerTest){
                 // blink to indicate activity
                 digitalWrite(LED_PIN, HIGH);
-                loadAndTestModel(total_acc_x, total_acc_y, total_acc_z, label);    
+                //Serial.println("================================================");
+                label[0] = loadAndTestModel(total_acc_x, total_acc_y, total_acc_z);    
                 digitalWrite(LED_PIN, LOW);     
                 //Serial.printf("counter-winSize: %u\n", counter-winSize);
                 // Serial.printf("Label[0]:%f  \tLabel[1]:%f\n", label[0], label[1]);
-                if (dataDisplay){
-                    // print it in a format that can be exported to csv
-                    for(int i = 0; i < winSize*numWin; i++){
-                        //Serial.printf("(counter-winSize)+i: %u\n", (counter-winSize)+i);
-                        Serial.print(total_acc_x[i]);
-                        Serial.print(F(", "));
-                        Serial.print(total_acc_y[i]);
-                        Serial.print(F(", "));
-                        Serial.print(total_acc_z[i]);
-                        Serial.print(F(", "));
-                        Serial.println(label[0]==1 || label[1]==1);
-                    }
-                }
-                if(label[0]==1 || label[1]==1){
+                if(label[0]==1){
                     //Serial.println("SP DETECTED");
                     blinkState = true;
                 }

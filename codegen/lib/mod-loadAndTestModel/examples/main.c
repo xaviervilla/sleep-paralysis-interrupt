@@ -5,7 +5,7 @@
  * File: main.c
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 15-Dec-2019 01:50:49
+ * C/C++ source code generated on  : 19-Dec-2019 22:53:17
  */
 
 /*************************************************************************/
@@ -40,7 +40,7 @@
 #include "rt_nonfinite.h"
 
 /* Function Declarations */
-static void argInit_2x32_real_T(double result[64]);
+static void argInit_1x64_real_T(double result[64]);
 static double argInit_real_T(void);
 static void main_loadAndTestModel(void);
 
@@ -50,18 +50,15 @@ static void main_loadAndTestModel(void);
  * Arguments    : double result[64]
  * Return Type  : void
  */
-static void argInit_2x32_real_T(double result[64])
+static void argInit_1x64_real_T(double result[64])
 {
-  int idx0;
   int idx1;
 
   /* Loop over the array to initialize each element. */
-  for (idx0 = 0; idx0 < 2; idx0++) {
-    for (idx1 = 0; idx1 < 32; idx1++) {
-      /* Set the value of the array element.
-         Change this value to the value that the application requires. */
-      result[idx0 + (idx1 << 1)] = argInit_real_T();
-    }
+  for (idx1 = 0; idx1 < 64; idx1++) {
+    /* Set the value of the array element.
+       Change this value to the value that the application requires. */
+    result[idx1] = argInit_real_T();
   }
 }
 
@@ -81,17 +78,17 @@ static double argInit_real_T(void)
 static void main_loadAndTestModel(void)
 {
   double total_acc_x_test_tmp_tmp[64];
-  double label[2];
+  double label;
 
   /* Initialize function 'loadAndTestModel' input arguments. */
   /* Initialize function input argument 'total_acc_x_test'. */
-  argInit_2x32_real_T(total_acc_x_test_tmp_tmp);
+  argInit_1x64_real_T(total_acc_x_test_tmp_tmp);
 
   /* Initialize function input argument 'total_acc_y_test'. */
   /* Initialize function input argument 'total_acc_z_test'. */
   /* Call the entry-point 'loadAndTestModel'. */
-  loadAndTestModel(total_acc_x_test_tmp_tmp, total_acc_x_test_tmp_tmp,
-                   total_acc_x_test_tmp_tmp, label);
+  label = loadAndTestModel(total_acc_x_test_tmp_tmp, total_acc_x_test_tmp_tmp,
+    total_acc_x_test_tmp_tmp);
 }
 
 /*

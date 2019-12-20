@@ -5,7 +5,7 @@
  * File: _coder_loadAndTestModel_api.h
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 15-Dec-2019 01:50:49
+ * C/C++ source code generated on  : 19-Dec-2019 22:53:17
  */
 
 #ifndef _CODER_LOADANDTESTMODEL_API_H
@@ -23,8 +23,8 @@ extern emlrtCTX emlrtRootTLSGlobal;
 extern emlrtContext emlrtContextGlobal;
 
 /* Function Declarations */
-extern void loadAndTestModel(real_T total_acc_x_test[64], real_T
-  total_acc_y_test[64], real_T total_acc_z_test[64], real_T label[2]);
+extern real_T loadAndTestModel(real_T total_acc_x_test[64], real_T
+  total_acc_y_test[64], real_T total_acc_z_test[64]);
 extern void loadAndTestModel_api(const mxArray * const prhs[3], int32_T nlhs,
   const mxArray *plhs[1]);
 extern void loadAndTestModel_atexit(void);

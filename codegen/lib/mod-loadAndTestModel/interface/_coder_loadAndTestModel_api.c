@@ -5,7 +5,7 @@
  * File: _coder_loadAndTestModel_api.c
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 15-Dec-2019 01:50:49
+ * C/C++ source code generated on  : 19-Dec-2019 22:53:17
  */
 
 /* Include Files */
@@ -32,7 +32,7 @@ static real_T (*c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
   const emlrtMsgIdentifier *msgId))[64];
 static real_T (*emlrt_marshallIn(const emlrtStack *sp, const mxArray
   *total_acc_x_test, const char_T *identifier))[64];
-static const mxArray *emlrt_marshallOut(const real_T u[2]);
+static const mxArray *emlrt_marshallOut(const real_T u);
 
 /* Function Definitions */
 
@@ -60,7 +60,7 @@ static real_T (*b_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
   const emlrtMsgIdentifier *msgId))[64]
 {
   real_T (*ret)[64];
-  static const int32_T dims[2] = { 2, 32 };
+  static const int32_T dims[2] = { 1, 64 };
 
   emlrtCheckBuiltInR2012b(sp, msgId, src, "double", false, 2U, dims);
   ret = (real_T (*)[64])emlrtMxGetData(src);
@@ -87,21 +87,15 @@ static real_T (*emlrt_marshallIn(const emlrtStack *sp, const mxArray
   return y;
 }
 /*
- * Arguments    : const real_T u[2]
+ * Arguments    : const real_T u
  * Return Type  : const mxArray *
  */
-  static const mxArray *emlrt_marshallOut(const real_T u[2])
+  static const mxArray *emlrt_marshallOut(const real_T u)
 {
   const mxArray *y;
   const mxArray *m;
-  static const int32_T iv[1] = { 0 };
-
-  static const int32_T iv1[1] = { 2 };
-
   y = NULL;
-  m = emlrtCreateNumericArray(1, iv, mxDOUBLE_CLASS, mxREAL);
-  emlrtMxSetData((mxArray *)m, (void *)&u[0]);
-  emlrtSetDimensions((mxArray *)m, iv1, 1);
+  m = emlrtCreateDoubleScalar(u);
   emlrtAssign(&y, m);
   return y;
 }
@@ -115,10 +109,10 @@ static real_T (*emlrt_marshallIn(const emlrtStack *sp, const mxArray
 void loadAndTestModel_api(const mxArray * const prhs[3], int32_T nlhs, const
   mxArray *plhs[1])
 {
-  real_T (*label)[2];
   real_T (*total_acc_x_test)[64];
   real_T (*total_acc_y_test)[64];
   real_T (*total_acc_z_test)[64];
+  real_T label;
   emlrtStack st = { NULL,              /* site */
     NULL,                              /* tls */
     NULL                               /* prev */
@@ -126,7 +120,6 @@ void loadAndTestModel_api(const mxArray * const prhs[3], int32_T nlhs, const
 
   (void)nlhs;
   st.tls = emlrtRootTLSGlobal;
-  label = (real_T (*)[2])mxMalloc(sizeof(real_T [2]));
 
   /* Marshall function inputs */
   total_acc_x_test = emlrt_marshallIn(&st, emlrtAlias(prhs[0]),
@@ -137,11 +130,11 @@ void loadAndTestModel_api(const mxArray * const prhs[3], int32_T nlhs, const
     "total_acc_z_test");
 
   /* Invoke the target function */
-  loadAndTestModel(*total_acc_x_test, *total_acc_y_test, *total_acc_z_test,
-                   *label);
+  label = loadAndTestModel(*total_acc_x_test, *total_acc_y_test,
+    *total_acc_z_test);
 
   /* Marshall function outputs */
-  plhs[0] = emlrt_marshallOut(*label);
+  plhs[0] = emlrt_marshallOut(label);
 }
 
 /*

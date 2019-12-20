@@ -6,7 +6,7 @@ close all
 clc;
 
 %% Now we can load test data and check accuracy from data that was not used to train the classifier
-load rawCustomSensorData_train64;
+load '/home/xvilla/Documents/2019fall/195/my classifier/spTrainingData.mat';
 
 % We need to convert the predictor strings to integers
 result = trainActivity;

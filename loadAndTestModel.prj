@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.coder" plugin-version="R2018b">
-  <configuration build-checksum="57287589" file="/home/xvilla/Documents/2019fall/195/my classifier/loadAndTestModel.prj" location="/home/xvilla/Documents/2019fall/195/my classifier" name="loadAndTestModel" target="target.unifiedcoder" target-name="MATLAB Coder">
+  <configuration build-checksum="3491235331" file="/home/xvilla/Documents/2019fall/195/my classifier/loadAndTestModel.prj" location="/home/xvilla/Documents/2019fall/195/my classifier" name="loadAndTestModel" target="target.unifiedcoder" target-name="MATLAB Coder">
     <profile key="profile.mex">
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
       <param.RanInstrumentedMex>false</param.RanInstrumentedMex>
@@ -846,7 +846,7 @@
     <param.AutoInferUnboundedSizeThreshold>2048</param.AutoInferUnboundedSizeThreshold>
     <param.EnableFixedPointStep>false</param.EnableFixedPointStep>
     <param.EnableScreener>true</param.EnableScreener>
-    <param.AnnotationChecksum>2702070907</param.AnnotationChecksum>
+    <param.AnnotationChecksum>840117451</param.AnnotationChecksum>
     <var.LegacyTarget />
     <var.MirrorOnOpen>false</var.MirrorOnOpen>
     <param.FixedPointEnabled>false</param.FixedPointEnabled>
@@ -855,13 +855,13 @@
     <param.unifiedParamStorage />
     <var.gc.lastOutputRoot>codegen/lib/loadAndTestModel</var.gc.lastOutputRoot>
     <var.gc.lastOutputType>C_CODE</var.gc.lastOutputType>
-    <var.gc.preBuildChecksum>3260441622</var.gc.preBuildChecksum>
+    <var.gc.preBuildChecksum>287588784</var.gc.preBuildChecksum>
     <var.cfi.lastOutputRoot>codegen/mex/loadAndTestModel</var.cfi.lastOutputRoot>
-    <var.cfi.preBuildChecksum>3625528067</var.cfi.preBuildChecksum>
+    <var.cfi.preBuildChecksum>191565477</var.cfi.preBuildChecksum>
     <var.lastCfiTestSnippet>allCode</var.lastCfiTestSnippet>
     <var.outdatedOnRestore>false</var.outdatedOnRestore>
-    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/loadAndTestModel.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;741411368&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
-    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/loadAndTestModel.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
+    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/Wfreq.m&lt;/file&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/loadAndTestModel.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;1131336000&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
+    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/Wfreq.m&lt;/file&gt;&lt;file&gt;/home/xvilla/Documents/2019fall/195/my classifier/loadAndTestModel.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
     <param.forceMexBuild>false</param.forceMexBuild>
     <param.NoDefaultJIT>false</param.NoDefaultJIT>
     <param.configImportActive>false</param.configImportActive>
@@ -1065,7 +1065,7 @@
     </unset>
     <fileset.entrypoints>
       <file custom-data-expanded="false" value="${PROJECT_ROOT}/loadAndTestModel.m">
-        <Marker>1576403397622</Marker>
+        <Marker>1576824420880</Marker>
       </file>
     </fileset.entrypoints>
     <fileset.testbench>
@@ -1080,7 +1080,7 @@
           <idpTable>
             <type typeId="0">
               <Class>double</Class>
-              <Size>2 x 32</Size>
+              <Size>1 x 64</Size>
               <Value />
               <InitialValue />
               <UserDefined>false</UserDefined>

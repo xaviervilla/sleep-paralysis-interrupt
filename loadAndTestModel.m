@@ -23,7 +23,7 @@ function label =loadAndTestModel(total_acc_x_test, total_acc_y_test, total_acc_z
     humanActivityData = [T_mean_acc_x, T_mean_acc_y, T_mean_acc_z, T_std_acc_x, T_std_acc_y, T_std_acc_z, T_wpca1_acc_x(1), T_wpca1_acc_y(1), T_wpca1_acc_z(1), T_fft_acc_x, T_fft_acc_y, T_fft_acc_z];
     
     % Create a matrix of all the features
-    SVM = loadLearnerForCoder('myLearnerForCoder');
+    SVM = loadLearnerForCoder('/home/xvilla/Documents/2019fall/195/my classifier/myLearnerForCoder.mat');
 
     % Create a label of predictions
     label = predict(SVM,humanActivityData);
