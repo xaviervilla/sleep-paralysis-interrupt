@@ -25,7 +25,7 @@ double label[numWin];
 double total_acc_x[winSize*(numWin*2-1)];
 double total_acc_y[winSize*(numWin*2-1)];
 double total_acc_z[winSize*(numWin*2-1)];
-bool dataDisplay = true;//true; // this controls whether we are testing ML functions or recording data
+bool dataDisplay = false;//true; // this controls whether we are testing ML functions or recording data
 bool trainerTest = true;
 int counter = 0;
 
@@ -163,18 +163,18 @@ void loop() {
         // mpu.dmpGetLinearAccelInWorld(&aaWorld, &aaReal, &q);
 
         //Fill the 16 byte buffers
-        total_acc_x[counter] = aa.x+aa.x;
-        total_acc_y[counter] = aa.y+aa.y;
-        total_acc_z[counter] = aa.z+aa.z;
+        total_acc_x[counter] = aa.x;
+        total_acc_y[counter] = aa.y;
+        total_acc_z[counter] = aa.z;
         
                 if (dataDisplay){
                   // print it in a format that can be exported to csv
                   //Serial.printf("(counter-winSize)+i: %u\n", (counter-winSize)+i);
-                  Serial.print(total_acc_x[counter]);
+                  Serial.print(total_acc_x[counter]+total_acc_x[counter]*0.6);
                   Serial.print(F(", "));
-                  Serial.print(total_acc_y[counter]);
+                  Serial.print(total_acc_y[counter]+total_acc_y[counter]*0.6);
                   Serial.print(F(", "));
-                  Serial.print(total_acc_z[counter]);
+                  Serial.print(total_acc_z[counter]+total_acc_z[counter]*0.6);
                   Serial.print(F(", "));
                   Serial.println(label[0]==1);
                 }
@@ -189,7 +189,7 @@ void loop() {
                 //Serial.printf("counter-winSize: %u\n", counter-winSize);
                 // Serial.printf("Label[0]:%f  \tLabel[1]:%f\n", label[0], label[1]);
                 if(label[0]==1){
-                    //Serial.println("SP DETECTED");
+                    Serial.printf("SP DETECTED at t=%lu\n",millis());
                     blinkState = true;
                 }
                 else{

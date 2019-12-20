@@ -5,7 +5,7 @@
  * File: CompactClassificationTree.c
  *
  * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 19-Dec-2019 22:31:39
+ * C/C++ source code generated on  : 20-Dec-2019 12:06:10
  */
 
 /* Include Files */
@@ -16,22 +16,22 @@
 /* Function Definitions */
 
 /*
- * Arguments    : const double obj_CutPredictorIndex[17]
- *                const double obj_Children[34]
- *                const double obj_CutPoint[17]
+ * Arguments    : const double obj_CutPredictorIndex[27]
+ *                const double obj_Children[54]
+ *                const double obj_CutPoint[27]
  *                const double obj_PruneList_data[]
- *                const bool obj_NanCutPoints[17]
+ *                const bool obj_NanCutPoints[27]
  *                const double obj_ClassNames[2]
  *                const double obj_Cost[4]
- *                const double obj_ClassProbability[34]
+ *                const double obj_ClassProbability[54]
  *                const double X[12]
  * Return Type  : double
  */
-double c_CompactClassificationTree_pre(const double obj_CutPredictorIndex[17],
-  const double obj_Children[34], const double obj_CutPoint[17], const double
-  obj_PruneList_data[], const bool obj_NanCutPoints[17], const double
+double c_CompactClassificationTree_pre(const double obj_CutPredictorIndex[27],
+  const double obj_Children[54], const double obj_CutPoint[27], const double
+  obj_PruneList_data[], const bool obj_NanCutPoints[27], const double
   obj_ClassNames[2], const double obj_Cost[4], const double
-  obj_ClassProbability[34], const double X[12])
+  obj_ClassProbability[54], const double X[12])
 {
   int m;
   double unusedU4_idx_1;
@@ -46,7 +46,7 @@ double c_CompactClassificationTree_pre(const double obj_CutPredictorIndex[17],
     }
   }
 
-  unusedU4_idx_1 = obj_ClassProbability[m + 17];
+  unusedU4_idx_1 = obj_ClassProbability[m + 27];
   unusedU4_idx_0 = obj_ClassProbability[m] * obj_Cost[0] + unusedU4_idx_1 *
     obj_Cost[1];
   unusedU4_idx_1 = obj_ClassProbability[m] * obj_Cost[2] + unusedU4_idx_1 *

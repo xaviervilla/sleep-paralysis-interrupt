@@ -80,7 +80,7 @@ response = inputTable.activity;
 isCategoricalPredictor = [false, false, false, false, false, false, false, false, false, false, false, false];
 
 % Perform cross-validation
-partitionedModel = crossval(trainedClassifier.ClassificationTree, 'KFold', 5);
+partitionedModel = crossval(trainedClassifier.ClassificationTree, 'KFold', 10);
 
 % Compute validation predictions
 [validationPredictions, validationScores] = kfoldPredict(partitionedModel);

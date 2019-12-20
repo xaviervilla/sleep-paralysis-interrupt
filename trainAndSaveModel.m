@@ -27,7 +27,7 @@ humanActivityData = [T_mean, T_stdv, T_pca, T_freq];
 humanActivityData.activity = trainActivity;
 
 if type == 0
-    trainedModel = trainClassifier(humanActivityData);
+    trainedModel = trainClassifier2(humanActivityData);
     saveLearnerForCoder(trainedModel.ClassificationKNN, '/home/xvilla/Documents/2019fall/195/my classifier/myLearnerForCoder.mat')
 elseif type == 1
     trainedModel = trainClassifier(humanActivityData);

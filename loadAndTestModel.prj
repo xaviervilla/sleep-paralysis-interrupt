@@ -846,7 +846,7 @@
     <param.AutoInferUnboundedSizeThreshold>2048</param.AutoInferUnboundedSizeThreshold>
     <param.EnableFixedPointStep>false</param.EnableFixedPointStep>
     <param.EnableScreener>true</param.EnableScreener>
-    <param.AnnotationChecksum>840117451</param.AnnotationChecksum>
+    <param.AnnotationChecksum>2546467181</param.AnnotationChecksum>
     <var.LegacyTarget />
     <var.MirrorOnOpen>false</var.MirrorOnOpen>
     <param.FixedPointEnabled>false</param.FixedPointEnabled>
@@ -1065,7 +1065,7 @@
     </unset>
     <fileset.entrypoints>
       <file custom-data-expanded="false" value="${PROJECT_ROOT}/loadAndTestModel.m">
-        <Marker>1576824420880</Marker>
+        <Marker>1576880056423</Marker>
       </file>
     </fileset.entrypoints>
     <fileset.testbench>

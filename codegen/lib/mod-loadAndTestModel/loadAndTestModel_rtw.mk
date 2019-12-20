@@ -2,7 +2,7 @@
 ## Makefile generated for MATLAB file/project 'loadAndTestModel'. 
 ## 
 ## Makefile     : loadAndTestModel_rtw.mk
-## Generated on : Thu Dec 19 22:53:41 2019
+## Generated on : Fri Dec 20 14:57:06 2019
 ## MATLAB Coder version: 4.3 (R2019b)
 ## 
 ## Build Info:
