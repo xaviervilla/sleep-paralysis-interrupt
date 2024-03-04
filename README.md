@@ -1,5 +1,8 @@
 # sleep-paralysis-interrupt
-A machine learning classifier that detects sleep paralysis
+A machine learning classifier that detects sleep paralysis.
+
+Full report (PDF) here: 
+https://github.com/xaviervilla/sleep-paralysis-interrupt/blob/master/CSE195_Final_Report.pdf
 
 # To do:
  - [x] Set up MATLAB 2019B
